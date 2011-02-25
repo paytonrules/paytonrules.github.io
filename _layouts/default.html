@@ -1,18 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>{{ page.title }}</title>
-   <meta name="author" content="<%= @page.author %>" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>{{ page.title }}</title>
+  <meta name="author" content="<%= @page.author %>" />
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css">
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
 </head>
-<body>
 
-<div>
-  You have used a layout.  Interesting of Jekyll 
-  {{ content }}
-</div>
+<body>
+  <div id="outer">
+    <div id="inner">
+      <div id="heading">
+        <h1>Paytonrules Rants</h1>
+        <h3>Eric Smith: Software Craftsman, TDD Psycho, and General Ranter</h3>
+      </div>
+      <div id="navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="mentoring.html">Mentoring</a></li>
+        </ul>
+      </div>
+
+      <div id="content">
+        {{ content }}
+      </div>
+      <div id="right_side">
+        <h4>Friends of Mine:</h4>
+        <p><a href="http://www.8thlight.com">8th Light</a></p>
+        <p><a href="http://www.chiphonegroup.org">chiPhone</a></p>
+        <br/>
+        <h4>Contact me</h4>
+        <p><a href="http://twitter.com/paytonrules">Twitter</a></p>
+        <p><a href="http://www.linkedin.com/pub/eric-smith/4/3b3/94b">Linked In</a></p>
+      </div>
+
+      <div id="footer">
+        <p>Find me on twitter as @paytonrules</p>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
