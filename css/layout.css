@@ -2,19 +2,28 @@
   font-size: 62.5%;
 }
 
-a {
+a:link {
   color: black;
+  text-decoration: underline;
 }
 
 a:visited {
-  text-decoration: none;
   color: black;
+  text-decoration: none;
+}
+
+a:hover {
+}
+
+a:active {
 }
 
 #heading {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  -moz-border-radius: 15px;
+  -moz-border-radius-topright: 15px;
+  -moz-border-radius-topleft: 15px;
+  background-color:#EEE;
   background-color:#EEE;
   font-family: "Tahoma";
   text-align: center;
@@ -32,6 +41,8 @@ a:visited {
 }
 
 #body {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   background-color: #EEE;
 }
 
@@ -70,6 +81,7 @@ a:visited {
   float: left;
   width: 80%;
   margin-right: 30px;
+  margin-left: 15px;
 }
 
 #content h1 {
@@ -99,5 +111,6 @@ a:visited {
 
 
 #footer {
+  padding-top:40px;
   clear: both;
 }
