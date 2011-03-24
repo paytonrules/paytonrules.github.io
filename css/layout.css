@@ -89,6 +89,10 @@ a:active {
   margin-bottom: 10px;
 }
 
+#right_side {
+  float: right;
+}
+
 #right_side ul {
   list-style-type: none;
   list-style-image: none;
