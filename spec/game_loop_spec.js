@@ -1,16 +1,16 @@
 describe('GameLoop', function() {
-  var Game;
+  var gameLoop;
   beforeEach( function() {
-     Game = require("specHelper");
+     gameLoop = require("specHelper").gameLoop;
   });
 
   it('starts the loop counter at 0', function() {
-    expect(Game.loopCounter()).toEqual(0);
+    expect(gameLoop.loopCounter()).toEqual(0);
   });
 
   it('increments the loop counter after running the game loop', function() {
-    Game.gameLoop();
+    gameLoop.gameLoop();
 
-    expect(Game.loopCounter()).toEqual(1);
+    expect(gameLoop.loopCounter()).toEqual(1);
   });
 });

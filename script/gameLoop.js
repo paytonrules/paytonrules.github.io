@@ -1,11 +1,10 @@
 var gameLoop = {};
+var loopCounter = 0;
 
-gameLoop.loopCounter = function() {
+this.loopCounter = function() {
   return loopCounter;
 };
 
-gameLoop.gameLoop = function() {
+this.gameLoop = function() {
   loopCounter++;
 };
-
-console.log(gameLoop);
