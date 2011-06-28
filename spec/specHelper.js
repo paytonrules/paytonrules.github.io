@@ -1,2 +1,2 @@
-var gameLoop = require('../script/gameLoop');
+require('../script/gameLoop');
 exports.gameLoop = gameLoop;

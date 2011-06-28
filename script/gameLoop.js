@@ -1,10 +1,10 @@
-var gameLoop = {};
+gameLoop = {};
 var loopCounter = 0;
 
-this.loopCounter = function() {
+gameLoop.loopCounter = function() {
   return loopCounter;
 };
 
-this.gameLoop = function() {
+gameLoop.gameLoop = function() {
   loopCounter++;
 };
