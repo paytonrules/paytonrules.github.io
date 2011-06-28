@@ -1,6 +1,7 @@
 describe('GameLoop', function() {
   var gameLoop;
   beforeEach( function() {
+    require("specHelper");
      gameLoop = require("specHelper").gameLoop;
   });
 

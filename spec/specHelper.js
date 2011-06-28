@@ -1,4 +1,2 @@
-var gameLoop = require('gameLoop');
-require('util/underscore');
-
+var gameLoop = require('../script/gameLoop');
 exports.gameLoop = gameLoop;
