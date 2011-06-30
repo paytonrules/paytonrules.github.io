@@ -1,2 +1,2 @@
-require('../script/gameLoop');
-exports.gameLoop = gameLoop;
+require('../script/game');
+exports.Game = Game;
