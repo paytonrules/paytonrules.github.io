@@ -1,7 +1,5 @@
 
 // What are my requirements
-// TDD a gameloop.  It calls a 'draw' and an 'update'
-// Those can be handles
 // It calls 60 times a second
 // You'll want to make a version of your game which attaches itself to a gameLoop
 // Goal is to get the hack you have on the website into a one liner on the web page
@@ -10,81 +8,93 @@
 // Next Goal sound
 // Use some JS type modules and such
 // Write a game design (SIMPLE!)
-describe('GameLoop', function() {
+var StoppingLoopFailure = {
+  name: "TestFailure",
+  message: "You are not stopping the loop"
+};
+
+var CallCounterUpTo = function(maximum) {
+  var calls = 0;
+  this.call = function() {
+    calls += 1;
+    if (calls == maximum) {
+      this.stop();
+    }
+    else if (calls > maximum) {
+      throw StoppingLoopFailure;
+    }
+  };
+
+  this.calls = function() {
+    return calls;
+  };
+};
+
+
+describe('Game#loop', function() {
   var game;
   beforeEach( function() {
-    game = require("specHelper").Game;
+    Game = require("specHelper").Game;
+    game = new Game();
   });
 
-  it('Executes its update function', function() {
-    game.update = function() {
-      game.updated = true;
-    };
+  it('Executes update until stopped', function() {
+    var counter;
     game.draw = function() {};
-
-    game.loop();
-
-    expect(game.updated).toBeTruthy();
-  });
-
-  it('Executes its draw function', function() {
-    game.draw = function() {
-      game.drawn = true;
-    };
-
-    game.loop();
-
-    expect(game.drawn).toBeTruthy();
-  });
-
-  it('Calls update and draw 30 times in one half second', function() {
-    spyOn(game, 'update');
-    spyOn(game, 'draw');
+    
+    counter = new CallCounterUpTo(10);
+    game.update = counter.call; 
 
     game.start();
 
     waitsFor(function() {
-      return (Game.update.callCount == 30) && (Game.draw.callCount == 30);
-    }, "Did not call thirty times", 505);
+      return (counter.calls() === 10);
+    }, "Calls never gets to 10", 1001);
 
-    runs(function() {
-      expect(Game.update.callCount).not.toEqual(60);
+    runs (function() {
+      expect(counter.calls()).toEqual(10);
+    });
+  });
+
+  it('executes draw until stopped as well', function() {
+    var counter;
+    game.update = function() {};
+    
+    counter = new CallCounterUpTo(10);
+    game.draw = counter.call;
+
+    game.start();
+
+    waitsFor(function() {
+      return (counter.calls() === 10);
+    }, "Calls never gets to 10", 1001);
+
+    runs (function() {
+      expect(counter.calls()).toEqual(10);
+    });
+  });
+
+
+  it('calls update 50 times per second', function() {
+    var before, counter;
+    game.draw = function () {};
+
+    counter = new CallCounterUpTo(50);
+    game.update = counter.call;
+
+    startTime = (new Date()).getTime();
+
+    game.start();
+
+    waitsFor(function() {
+      return (counter.calls() === 50);
+    }, "Calls never gets to 50", 1001);
+
+    runs (function() {
+      endTime = (new Date()).getTime();
+      expect(endTime - startTime).toBeGreaterThan(999);
     });
 
   });
 
-  it('Calls update and draw 60 times in one second', function() {
-    spyOn(game, 'update');
-    spyOn(game, 'draw');
-    
-    game.start();
-
-    waitsFor(function() {
-      return (Game.update.callCount == 60) && (Game.draw.callCount == 60);
-    }, "Did not call sixty times", 1015);
-
-  });
-
-/*
- *  it('Stops updating after a stop call', function() {
- *    spyOn(game, 'update');
- *
- *    game.start();
- *    
- *    waitsFor(function() {
- *      return (Game.update.callCount == 1);
- *    }, "Update once", 1000);
- *
- *    runs(function() {
- *      game.stop();
- *    });
- *
- *    waits(1000);
- *
- *    runs(function() {
- *      expect(Game.update.callCount).toEqual(1);
- *    });
- *
- *  });
- */
 });

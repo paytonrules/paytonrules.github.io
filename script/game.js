@@ -2,28 +2,50 @@
 // Create a Javascript style module
 // Probably change to use a constructor of the JS variety
 
-var nextGameTick = (new Date).getTime();
-var FRAMES_PER_SECOND = 60;
-var SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
-var sleepTime = 0;
+/*
+ *var nextGameTick = (new Date).getTime();
+ *var FRAMES_PER_SECOND = 60;
+ *var SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
+ *var sleepTime = 0;
+ */
 
-Game = {};
+Game = function() {
+  var self = this;
+  this.running = true;
 
-Game.loop = function() {
-  Game.update();
-  Game.draw();
+  this.loop = function() {
+    if(self.running) {
+      self.update();
+      self.draw();
+    }
+  };
 
-  nextGameTick += SKIP_TICKS;
+  this.start = function() {
+    setInterval(self.loop, 1000 / 50);
+  };
 
-  sleepTime = nextGameTick - (new Date).getTime();
-
-  if (sleepTime > 0) {
-    setTimeout("Game.loop()", sleepTime);
-//    sleepTime = nextGameTick - (new Date).getTime();
-  }
-
+  this.stop = function() {
+    self.running = false;
+  };
 };
 
-Game.start = function() {
-  Game.loop();
-};
+/*
+ *  Game.update();
+ *  Game.draw();
+ *
+ *  nextGameTick += SKIP_TICKS;
+ *
+ *  sleepTime = nextGameTick - (new Date).getTime();
+ *
+ *  if (sleepTime > 0) {
+ *    setTimeout("Game.loop()", sleepTime);
+ *    sleepTime = nextGameTick - (new Date).getTime();
+ *  }
+ *
+ */
+
+/*
+ *Game.start = function() {
+ *  Game.loop();
+ *};
+ */
