@@ -28,6 +28,10 @@ var CallCounterUpTo = function(maximum) {
   this.calls = function() {
     return calls;
   };
+
+  this.completed = function() {
+    return calls == maximum;
+  };
 };
 
 
@@ -39,60 +43,70 @@ describe('Game#loop', function() {
   });
 
   it('Executes update until stopped', function() {
-    var counter;
-    game.draw = function() {};
+    var counter = new CallCounterUpTo(2);
     
-    counter = new CallCounterUpTo(10);
+    game.draw = function() {};
     game.update = counter.call; 
 
     game.start();
 
     waitsFor(function() {
-      return (counter.calls() === 10);
-    }, "Calls never gets to 10", 1001);
-
-    runs (function() {
-      expect(counter.calls()).toEqual(10);
-    });
+      return (counter.completed());
+    }, "Updates never complete", 500);
   });
 
   it('executes draw until stopped as well', function() {
-    var counter;
-    game.update = function() {};
+    var counter = new CallCounterUpTo(2);
     
-    counter = new CallCounterUpTo(10);
+    game.update = function() {};
     game.draw = counter.call;
 
     game.start();
 
     waitsFor(function() {
-      return (counter.calls() === 10);
-    }, "Calls never gets to 10", 1001);
-
-    runs (function() {
-      expect(counter.calls()).toEqual(10);
-    });
+      return (counter.completed());
+    }, "Draws never complete", 500);
   });
 
 
   it('calls update 50 times per second', function() {
-    var before, counter;
+    var before; 
+    var counter = new CallCounterUpTo(5);
+    
     game.draw = function () {};
-
-    counter = new CallCounterUpTo(50);
     game.update = counter.call;
 
     startTime = (new Date()).getTime();
-
     game.start();
 
     waitsFor(function() {
-      return (counter.calls() === 50);
-    }, "Calls never gets to 50", 1001);
+      return (counter.completed());
+    }, "Calls never complete", 101);
 
     runs (function() {
       endTime = (new Date()).getTime();
-      expect(endTime - startTime).toBeGreaterThan(999);
+      expect(endTime - startTime).toBeGreaterThan(99);
+    });
+
+  });
+
+  it('calls draw 50 times per second', function() {
+    var before; 
+    var counter = new CallCounterUpTo(5);
+    
+    game.update = function () {};
+    game.draw = counter.call;
+
+    startTime = (new Date()).getTime();
+    game.start();
+
+    waitsFor(function() {
+      return (counter.completed());
+    }, "Calls never complete", 101);
+
+    runs (function() {
+      endTime = (new Date()).getTime();
+      expect(endTime - startTime).toBeGreaterThan(99);
     });
 
   });
