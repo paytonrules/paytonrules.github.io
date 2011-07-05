@@ -1,114 +1,110 @@
-
 // What are my requirements
-// It calls 60 times a second
-// You'll want to make a version of your game which attaches itself to a gameLoop
-// Goal is to get the hack you have on the website into a one liner on the web page
+// Schedule the loop
+// Draw your text
 // Next Goal move it around
-// Next goal double buffering 
 // Next Goal sound
 // Use some JS type modules and such
 // Write a game design (SIMPLE!)
-var StoppingLoopFailure = {
-  name: "TestFailure",
-  message: "You are not stopping the loop"
-};
-
-var CallCounterUpTo = function(maximum) {
+var CallCounter = function(callback) {
   var calls = 0;
   this.call = function() {
     calls += 1;
-    if (calls == maximum) {
-      this.stop();
-    }
-    else if (calls > maximum) {
-      throw StoppingLoopFailure;
+    if (typeof(callback) !== "undefined") {
+      callback();
     }
   };
 
   this.calls = function() {
     return calls;
   };
+};
+/*
+ *var Scheduler = function() {
+ *  var ticks = 0;
+ *  this.getTicks = function() {
+ *    return (new Date()).getTime();
+ *  },
+ *
+ *  this.getTickTime = function() {
+ *    return 1000 / framesPerSecond;
+ *  }
+ *
+ *}
+ */
 
-  this.completed = function() {
-    return calls == maximum;
-  };
+var Scheduler = function() {
+  var ticks = 0;
+  this.getTicks = function() {
+    return ticks;
+  },
+
+  this.getTickTime = function() {
+    return 1;
+  },
+
+  this.tick = function() {
+    ticks += 1;
+  }
 };
 
-
 describe('Game#loop', function() {
-  var game;
+  var game, scheduler;
   beforeEach( function() {
     Game = require("specHelper").Game;
-    game = new Game();
+    scheduler = new Scheduler();
+    game = new Game(scheduler);
   });
 
-  it('Executes update until stopped', function() {
-    var counter = new CallCounterUpTo(2);
-    
-    game.draw = function() {};
-    game.update = counter.call; 
 
-    game.start();
-
-    waitsFor(function() {
-      return (counter.completed());
-    }, "Updates never complete", 500);
-  });
-
-  it('executes draw until stopped as well', function() {
-    var counter = new CallCounterUpTo(2);
-    
+  it('executes draw', function() {
     game.update = function() {};
-    game.draw = counter.call;
+    game.draw = function() {
+      game.drawn = true;
+    };
 
-    game.start();
+    game.loop();
 
-    waitsFor(function() {
-      return (counter.completed());
-    }, "Draws never complete", 500);
+    expect(game.drawn).toBeTruthy();
   });
 
+  it('Executes update, provided time has passed since the last loop call', function() {
+    game.draw = function() {};
+    game.update = function () {
+      game.updated = true;
+    };
 
-  it('calls update 50 times per second', function() {
-    var before; 
-    var counter = new CallCounterUpTo(5);
-    
-    game.draw = function () {};
-    game.update = counter.call;
+    scheduler.tick();
+    game.loop();
 
-    startTime = (new Date()).getTime();
-    game.start();
+    expect(game.updated).toBeTruthy();
+  });
 
-    waitsFor(function() {
-      return (counter.completed());
-    }, "Calls never complete", 101);
-
-    runs (function() {
-      endTime = (new Date()).getTime();
-      expect(endTime - startTime).toBeGreaterThan(99);
+  it('executes multiple updates to catch up if the draw takes a long time', function() {
+    var draws = new CallCounter(function() {
+      scheduler.tick();
     });
 
+    var updates = new CallCounter();
+
+    game.draw = draws.call;
+    game.update = updates.call;
+
+    scheduler.tick();
+    game.loop();
+    scheduler.tick();
+    game.loop();
+
+    expect(draws.calls()).toEqual(2);
+    expect(updates.calls()).toEqual(3);
   });
 
-  it('calls draw 50 times per second', function() {
-    var before; 
-    var counter = new CallCounterUpTo(5);
-    
-    game.update = function () {};
-    game.draw = counter.call;
+  it('delegates stop to the scheduler', function() {
+    scheduler.stop = function() {
+      scheduler.stopped = true;
+    };
 
-    startTime = (new Date()).getTime();
-    game.start();
+    game.stop();
 
-    waitsFor(function() {
-      return (counter.completed());
-    }, "Calls never complete", 101);
-
-    runs (function() {
-      endTime = (new Date()).getTime();
-      expect(endTime - startTime).toBeGreaterThan(99);
-    });
-
+    expect(scheduler.stopped).toBeTruthy();
   });
-
 });
