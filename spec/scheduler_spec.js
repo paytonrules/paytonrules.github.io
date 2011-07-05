@@ -67,7 +67,7 @@ describe("Game#scheduler", function() {
       return (counter.completed());
     }, "Calls didn't complete", 100);
 
-    waits(400);
+    waits(15);
 
     runs(function() {
       expect(counter.getCalls()).toEqual(2);
