@@ -1,4 +1,4 @@
-// Game will probably become a namespace.
+// Move into the Game namespace
 Game = function(scheduler) {
   var self = this;
   var nextGameTick = scheduler.getTicks();

@@ -5,53 +5,43 @@
 // Next Goal sound
 // Use some JS type modules and such
 // Write a game design (SIMPLE!)
-var CallCounter = function(callback) {
-  var calls = 0;
-  this.call = function() {
-    calls += 1;
-    if (typeof(callback) !== "undefined") {
-      callback();
-    }
-  };
 
-  this.calls = function() {
-    return calls;
-  };
-};
-/*
- *var Scheduler = function() {
- *  var ticks = 0;
- *  this.getTicks = function() {
- *    return (new Date()).getTime();
- *  },
- *
- *  this.getTickTime = function() {
- *    return 1000 / framesPerSecond;
- *  }
- *
- *}
- */
-
-var Scheduler = function() {
-  var ticks = 0;
-  this.getTicks = function() {
-    return ticks;
-  },
-
-  this.getTickTime = function() {
-    return 1;
-  },
-
-  this.tick = function() {
-    ticks += 1;
-  }
-};
 
 describe('Game#loop', function() {
   var game, scheduler;
+  
+  var MockScheduler = function() {
+    var ticks = 0;
+    this.getTicks = function() {
+      return ticks;
+    },
+
+    this.getTickTime = function() {
+      return 1;
+    },
+
+    this.tick = function() {
+      ticks += 1;
+    }
+  };
+  
+  var CallCounter = function(callback) {
+    var calls = 0;
+    this.call = function() {
+      calls += 1;
+      if (typeof(callback) !== "undefined") {
+        callback();
+      }
+    };
+
+    this.calls = function() {
+      return calls;
+    };
+  };
+
   beforeEach( function() {
     Game = require("specHelper").Game;
-    scheduler = new Scheduler();
+    scheduler = new MockScheduler();
     game = new Game(scheduler);
   });
 

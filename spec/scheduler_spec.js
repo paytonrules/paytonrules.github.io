@@ -1,37 +1,41 @@
-var CallCounterUpTo = function(maximum) {
-  var calls = 0;
-  this.call = function(scheduler) {
-    calls += 1;
-   
-    if (calls === maximum) {
-      scheduler.stop();
-    }
-    
-  };
-
-  this.completed = function() {
-    return (calls === maximum);
-  };
-
-  this.getCalls = function() {
-    return calls;
-  };
-};
-
 describe("Game#scheduler", function() {
-  var Game, counter, loop;
+  var Game, counter, gameLoop;
+  
+  var CallCounterUpTo = function(maximum) {
+    var calls = 0;
+    var self = this;
+    this.call = function() {
+      calls += 1;
+
+      if (calls === maximum) {
+        self.scheduler.stop();
+      }
+
+    };
+
+    this.completed = function() {
+      return (calls === maximum);
+    };
+
+    this.getCalls = function() {
+      return calls;
+    };
+  };
+  
   beforeEach( function() {
     Game = require('specHelper').Game;
     counter = new CallCounterUpTo(2);
-    loop = {
+
+    gameLoop = {
       loop: counter.call
     };
   });
-    
+
   it('schedules method called for repeated calls', function() {
-    var scheduler = new Game.Scheduler(loop, 100);
+    var scheduler = new Game.Scheduler(100);
+    counter.scheduler = scheduler;
     
-    scheduler.start();
+    scheduler.start(gameLoop);
 
     waitsFor(function() {
       return (counter.completed());
@@ -40,17 +44,18 @@ describe("Game#scheduler", function() {
 
   it('calls that method with the tick rate', function() {
     var framesPerSecond = 10;
-    var scheduler = new Game.Scheduler(loop, framesPerSecond);
+    var scheduler = new Game.Scheduler(framesPerSecond);
+    counter.scheduler = scheduler;
     var startTime;
 
     startTime = (new Date()).getTime();
-    
-    scheduler.start();
-    
+
+    scheduler.start(gameLoop);
+
     waitsFor(function() {
       return (counter.completed());
     }, "Calls never complete", 1001);
-    
+
     runs(function() {
       var doneTime = (new Date()).getTime();
       expect(doneTime - startTime).toBeGreaterThan(199);
@@ -59,9 +64,10 @@ describe("Game#scheduler", function() {
   });
 
   it('stops calling after ...it stops', function() {
-    var scheduler = new Game.Scheduler(loop, 100);
+    var scheduler = new Game.Scheduler(100);
+    counter.scheduler = scheduler;
 
-    scheduler.start();
+    scheduler.start(gameLoop);
 
     waitsFor(function() {
       return (counter.completed());
@@ -74,4 +80,15 @@ describe("Game#scheduler", function() {
     });
   });
 
+  it('returns the time for tics', function() {
+    var scheduler = new Game.Scheduler(100);
+
+    expect(scheduler.getTicks()).toEqual((new Date()).getTime());
+  });
+
+  it('returns its tick time', function() {
+    var scheduler = new Game.Scheduler(23);
+
+    expect(scheduler.getTickTime()).toEqual(1000 / 23);
+  });
 });
