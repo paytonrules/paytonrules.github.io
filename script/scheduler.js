@@ -1,5 +1,11 @@
 Game.Scheduler = function(loop, framesPerSecond) {
+  var timer;
   this.start = function() {
-    setInterval(loop.loop, 1000 / framesPerSecond);
+    var self = this;
+    timer = setInterval(function() { loop.loop(self); }, 1000 / framesPerSecond);
+  };
+
+  this.stop = function() {
+    clearInterval(timer);
   };
 };

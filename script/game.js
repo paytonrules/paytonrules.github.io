@@ -15,15 +15,4 @@ Game = function(scheduler) {
   this.stop = function() {
     scheduler.stop();
   };
-
-/*
- *  this.start = function() {
- *    nextGameTick = scheduler.getTicks();
- *    this.timer = setInterval(self.loop, scheduler.getTickTime());
- *  };
- *
- *  this.stop = function() {
- *    clearInterval(this.timer);
- *  };
- */
 };
