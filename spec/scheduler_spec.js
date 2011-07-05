@@ -13,13 +13,16 @@ var CallCounterUpTo = function(maximum) {
 };
 
 describe("Game#scheduler", function() {
+  var Game, counter, loop;
+  beforeEach( function() {
+    Game = require('specHelper').Game;
+    counter = new CallCounterUpTo(2);
+    loop = {
+      loop: counter.call
+    };
+  });
+    
   it('schedules a loop which is called until stopped', function() {
-    var Game = require("specHelper").Game;
-    var counter = new CallCounterUpTo(2);
-    var loop = {};
-
-    loop.loop = counter.call;
-
     var scheduler = new Game.Scheduler(loop, 100);
 
     scheduler.start();
@@ -30,15 +33,10 @@ describe("Game#scheduler", function() {
   });
 
   it('calls that method with the tick rate', function() {
-    var Game = require("specHelper").Game;
-    var counter = new CallCounterUpTo(2);
-    var loop = {};
     var framesPerSecond = 10;
     var scheduler = new Game.Scheduler(loop, framesPerSecond);
     var startTime;
 
-    loop.loop = counter.call;
-   
     startTime = (new Date()).getTime();
     
     scheduler.start();
