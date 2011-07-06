@@ -4,11 +4,11 @@
 // Next Goal move it around
 // Next Goal sound
 // Use some JS type modules and such
-// Write a game design (SIMPLE!)
+// Write a gameLoop design (SIMPLE!)
 
 
 describe('Game#loop', function() {
-  var game, scheduler;
+  var gameLoop, scheduler;
   
   var MockScheduler = function() {
     var ticks = 0;
@@ -42,31 +42,30 @@ describe('Game#loop', function() {
   beforeEach( function() {
     Game = require("specHelper").Game;
     scheduler = new MockScheduler();
-    game = new Game(scheduler);
+    gameLoop = new Game.FixedStepGameLoop(scheduler);
   });
 
-
   it('executes draw', function() {
-    game.update = function() {};
-    game.draw = function() {
-      game.drawn = true;
+    gameLoop.update = function() {};
+    gameLoop.draw = function() {
+      gameLoop.drawn = true;
     };
 
-    game.loop();
+    gameLoop.loop();
 
-    expect(game.drawn).toBeTruthy();
+    expect(gameLoop.drawn).toBeTruthy();
   });
 
   it('Executes update, provided time has passed since the last loop call', function() {
-    game.draw = function() {};
-    game.update = function () {
-      game.updated = true;
+    gameLoop.draw = function() {};
+    gameLoop.update = function () {
+      gameLoop.updated = true;
     };
 
     scheduler.tick();
-    game.loop();
+    gameLoop.loop();
 
-    expect(game.updated).toBeTruthy();
+    expect(gameLoop.updated).toBeTruthy();
   });
 
   it('executes multiple updates to catch up if the draw takes a long time', function() {
@@ -76,13 +75,13 @@ describe('Game#loop', function() {
 
     var updates = new CallCounter();
 
-    game.draw = draws.call;
-    game.update = updates.call;
+    gameLoop.draw = draws.call;
+    gameLoop.update = updates.call;
 
     scheduler.tick();
-    game.loop();
+    gameLoop.loop();
     scheduler.tick();
-    game.loop();
+    gameLoop.loop();
 
     expect(draws.calls()).toEqual(2);
     expect(updates.calls()).toEqual(3);
@@ -93,7 +92,7 @@ describe('Game#loop', function() {
       scheduler.stopped = true;
     };
 
-    game.stop();
+    gameLoop.stop();
 
     expect(scheduler.stopped).toBeTruthy();
   });

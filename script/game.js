@@ -1,5 +1,9 @@
+if (typeof(Game) === "undefined") {
+  Game = {};
+}
+
 // Move into the Game namespace
-Game = function(scheduler) {
+Game.FixedStepGameLoop = function(scheduler) {
   var self = this;
   var nextGameTick = scheduler.getTicks();
 
