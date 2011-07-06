@@ -1,5 +1,5 @@
 describe("Game#scheduler", function() {
-  var Game, counter, gameLoop;
+  var Game, counter;
   
   var CallCounterUpTo = function(maximum) {
     var calls = 0;
@@ -25,17 +25,13 @@ describe("Game#scheduler", function() {
   beforeEach( function() {
     Game = require('specHelper').Game;
     counter = new CallCounterUpTo(2);
-
-    gameLoop = {
-      loop: counter.call
-    };
   });
 
   it('schedules method called for repeated calls', function() {
     var scheduler = new Game.Scheduler(100);
     counter.scheduler = scheduler;
     
-    scheduler.start(gameLoop);
+    scheduler.start(counter.call);
 
     waitsFor(function() {
       return (counter.completed());
@@ -50,7 +46,7 @@ describe("Game#scheduler", function() {
 
     startTime = (new Date()).getTime();
 
-    scheduler.start(gameLoop);
+    scheduler.start(counter.call);
 
     waitsFor(function() {
       return (counter.completed());
@@ -67,7 +63,7 @@ describe("Game#scheduler", function() {
     var scheduler = new Game.Scheduler(100);
     counter.scheduler = scheduler;
 
-    scheduler.start(gameLoop);
+    scheduler.start(counter.call);
 
     waitsFor(function() {
       return (counter.completed());

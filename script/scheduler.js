@@ -1,8 +1,7 @@
 Game.Scheduler = function(framesPerSecond) {
   var timer;
-  this.start = function(game) {
-    var self = this;
-    timer = setInterval(function() { game.loop(); }, self.getTickTime());
+  this.start = function(method) {
+    timer = setInterval(function() { method(); }, this.getTickTime());
   };
 
   this.stop = function() {
