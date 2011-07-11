@@ -27,7 +27,7 @@ describe('Game#loop', function() {
   
   var CallCounter = function(callback) {
     var calls = 0;
-    this.call = function() {
+    this.call = function(state) {
       calls += 1;
       if (typeof(callback) !== "undefined") {
         callback();
@@ -46,8 +46,8 @@ describe('Game#loop', function() {
   });
 
   it('executes draw', function() {
-    gameLoop.update = function() {};
-    gameLoop.draw = function() {
+    gameLoop.update = function(state) {};
+    gameLoop.draw = function(state) {
       gameLoop.drawn = true;
     };
 
@@ -57,8 +57,8 @@ describe('Game#loop', function() {
   });
 
   it('Executes update, provided time has passed since the last loop call', function() {
-    gameLoop.draw = function() {};
-    gameLoop.update = function () {
+    gameLoop.draw = function(state) {};
+    gameLoop.update = function (state) {
       gameLoop.updated = true;
     };
 
@@ -66,6 +66,21 @@ describe('Game#loop', function() {
     gameLoop.loop();
 
     expect(gameLoop.updated).toBeTruthy();
+  });
+
+  it('Passes the state from the update to the draw', function() {
+    gameLoop.update = function(state) {
+      state.update_message = 'Yes I was';
+    };
+
+    gameLoop.draw = function(state) {
+      gameLoop.update_message = state.update_message;
+    };
+
+    scheduler.tick();
+    gameLoop.loop();
+
+    expect(gameLoop.update_message).toEqual('Yes I was');
   });
 
   it('executes multiple updates to catch up if the draw takes a long time', function() {

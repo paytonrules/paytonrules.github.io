@@ -2,18 +2,18 @@ if (typeof(Game) === "undefined") {
   Game = {};
 }
 
-// Move into the Game namespace
 Game.FixedStepGameLoop = function(scheduler) {
   var self = this;
   var nextGameTick = scheduler.getTicks();
+  var gameState = {};
 
   this.loop = function() {
     while (scheduler.getTicks() > nextGameTick) {
-      self.update();
+      self.update(gameState);
 
       nextGameTick += scheduler.getTickTime();
     }
-    self.draw();
+    self.draw(gameState);
   };
 
   this.stop = function() {
