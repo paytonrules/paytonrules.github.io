@@ -1,6 +1,6 @@
 describe("Drawer", function() {
   var Experiment;
-  
+
   var context = {
     fillRect: function(x, y, w, h) {
       this.x = x;
@@ -47,7 +47,7 @@ describe("Drawer", function() {
     };
 
     var drawer = new Experiment.Drawer(context);
-    
+
     drawer.draw(gameState);
 
     expect(context.text.x).toEqual(10);
