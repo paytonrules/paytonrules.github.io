@@ -10,14 +10,10 @@ describe("Drawer", function() {
       this.rectFillStyle = this.fillStyle;
     },
 
-    fillText: function(value, x, y) {
-      this.text = {};
-      this.text.fillStyle = this.fillStyle;
-      this.text.Baseline = this.textBaseline;
-      this.text.value = value;
-      this.text.font = this.font;
-      this.text.x = x;
-      this.text.y = y;
+    drawImage: function(image, x, y) {
+      this.image = {};
+      this.image.x = x;
+      this.image.y = y;
     }
   };
 
@@ -25,7 +21,7 @@ describe("Drawer", function() {
     Experiment = require('specHelper').Experiment;
   });
 
-  it('draws on my context', function() {
+  it('draws a rectangle on my context', function() {
     var drawer = new Experiment.Drawer(context);
 
     drawer.draw({});
@@ -35,13 +31,9 @@ describe("Drawer", function() {
     expect(context.y).toEqual(0);
     expect(context.w).toEqual(200);
     expect(context.h).toEqual(200);
-    expect(context.text.value).toEqual("Canvas!");
-    expect(context.text.font).toEqual('20px _sans');
-    expect(context.text.Baseline).toEqual('top');
-    expect(context.text.fillStyle).toEqual("#000000");
   });
 
-  it('moves the context, based on the game state', function() {
+  it('draws an image at a location based on the game state', function() {
     var gameState = {
       loopCount: 10
     };
@@ -50,8 +42,16 @@ describe("Drawer", function() {
 
     drawer.draw(gameState);
 
-    expect(context.text.x).toEqual(10);
-    expect(context.text.y).toEqual(10);
+    expect(context.image.x).toEqual(10);
+    expect(context.image.y).toEqual(10);
+  });
+
+  it('creates an image object and draws it', function() {
+    var drawer = new Experiment.Drawer(context);
+
+    drawer.draw({loopCount: 0});
+
+    expect(typeof(context.image.image)).toEqual("Image");
   });
 
 });
