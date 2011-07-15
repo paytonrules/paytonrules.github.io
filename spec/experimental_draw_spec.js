@@ -1,5 +1,10 @@
+Image = function() {
+  this.name = "MockImage";
+
+}; // Global namespace - not sure how I feel about that
+
 describe("Drawer", function() {
-  var Experiment;
+  var Experiment, drawer;
 
   var context = {
     fillRect: function(x, y, w, h) {
@@ -12,18 +17,29 @@ describe("Drawer", function() {
 
     drawImage: function(image, x, y) {
       this.image = {};
+      this.image.name = image.name;
+      this.image.src = image.src;
       this.image.x = x;
       this.image.y = y;
     }
   };
+  
+  var jquery = function(value) {
+    var image = new Image();
+    if (value === "<img src='images/baddie.png'></img>") {
+      image.src = "images/baddie.png"; 
+    }
+
+    return [image];
+  };
+
 
   beforeEach( function() {
     Experiment = require('specHelper').Experiment;
+    drawer = new Experiment.Drawer(context, jquery);
   });
 
   it('draws a rectangle on my context', function() {
-    var drawer = new Experiment.Drawer(context);
-
     drawer.draw({});
 
     expect(context.rectFillStyle).toEqual("#aaaaaa");
@@ -38,8 +54,6 @@ describe("Drawer", function() {
       loopCount: 10
     };
 
-    var drawer = new Experiment.Drawer(context);
-
     drawer.draw(gameState);
 
     expect(context.image.x).toEqual(10);
@@ -47,11 +61,15 @@ describe("Drawer", function() {
   });
 
   it('creates an image object and draws it', function() {
-    var drawer = new Experiment.Drawer(context);
-
     drawer.draw({loopCount: 0});
 
-    expect(typeof(context.image.image)).toEqual("Image");
+    expect(context.image.name).toEqual("MockImage");
+  });
+
+  it('sets the src to be images/baddie.png', function() {
+    drawer.draw({loopCount: 0});
+
+    expect(context.image.src).toEqual("images/baddie.png");
   });
 
 });

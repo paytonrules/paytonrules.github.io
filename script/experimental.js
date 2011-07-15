@@ -3,7 +3,7 @@ if (typeof(Experiment) === "undefined") {
 }
 
 Experiment.main = function(context) {
-  var drawer = new Experiment.Drawer(context);
+  var drawer = new Experiment.Drawer(context, $);
   var updater = new Experiment.Updater();
   var scheduler = new Game.Scheduler(50);
   var loop = new Game.FixedStepGameLoop(scheduler);
