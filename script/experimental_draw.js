@@ -2,11 +2,11 @@ if (typeof(Experiment) === "undefined") {
   Experiment = {};
 }
 
-Experiment.Drawer = function(context, jquery) {
+Experiment.Drawer = function(context, assets) {
   this.draw = function(gameState) {
     context.fillStyle = "#aaaaaa";
     context.fillRect(0, 0, 200, 200);
-    var image = jquery("<img src='images/baddie.png'></img>");
-    context.drawImage(image[0], gameState.loopCount, gameState.loopCount);
+    var image = assets.get("baddie");
+    context.drawImage(image, gameState.loopCount, gameState.loopCount);
   };
 };

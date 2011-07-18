@@ -3,7 +3,7 @@ describe("Updater", function() {
 
   beforeEach( function() {
     Experiment = require("specHelper").Experiment;
-    updater = new Experiment.Updater();
+    updater = new Experiment.Updater({loadImage: function() {}});
     state = {};
   });
 
@@ -25,6 +25,19 @@ describe("Updater", function() {
     updater.update(state);
 
     expect(state.loopCount).toEqual(1);
+  });
+
+  it("loads the baddie image", function () {
+    var assets = {};
+    assets.loadImage = function(key, src)  {
+      assets.key = key;
+      assets.src = src;
+    };
+
+    var anotherUpdater = new Experiment.Updater(assets);
+
+    expect(assets.key).toEqual("baddie");
+    expect(assets.src).toEqual("images/baddie.png");
   });
 
 });

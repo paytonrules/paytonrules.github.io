@@ -17,26 +17,25 @@ describe("Drawer", function() {
 
     drawImage: function(image, x, y) {
       this.image = {};
-      this.image.name = image.name;
-      this.image.src = image.src;
+      this.image.name = image;
       this.image.x = x;
       this.image.y = y;
     }
   };
   
-  var jquery = function(value) {
-    var image = new Image();
-    if (value === "<img src='images/baddie.png'></img>") {
-      image.src = "images/baddie.png"; 
+  var assets = {
+    get: function(value) {
+      if (value === "baddie") {
+        return "test";
+      }
+
+      return null;
     }
-
-    return [image];
   };
-
 
   beforeEach( function() {
     Experiment = require('specHelper').Experiment;
-    drawer = new Experiment.Drawer(context, jquery);
+    drawer = new Experiment.Drawer(context, assets);
   });
 
   it('draws a rectangle on my context', function() {
@@ -63,13 +62,7 @@ describe("Drawer", function() {
   it('creates an image object and draws it', function() {
     drawer.draw({loopCount: 0});
 
-    expect(context.image.name).toEqual("MockImage");
-  });
-
-  it('sets the src to be images/baddie.png', function() {
-    drawer.draw({loopCount: 0});
-
-    expect(context.image.src).toEqual("images/baddie.png");
+    expect(context.image.name).toEqual("test");
   });
 
 });
