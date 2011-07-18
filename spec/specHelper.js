@@ -1,7 +1,10 @@
+require('../script/array_detect');
 require('../script/game');
 require('../script/scheduler');
+require('../script/screen');
 require('../script/experimental');
 require('../script/experimental_draw');
 require('../script/experimental_update');
+require('../script/assets');
 exports.Experiment = Experiment;
 exports.Game = Game;
