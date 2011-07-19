@@ -1,9 +1,9 @@
 describe("Updater", function() {
-  var Experiment, updater, state;
+  var Asteroids, updater, state;
 
   beforeEach( function() {
-    Experiment = require("specHelper").Experiment;
-    updater = new Experiment.Updater({loadImage: function() {}});
+    Asteroids = require("specHelper").Asteroids;
+    updater = new Asteroids.Updater({loadImage: function() {}});
     state = {};
   });
 
@@ -34,7 +34,7 @@ describe("Updater", function() {
       assets.src = src;
     };
 
-    var anotherUpdater = new Experiment.Updater(assets);
+    var anotherUpdater = new Asteroids.Updater(assets);
 
     expect(assets.key).toEqual("baddie");
     expect(assets.src).toEqual("images/baddie.png");

@@ -1,8 +1,8 @@
-if (typeof(Experiment) === "undefined") {
-  Experiment = {};
+if (typeof(Asteroids) === "undefined") {
+  Asteroids = {};
 }
 
-Experiment.Drawer = function(context, assets) {
+Asteroids.Drawer = function(context, assets) {
   this.draw = function(gameState) {
     context.fillStyle = "#aaaaaa";
     context.fillRect(0, 0, 200, 200);

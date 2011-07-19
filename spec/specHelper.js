@@ -6,5 +6,5 @@ require('../script/asteroids/main');
 require('../script/asteroids/draw');
 require('../script/asteroids/update');
 require('../script/game/assets');
-exports.Experiment = Experiment;
+exports.Asteroids = Asteroids;
 exports.Game = Game;

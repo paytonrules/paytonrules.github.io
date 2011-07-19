@@ -4,7 +4,7 @@ Image = function() {
 }; // Global namespace - not sure how I feel about that
 
 describe("Drawer", function() {
-  var Experiment, drawer;
+  var Asteroids, drawer;
 
   var context = {
     fillRect: function(x, y, w, h) {
@@ -34,8 +34,8 @@ describe("Drawer", function() {
   };
 
   beforeEach( function() {
-    Experiment = require('specHelper').Experiment;
-    drawer = new Experiment.Drawer(context, assets);
+    Asteroids = require('specHelper').Asteroids;
+    drawer = new Asteroids.Drawer(context, assets);
   });
 
   it('draws a rectangle on my context', function() {

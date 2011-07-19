@@ -5,7 +5,7 @@ title: Experimental Game Page
 
 <script>
   jQuery(function() {
-    Experiment.main($("#game")[0].getContext("2d"));
+    Asteroids.main($("#game")[0].getContext("2d"));
   });
 </script>
 
