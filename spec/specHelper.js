@@ -1,10 +1,10 @@
 require('../script/array_detect');
-require('../script/game');
-require('../script/scheduler');
-require('../script/screen');
-require('../script/experimental');
-require('../script/experimental_draw');
-require('../script/experimental_update');
-require('../script/assets');
+require('../script/game/fixed-game-loop');
+require('../script/game/scheduler');
+require('../script/game/screen');
+require('../script/asteroids/main');
+require('../script/asteroids/draw');
+require('../script/asteroids/update');
+require('../script/game/assets');
 exports.Experiment = Experiment;
 exports.Game = Game;
