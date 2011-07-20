@@ -7,3 +7,8 @@ Array.prototype.detect = function(fn) {
   }
   return null;
 };
+
+Array.prototype.any = function(fn) {
+  var value = this.detect(fn);
+  return (value !== null) ? true : false;
+};

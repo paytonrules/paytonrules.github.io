@@ -9,19 +9,15 @@ describe("Game Screen", function() {
     };
 
     this.hasImageNamed = function(imageName) {
-      var image = imageList.detect(function(image) {
+      return imageList.any(function(image) {
         return image.name === imageName; 
       });
-
-      return image !== null;
     };
 
     this.hasImageAt = function(x, y) {
-      var image = imageList.detect(function(image) {
+      return imageList.any(function(image) {
         return (image.x === x && image.y === y);
       });
-
-      return image !== null;
     };
   };
 
