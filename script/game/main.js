@@ -11,18 +11,22 @@ Game.config.scheduler = Game.Scheduler;
 Game.config.gameLoop = Game.FixedStepGameLoop;
 Game.config.FRAME_RATE = 50;
 
-Game.main = function(jquery, context, document) {
+Game.main = function(configuration) {
+  var jquery = configuration.jquery;
+  var document = configuration.document;
+  var context = configuration.context;
+
   var assets = new Game.config.assets(jquery);
   var scheduler = new Game.config.scheduler(Game.config.FRAME_RATE);
   var drawer = new Game.config.drawer(context, assets);
   var updater = new Game.config.updater(assets);
   var loop = new Game.config.gameLoop(scheduler, updater, drawer);
 
-  if (typeof(document) !== "undefined") {
-    jquery(document.documentElement).keydown(function(event) {
+  jquery(document.documentElement).keydown(function(event) {
+    if (typeof(updater.keydown) !== "undefined") {
       updater.keydown(event);
-    });
-  }
+    }
+  });
 
   loop.start();
 };
