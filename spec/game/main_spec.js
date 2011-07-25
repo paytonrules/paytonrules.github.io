@@ -160,4 +160,26 @@ describe("Game#main", function() {
     expect(FakeGameLoop.started).toBeTruthy();
   });
 
+  it("sends keydown events to the updater", function() {
+    var jsdom = require("jsdom").jsdom,
+     emptyPage = jsdom("<html><head></head><body>hello world</body></html>"),
+     window   = emptyPage.createWindow(),
+     document = window.document,
+     newJQuery = require("jquery").create(window);
+
+     var Updater = function() {
+       this.keydown = function(event) {
+         Updater.event = event;
+       };
+     };
+
+     configureGame({updater: Updater});
+
+     Game.main(newJQuery, context, document);
+
+     newJQuery(document.documentElement).keydown();
+
+     expect(Updater.event).not.toBeUndefined();
+  });
+
 });
