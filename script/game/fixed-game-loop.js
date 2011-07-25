@@ -2,21 +2,24 @@ if (typeof(Game) === "undefined") {
   Game = {};
 }
 
-Game.FixedStepGameLoop = function(scheduler) {
-  var self = this;
+Game.FixedStepGameLoop = function(scheduler, updater, drawer) {
   var nextGameTick = scheduler.getTicks();
   var gameState = {};
 
   this.loop = function() {
     while (scheduler.getTicks() > nextGameTick) {
-      self.update(gameState);
+      updater.update(gameState);
 
       nextGameTick += scheduler.getTickTime();
     }
-    self.draw(gameState);
+    drawer.draw(gameState);
   };
 
   this.stop = function() {
     scheduler.stop();
+  };
+
+  this.start = function() {
+    scheduler.start(this.loop);
   };
 };

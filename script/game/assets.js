@@ -2,7 +2,7 @@ if (typeof(Game) === "undefined") {
   Game = {};
 }
 
-Game.Assets = function($) {
+Game.Assets = function(jquery) {
   var assetList = {};
 
   this.get = function(key) {
@@ -16,7 +16,7 @@ Game.Assets = function($) {
     if (assetList[key]) {
       throw {name: "Game.AssetAlreadyExists", message: "Asset '" + src + "' already exists"};
     } else {
-      assetList[key] = $("<img src='" + src + "'>");
+      assetList[key] = jquery("<img src='" + src + "'>");
       assetList[key].load(function() {
         assetList[key].loaded = true;
       });
