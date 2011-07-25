@@ -215,6 +215,25 @@ describe("Game#main", function() {
        expect(Updater.event).not.toBeUndefined();
     });
 
+    it("passes the correct event", function() {
+      var Updater = function() {
+        this.keydown = function(event) {
+          Updater.key = event.which;
+        }
+      };
+
+      configureGame({updater: Updater});
+
+      Game.main({jquery: jquery,
+                context: context,
+                document: document});
+
+      jquery.event.trigger({ type : 'keydown', 
+                             which : 87 });
+
+      expect(Updater.key).toEqual(87);
+    });
+
     it("doesn't cause an error if the updater doesn't have a keydown", function() {
       loadDefaultConfiguration();
 
