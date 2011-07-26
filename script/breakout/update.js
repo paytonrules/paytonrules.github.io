@@ -7,8 +7,9 @@ Breakout.PADDLE_VELOCITY = 10;
 Breakout.INITIAL_POSITION = 320;
 
 Breakout.Updater = function(assets) {
-  var location = {x: Breakout.INITIAL_POSITION};
-  var movingRight = false;
+  var location = {x: Breakout.INITIAL_POSITION},
+      movingRight = false,
+      movingLeft = false;
 
   assets.loadImage("paddle", "images/baddie.png");
 
@@ -16,14 +17,9 @@ Breakout.Updater = function(assets) {
     switch (event.which) {
       case 39:
         movingRight = true;
-        /*
-         *
-         *location.x += Breakout.PADDLE_VELOCITY;
-         *break;
-         */
          break;
       case 37:
-        location.x -= Breakout.PADDLE_VELOCITY;
+        movingLeft = true;
         break;
     }
   };
@@ -32,6 +28,9 @@ Breakout.Updater = function(assets) {
     switch (event.which) {
       case 39:
         movingRight = false;
+        break;
+      case 37:
+        movingLeft = false;
         break;
     }
   };
@@ -43,6 +42,10 @@ Breakout.Updater = function(assets) {
 
     if (movingRight) {
       location.x += Breakout.PADDLE_VELOCITY;
+    }
+
+    if (movingLeft) {
+      location.x -= Breakout.PADDLE_VELOCITY;
     }
 
     state.paddle.x = location.x;

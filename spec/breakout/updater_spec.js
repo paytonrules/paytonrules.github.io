@@ -70,4 +70,14 @@ describe("Updater", function() {
     expect(state.paddle.x).toEqual(newPosition);
   });
 
+  it("doesn't move left or right if both keys are pressed", function() {
+    updater.keydown({ which: 39} );
+    updater.keydown({ which: 37} );
+
+    updater.update(state);
+    updater.update(state);
+
+    expect(state.paddle.x).toEqual(Breakout.INITIAL_POSITION);
+  });
+
 });
