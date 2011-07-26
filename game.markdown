@@ -11,6 +11,6 @@ title: Experimental Game Page
   });
 </script>
 
-<canvas id="game">
+<canvas id="game" width="640px;" height="480px;">
   Test Here
 </canvas>

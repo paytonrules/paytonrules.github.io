@@ -7,27 +7,7 @@ describe("Updater", function() {
     state = {};
   });
 
-  it("updates the loop count on each call", function() {
-    updater.update(state);
-
-    expect(state.loopCount).toEqual(1);
-  });
-
-  it("increments if called twice", function() {
-    updater.update(state);
-    updater.update(state);
-
-    expect(state.loopCount).toEqual(2);
-  });
-
-  it("resets at 60", function() {
-    state.loopCount = 60;
-    updater.update(state);
-
-    expect(state.loopCount).toEqual(1);
-  });
-
-  it("loads the baddie image", function () {
+  it("loads the paddle image", function () {
     var assets = {};
     assets.loadImage = function(key, src)  {
       assets.key = key;
@@ -36,8 +16,29 @@ describe("Updater", function() {
 
     var anotherUpdater = new Asteroids.Updater(assets);
 
-    expect(assets.key).toEqual("baddie");
+    expect(assets.key).toEqual("paddle");
     expect(assets.src).toEqual("images/baddie.png");
   });
 
+  it("moves the paddle right for a right keydown", function() {
+    updater.keydown({which: 39});
+
+    updater.update(state);
+
+    expect(state.paddle.x).toEqual(51);
+  });
+
+  it("moves the paddle left for a left keydown", function() {
+    updater.keydown({which: 37});
+
+    updater.update(state);
+
+    expect(state.paddle.x).toEqual(49);
+  });
+
+  it("initializes y to 50", function() {
+    updater.update(state);
+
+    expect(state.paddle.y).toEqual(50);
+  });
 });

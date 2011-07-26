@@ -3,12 +3,26 @@ if (typeof(Asteroids) === "undefined") {
 }
 
 Asteroids.Updater = function(assets) {
-  assets.loadImage("baddie", "images/baddie.png");
-};
+  var location = {x: 50, y: 50};
+  assets.loadImage("paddle", "images/baddie.png");
 
-Asteroids.Updater.prototype.update = function(state) {
-  if ( typeof(state.loopCount) === "undefined" || state.loopCount === 60) {
-    state.loopCount = 0;
-  }
-  state.loopCount += 1;
+  this.keydown = function(event) {
+    switch (event.which) {
+      case 39:
+        location.x++;
+        break;
+      case 37:
+        location.x--;
+        break;
+    }
+  };
+
+  this.update = function(state) {
+    if (typeof(state.paddle) === "undefined") {
+      state.paddle = {};
+    }
+
+    state.paddle.x = location.x;
+    state.paddle.y = location.y;
+  };
 };

@@ -1,5 +1,6 @@
 describe("Game#main", function() {
   var Game, context;
+
   var emptyFunction = function() {};
   var emptyDocument = {documentElement: null};
 
@@ -215,7 +216,7 @@ describe("Game#main", function() {
        expect(Updater.event).not.toBeUndefined();
     });
 
-    it("passes the correct event", function() {
+    it("passes the correct event for keydown", function() {
       var Updater = function() {
         this.keydown = function(event) {
           Updater.key = event.which;
@@ -243,6 +244,37 @@ describe("Game#main", function() {
 
       jquery(document.documentElement).keydown();
 
+    });
+
+    it("passes the correct event for a keyup", function() {
+      loadDefaultConfiguration();
+
+      var Updater = function() {
+        this.keyup = function(event) {
+          Updater.key = event.which;
+        }
+      };
+
+      configureGame({updater: Updater});
+
+      Game.main({jquery: jquery,
+                context: context,
+                document: document});
+
+      jquery.event.trigger({ type : 'keyup',
+                             which : 87 });
+
+      expect(Updater.key).toEqual(87);
+    });
+
+    it("doesn't cause an error if the updater doesn't have a keyup", function() {
+      loadDefaultConfiguration();
+
+      Game.main({jquery: jquery,
+                 context: context,
+                 document: document});
+
+      jquery(document.documentElement).keyup();
     });
 
   });

@@ -22,11 +22,24 @@ Game.main = function(configuration) {
   var updater = new Game.config.updater(assets);
   var loop = new Game.config.gameLoop(scheduler, updater, drawer);
 
-  jquery(document.documentElement).keydown(function(event) {
-    if (typeof(updater.keydown) !== "undefined") {
-      updater.keydown(event);
-    }
-  });
+  Game.bindEvents(jquery, document, updater);
 
   loop.start();
 };
+
+
+Game.bindEvents = function(jquery, document, updater) {
+  jquery(document.documentElement).bind({
+    keyup: function(event) {
+      if (typeof(updater.keyup) !== "undefined") {
+        updater.keyup(event);
+      }
+    },
+
+    keydown: function(event) {
+      if (typeof(updater.keydown) !== "undefined") {
+        updater.keydown(event);
+      }
+    }
+  });
+}

@@ -25,11 +25,18 @@ describe("Drawer", function() {
   
   var assets = {
     get: function(value) {
-      if (value === "baddie") {
+      if (value === "paddle") {
         return "test";
       }
 
       return null;
+    }
+  };
+
+  var gameState = {
+    paddle: {
+      x: 0,
+      y: 0
     }
   };
 
@@ -39,28 +46,26 @@ describe("Drawer", function() {
   });
 
   it('draws a rectangle on my context', function() {
-    drawer.draw({});
+    drawer.draw(gameState);
 
     expect(context.rectFillStyle).toEqual("#aaaaaa");
     expect(context.x).toEqual(0);
     expect(context.y).toEqual(0);
-    expect(context.w).toEqual(200);
-    expect(context.h).toEqual(200);
+    expect(context.w).toEqual(640);
+    expect(context.h).toEqual(480);
   });
 
-  it('draws an image at a location based on the game state', function() {
-    var gameState = {
-      loopCount: 10
-    };
-
+  it('draws the paddle', function() {
+    gameState.paddle.x = 10;
+    gameState.paddle.y = 20;
     drawer.draw(gameState);
 
     expect(context.image.x).toEqual(10);
-    expect(context.image.y).toEqual(10);
+    expect(context.image.y).toEqual(20);
   });
 
   it('creates an image object and draws it', function() {
-    drawer.draw({loopCount: 0});
+    drawer.draw(gameState);
 
     expect(context.image.name).toEqual("test");
   });
