@@ -1,8 +1,8 @@
-if (typeof(Asteroids) === "undefined") {
-  Asteroids = {};
+if (typeof(Breakout) === "undefined") {
+  Breakout = {};
 }
 
-Asteroids.Drawer = function(context, assets) {
+Breakout.Drawer = function(context, assets) {
   this.draw = function(gameState) {
     context.fillStyle = "#aaaaaa";
     context.fillRect(0, 0, 640, 480);

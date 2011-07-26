@@ -6,9 +6,9 @@ files.forEach(function(filepath) {
   require(filepath);
 });
 
-require(__dirname + "/../script/asteroids/draw.js");
-require(__dirname + "/../script/asteroids/update.js");
-require(__dirname + "/../script/asteroids/config.js");
+require(__dirname + "/../script/breakout/draw.js");
+require(__dirname + "/../script/breakout/update.js");
+require(__dirname + "/../script/breakout/config.js");
 
-exports.Asteroids = Asteroids;
+exports.Breakout = Breakout;
 exports.Game = Game;

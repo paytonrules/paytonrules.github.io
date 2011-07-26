@@ -1,8 +1,8 @@
-if (typeof(Asteroids) === "undefined") {
-  Asteroids = {};
+if (typeof(Breakout) === "undefined") {
+  Breakout = {};
 }
 
-Asteroids.Updater = function(assets) {
+Breakout.Updater = function(assets) {
   var location = {x: 50, y: 50};
   assets.loadImage("paddle", "images/baddie.png");
 
