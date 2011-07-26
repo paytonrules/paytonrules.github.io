@@ -2,17 +2,36 @@ if (typeof(Breakout) === "undefined") {
   Breakout = {};
 }
 
+Breakout.PADDLE_ROW = 400;
+Breakout.PADDLE_VELOCITY = 10;
+Breakout.INITIAL_POSITION = 320;
+
 Breakout.Updater = function(assets) {
-  var location = {x: 50, y: 50};
+  var location = {x: Breakout.INITIAL_POSITION};
+  var movingRight = false;
+
   assets.loadImage("paddle", "images/baddie.png");
 
   this.keydown = function(event) {
     switch (event.which) {
       case 39:
-        location.x++;
-        break;
+        movingRight = true;
+        /*
+         *
+         *location.x += Breakout.PADDLE_VELOCITY;
+         *break;
+         */
+         break;
       case 37:
-        location.x--;
+        location.x -= Breakout.PADDLE_VELOCITY;
+        break;
+    }
+  };
+
+  this.keyup = function(event) {
+    switch (event.which) {
+      case 39:
+        movingRight = false;
         break;
     }
   };
@@ -22,7 +41,11 @@ Breakout.Updater = function(assets) {
       state.paddle = {};
     }
 
+    if (movingRight) {
+      location.x += Breakout.PADDLE_VELOCITY;
+    }
+
     state.paddle.x = location.x;
-    state.paddle.y = location.y;
+    state.paddle.y = Breakout.PADDLE_ROW;
   };
 };
