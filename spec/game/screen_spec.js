@@ -14,6 +14,10 @@ describe("Game Screen", function() {
       });
     };
 
+    this.fillRect = function(x, y, width, height) {
+      this.filledRect = {x: x, y: y, width: width, height: height };
+    };
+
     this.hasImageAt = function(x, y) {
       return imageList.any(function(image) {
         return (image.x === x && image.y === y);
@@ -22,6 +26,25 @@ describe("Game Screen", function() {
   };
 
   beforeEach(function() {
+    // Simulating the DOM methods I'm calling.  Seems f'd.
+    // Very 'double entry' accounting
+    var domCanvas = {
+      getContext: function(contextName) {
+        if (contextName === '2d') {
+          return context;
+        }
+      }
+    };
+    
+    var canvas = [domCanvas];
+    canvas.width = function() {
+      return 100;
+    };
+
+    canvas.height = function() {
+      return 200;
+    };
+      
     assets = (function() {
       var assetList = {};
 
@@ -38,7 +61,7 @@ describe("Game Screen", function() {
 
     Game = require("specHelper").Game;
     context = new Context();
-    screen = new Game.Screen(context, assets);
+    screen = new Game.Screen(canvas, assets);
 
     this.addMatchers( {
       toHaveImageNamed: function(imageName) { 
@@ -47,12 +70,29 @@ describe("Game Screen", function() {
 
       toHaveImageAt: function(x, y) {
         return this.actual.hasImageAt(x, y);
+      },
+
+      toHaveScreenClearedTo: function(color) {
+        return (this.actual.fillStyle === color &&
+                this.actual.filledRect.x === 0,
+                this.actual.filledRect.y === 0,
+                this.actual.filledRect.width === canvas.width(),
+                this.actual.filledRect.height === canvas.height());
       }
+
    });
   });
 
-  it("is created with a canvas context", function() {
+  it("is created with a canvas", function() {
     expect(screen).not.toBeUndefined();
+  });
+
+  it("clears the screen to the configured clear color", function() {
+    Game.config.BACKGROUND_COLOR = "#aaaabb";
+
+    screen.clear();
+
+    expect(context).toHaveScreenClearedTo("#aaaabb");
   });
 
   it("draws whatever is loaded from the asset loader on the context", function() {

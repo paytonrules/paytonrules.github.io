@@ -1,4 +1,5 @@
 describe("Array#detect", function() {
+
   beforeEach(function() {
     require("specHelper");
   });

@@ -1,37 +1,13 @@
-Image = function() {
-  this.name = "MockImage";
-
-}; // Global namespace - not sure how I feel about that
-
 describe("Drawer", function() {
   var Breakout, drawer;
 
-  var context = {
-    fillRect: function(x, y, w, h) {
-      this.x = x;
-      this.y = y;
-      this.w = w;
-      this.h = h;
-      this.rectFillStyle = this.fillStyle;
-    },
-
+  var screen = {
     drawImage: function(image, x, y) {
-      this.image = {};
-      this.image.name = image;
-      this.image.x = x;
-      this.image.y = y;
+    },
+    clear: function() {
     }
   };
-  
-  var assets = {
-    get: function(value) {
-      if (value === "paddle") {
-        return "test";
-      }
 
-      return null;
-    }
-  };
 
   var gameState = {
     paddle: {
@@ -42,32 +18,42 @@ describe("Drawer", function() {
 
   beforeEach( function() {
     Breakout = require('specHelper').Breakout;
-    drawer = new Breakout.Drawer(context, assets);
-  });
-
-  it('draws a rectangle on my context', function() {
-    drawer.draw(gameState);
-
-    expect(context.rectFillStyle).toEqual("#aaaaaa");
-    expect(context.x).toEqual(0);
-    expect(context.y).toEqual(0);
-    expect(context.w).toEqual(640);
-    expect(context.h).toEqual(480);
+    drawer = new Breakout.Drawer(screen);
   });
 
   it('draws the paddle', function() {
+    spyOn(screen, 'drawImage');
     gameState.paddle.x = 10;
     gameState.paddle.y = 20;
+    
     drawer.draw(gameState);
 
-    expect(context.image.x).toEqual(10);
-    expect(context.image.y).toEqual(20);
+    expect(screen.drawImage).toHaveBeenCalledWith('paddle', 10, 20);
   });
 
-  it('creates an image object and draws it', function() {
+  it('clears the screen', function() {
+    spyOn(screen, 'clear');
+
     drawer.draw(gameState);
 
-    expect(context.image.name).toEqual("test");
+    expect(screen.clear).toHaveBeenCalled();
+  });
+
+  it('calls clear on the screen first', function() {
+    var callOrder = [];
+    var trackClear = function() {
+      callOrder.push("clear");
+    };
+    var trackOthers = function() {
+      callOrder.push("anything Else");
+    };
+
+    spyOn(screen, 'clear').andCallFake(trackClear);
+    spyOn(screen, 'drawImage').andCallFake(trackOthers);
+
+    drawer.draw(gameState);
+
+    expect(callOrder[0]).toEqual("clear");
   });
 
 });

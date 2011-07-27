@@ -1,5 +1,5 @@
 describe("Game#main", function() {
-  var Game, context;
+  var Game, canvas;
 
   var emptyFunction = function() {};
   var emptyDocument = {documentElement: null};
@@ -25,7 +25,8 @@ describe("Game#main", function() {
   
   beforeEach(function() {
     Game = require("specHelper").Game;
-    context = {};
+    domCanvas = {getContext: function() {}}; 
+    canvas = [domCanvas];
   });
 
   describe("wiring dependencies", function() {
@@ -44,7 +45,7 @@ describe("Game#main", function() {
                      FRAME_RATE: 10});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
       expect(FakeScheduler.FRAME_RATE).toEqual(10);
@@ -64,7 +65,7 @@ describe("Game#main", function() {
                      gameLoop: FakeGameLoop });
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
       expect(FakeGameLoop.scheduler.theScheduler).toEqual("this one");
@@ -85,46 +86,46 @@ describe("Game#main", function() {
                      drawer: Drawer});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
       expect(FakeGameLoop.drawer).toEqual(drawer);
     });
 
-    it("creates the drawer with the context", function() {
-      var Drawer = function(context) {
-        Drawer.context = context;
+    it("creates the drawer with a game screen", function() {
+      var Drawer = function(screen) {
+        Drawer.screen = screen;
       };
 
       configureGame({drawer: Drawer});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
-      expect(Drawer.context).toEqual(context);
+      expect(Drawer.screen.drawImage).not.toBeUndefined();
     });
 
-    it("creates assets for the drawer", function() {
+    it("has the assets on the game screen", function() {
       var theAssets;
-      var Drawer = function(context, assets) {
-        Drawer.assets = assets;
-      };
-
+     
       var Assets = function(jquery) {
         theAssets = this;
         Assets.jquery = jquery;
+      };
+      
+      var Drawer = function(screen) {
+        Drawer.screen = screen;
       };
 
       configureGame({drawer: Drawer,
                      assets: Assets});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
-      expect(Drawer.assets).toEqual(theAssets);
-      expect(Assets.jquery).toEqual(jquery);
+      expect(Drawer.screen.assets).toEqual(theAssets);
     });
 
     it("sends the configured updater to the game loop", function() {
@@ -142,7 +143,7 @@ describe("Game#main", function() {
                      updater: GameUpdater});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
       expect(FakeGameLoop.updater).toEqual(theUpdater);
@@ -162,7 +163,7 @@ describe("Game#main", function() {
                      updater: GameUpdater});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
       expect(GameUpdater.assets).toEqual(theAssets);
@@ -178,7 +179,7 @@ describe("Game#main", function() {
       configureGame({gameLoop: FakeGameLoop});
 
       Game.main({jquery: jquery, 
-                context: context,
+                canvas: canvas,
                 document: emptyDocument});
 
       expect(FakeGameLoop.started).toBeTruthy();
@@ -208,7 +209,7 @@ describe("Game#main", function() {
        configureGame({updater: Updater});
 
        Game.main({jquery: jquery, 
-                 context: context, 
+                 canvas: canvas, 
                  document: document});
 
        jquery(document.documentElement).keydown();
@@ -226,7 +227,7 @@ describe("Game#main", function() {
       configureGame({updater: Updater});
 
       Game.main({jquery: jquery,
-                context: context,
+                canvas: canvas,
                 document: document});
 
       jquery.event.trigger({ type : 'keydown', 
@@ -239,7 +240,7 @@ describe("Game#main", function() {
       loadDefaultConfiguration();
 
       Game.main({jquery: jquery,
-                 context: context,
+                 canvas: canvas,
                  document: document});
 
       jquery(document.documentElement).keydown();
@@ -258,7 +259,7 @@ describe("Game#main", function() {
       configureGame({updater: Updater});
 
       Game.main({jquery: jquery,
-                context: context,
+                canvas: canvas,
                 document: document});
 
       jquery.event.trigger({ type : 'keyup',
@@ -271,7 +272,7 @@ describe("Game#main", function() {
       loadDefaultConfiguration();
 
       Game.main({jquery: jquery,
-                 context: context,
+                 canvas: canvas,
                  document: document});
 
       jquery(document.documentElement).keyup();

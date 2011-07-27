@@ -6,7 +6,7 @@ title: Experimental Game Page
 <script>
   jQuery(function() {
     Game.main({jquery: $, 
-               context: $("#game")[0].getContext("2d"), 
+               canvas: $("#game"), 
                document: document});
   });
 </script>

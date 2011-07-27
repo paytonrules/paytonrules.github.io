@@ -13,12 +13,13 @@ Breakout.Updater = function(assets) {
 
   assets.loadImage("paddle", "images/baddie.png");
 
+  // Potentially frameworkable ('keystate')
   this.keydown = function(event) {
     switch (event.which) {
-      case 39:
+      case Game.KeyCodes.RIGHT_ARROW:
         movingRight = true;
          break;
-      case 37:
+      case Game.KeyCodes.LEFT_ARROW:
         movingLeft = true;
         break;
     }
@@ -26,10 +27,10 @@ Breakout.Updater = function(assets) {
 
   this.keyup = function(event) {
     switch (event.which) {
-      case 39:
+      case Game.KeyCodes.RIGHT_ARROW:
         movingRight = false;
         break;
-      case 37:
+      case Game.KeyCodes.LEFT_ARROW:
         movingLeft = false;
         break;
     }

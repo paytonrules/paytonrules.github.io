@@ -25,7 +25,7 @@ describe("Updater", function() {
   });
 
   it("moves the paddle right the velocity for a right keydown", function() {
-    updater.keydown({which: 39});
+    updater.keydown({which: Game.KeyCodes.RIGHT_ARROW});
 
     updater.update(state);
 
@@ -34,7 +34,7 @@ describe("Updater", function() {
   });
 
   it("moves the paddle left for a left keydown", function() {
-    updater.keydown({which: 37});
+    updater.keydown({which: Game.KeyCodes.LEFT_ARROW});
 
     updater.update(state);
     
@@ -49,7 +49,7 @@ describe("Updater", function() {
   });
 
   it("moves to the right the entire time the key is pressed (not just for events)", function() {
-    updater.keydown({ which: 39} );
+    updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
 
     updater.update(state);
     updater.update(state);
@@ -59,10 +59,10 @@ describe("Updater", function() {
   });
 
   it("stops moving right when the key is released", function() {
-    updater.keydown({ which: 39} );
+    updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
 
     updater.update(state);
-    updater.keyup({which: 39} );
+    updater.keyup({which: Game.KeyCodes.RIGHT_ARROW} );
 
     updater.update(state);
 
@@ -71,8 +71,8 @@ describe("Updater", function() {
   });
 
   it("doesn't move left or right if both keys are pressed", function() {
-    updater.keydown({ which: 39} );
-    updater.keydown({ which: 37} );
+    updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
+    updater.keydown({ which: Game.KeyCodes.LEFT_ARROW} );
 
     updater.update(state);
     updater.update(state);
