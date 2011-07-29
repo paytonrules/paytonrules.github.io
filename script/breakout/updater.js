@@ -4,14 +4,21 @@ Breakout = {
   INITIAL_POSITION: 320
 };
 
+// Handling keyboard input for the paddle
+// Initial image loading
+// Initializes game
+// Maps the internal state to the 'state' variable
+// Paddle momement
+// Initial locations
+
 Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},
       movingRight = false,
       movingLeft = false;
 
-  assets.loadImage("paddle", "images/baddie.png");
+  Breakout.ImageLoader.load(assets);
 
-  // Potentially frameworkable ('keystate')
+  // Almost certainly frameworkable ('keystate')
   this.keydown = function(event) {
     switch (event.which) {
       case Game.KeyCodes.RIGHT_ARROW:
@@ -34,6 +41,8 @@ Breakout.Updater = function(assets) {
     }
   };
 
+  // State is an input/output param.  Probably should not be a data structure.
+  // really represents the current state for drawing
   this.update = function(state) {
     if (typeof(state.paddle) === "undefined") {
       state.paddle = {};

@@ -12,16 +12,27 @@ describe("Updater", function() {
   });
 
   it("loads the paddle image", function () {
-    var assets = {};
-    assets.loadImage = function(key, src)  {
-      assets.key = key;
-      assets.src = src;
+    var assets = {
+      loadImage: function() {}
     };
+
+    spyOn(assets, "loadImage");
 
     var anotherUpdater = new Breakout.Updater(assets);
 
-    expect(assets.key).toEqual("paddle");
-    expect(assets.src).toEqual("images/baddie.png");
+    expect(assets.loadImage).toHaveBeenCalledWith('paddle', 'images/baddie.png');
+  });
+
+  it("loads the ball image", function () {
+    var assets = {
+      loadImage: function() {}
+    };
+
+    spyOn(assets, "loadImage");
+
+    var anotherUpdater = new Breakout.Updater(assets);
+
+    expect(assets.loadImage).toHaveBeenCalledWith('ball', 'images/baddie.png');
   });
 
   it("moves the paddle right the velocity for a right keydown", function() {

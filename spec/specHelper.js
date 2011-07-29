@@ -12,6 +12,7 @@ require(__dirname + "/../script/game/config.js"); // Config must go last
 
 require(__dirname + "/../script/breakout/updater.js");  // Updater must go first
 require(__dirname + "/../script/breakout/drawer.js"); // Drawer must go last
+require(__dirname + "/../script/breakout/asset-loader.js");
 
 exports.Game = global.Game;
 exports.Breakout = global.Breakout;
