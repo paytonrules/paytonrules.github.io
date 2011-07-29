@@ -1,6 +1,7 @@
 Breakout = {
   PADDLE_ROW: 400,
-  PADDLE_VELOCITY: 10
+  PADDLE_VELOCITY: 10,
+  INITIAL_POSITION: 320
 };
 
 Breakout.Updater = function(assets) {

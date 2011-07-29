@@ -2,3 +2,5 @@ _site
 *.swp
 session.vim
 tags
+
+script/breakout.min.js
