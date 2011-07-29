@@ -1,5 +1,4 @@
-Array.prototype.detect = function(fn) {
-  for (var i = 0; i < this.length; i++)
+Array.prototype.detect = function(fn) { for (var i = 0; i < this.length; i++)
   {
     if (fn(this[i]) ) {
       return this[i];

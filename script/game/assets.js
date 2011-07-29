@@ -1,7 +1,3 @@
-if (typeof(Game) === "undefined") {
-  Game = {};
-}
-
 Game.Assets = function(jquery) {
   var assetList = {};
 

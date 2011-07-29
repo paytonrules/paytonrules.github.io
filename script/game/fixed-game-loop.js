@@ -1,7 +1,3 @@
-if (typeof(Game) === "undefined") {
-  Game = {};
-}
-
 Game.FixedStepGameLoop = function(scheduler, updater, drawer) {
   var nextGameTick = scheduler.getTicks();
   var gameState = {};

@@ -1,7 +1,3 @@
-if (typeof(Game) === "undefined") {
-  Game = {};
-}
-
 Game.Screen = function(canvas, assets) {
   var context = canvas[0].getContext("2d");
   this.assets = assets;  // For testing, for now

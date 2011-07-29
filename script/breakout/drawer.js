@@ -1,7 +1,3 @@
-if (typeof(Breakout) === "undefined") {
-  Breakout = {};
-}
-
 Breakout.Drawer = function(screen) {
   this.draw = function(gameState) {
     screen.clear();

@@ -1,10 +1,7 @@
-if (typeof(Breakout) === "undefined") {
-  Breakout = {};
-}
-
-Breakout.PADDLE_ROW = 400;
-Breakout.PADDLE_VELOCITY = 10;
-Breakout.INITIAL_POSITION = 320;
+Breakout = {
+  PADDLE_ROW: 400,
+  PADDLE_VELOCITY: 10
+};
 
 Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},

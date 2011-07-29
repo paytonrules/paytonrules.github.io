@@ -1,7 +1,3 @@
-if (typeof(Game) === "undefined") {
-  Game = {};
-}
-
 Game.Scheduler = function(framesPerSecond) {
   var timer;
   this.start = function(method) {
