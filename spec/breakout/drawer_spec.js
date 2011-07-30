@@ -1,5 +1,5 @@
 describe("Drawer", function() {
-  var Breakout, drawer;
+  var Breakout, drawer, imageList;
 
   var screen = {
     drawImage: function(image, x, y) {
@@ -7,53 +7,68 @@ describe("Drawer", function() {
     clear: function() {
     }
   };
-
-
-  var gameState = {
-    paddle: {
-      x: 0,
-      y: 0
-    }
-  };
-
+  
   beforeEach( function() {
     Breakout = require('specHelper').Breakout;
     drawer = new Breakout.Drawer(screen);
+    imageList = [];
   });
 
-  it('draws the paddle', function() {
+  it('is error free on an empty list', function() {
+    expect(function() {drawer.draw([]);}).not.toThrow();
+  });
+
+  it('draws one image', function() {
     spyOn(screen, 'drawImage');
-    gameState.paddle.x = 10;
-    gameState.paddle.y = 20;
+    imageList.push({name: 'paddle', 
+                    location: {x: 10, y: 20}}); 
     
-    drawer.draw(gameState);
+    drawer.draw(imageList);
 
     expect(screen.drawImage).toHaveBeenCalledWith('paddle', 10, 20);
   });
 
+  it('draws multiple images', function() {
+    spyOn(screen, 'drawImage');
+    imageList.push({name: 'paddle',
+                    location: {x: 10, y: 20}});
+    imageList.push({name: 'ball',
+                    location: {x: 20, y: 40}});
+
+    drawer.draw(imageList);
+
+    expect(screen.drawImage).toHaveBeenCalledWith('paddle', 10, 20);
+    expect(screen.drawImage).toHaveBeenCalledWith('ball', 20, 40);
+  });
+
+
   it('clears the screen', function() {
     spyOn(screen, 'clear');
 
-    drawer.draw(gameState);
+    drawer.draw(imageList);
 
     expect(screen.clear).toHaveBeenCalled();
   });
 
-  it('calls clear on the screen first', function() {
-    var callOrder = [];
-    var trackClear = function() {
-      callOrder.push("clear");
-    };
-    var trackOthers = function() {
-      callOrder.push("anything Else");
-    };
+ it('calls clear on the screen first', function() {
+   var callOrder = [];
+   var trackClear = function() {
+     callOrder.push("clear");
+   };
+   var trackOthers = function() {
+     callOrder.push("anything Else");
+   };
 
-    spyOn(screen, 'clear').andCallFake(trackClear);
-    spyOn(screen, 'drawImage').andCallFake(trackOthers);
+   imageList.push({name: 'anyImage',
+                   location: {x: 20, y: 40}});
 
-    drawer.draw(gameState);
+   spyOn(screen, 'clear').andCallFake(trackClear);
+   spyOn(screen, 'drawImage').andCallFake(trackOthers);
 
-    expect(callOrder[0]).toEqual("clear");
-  });
+   drawer.draw(imageList);
+
+   expect(callOrder[0]).toEqual("clear");
+ });
+
 
 });

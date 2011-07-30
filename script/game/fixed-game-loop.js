@@ -1,14 +1,15 @@
 Game.FixedStepGameLoop = function(scheduler, updater, drawer) {
   var nextGameTick = scheduler.getTicks();
-  var gameState = {};
+  var imageList;
 
   this.loop = function() {
     while (scheduler.getTicks() > nextGameTick) {
-      updater.update(gameState);
+      imageList = [];
+      updater.update(imageList);
 
       nextGameTick += scheduler.getTickTime();
     }
-    drawer.draw(gameState);
+    drawer.draw(imageList);
   };
 
   this.stop = function() {

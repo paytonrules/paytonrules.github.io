@@ -1,6 +1,6 @@
 describe('Game#loop', function() {
   var gameLoop, scheduler;
-  
+
   var MockScheduler = function() {
     var ticks = 0;
     this.getTicks = function() {
@@ -15,10 +15,10 @@ describe('Game#loop', function() {
       ticks += 1;
     }
   };
-  
+
   var CallCounter = function(callback) {
     var calls = 0;
-    this.call = function(state) {
+    this.call = function(imageList) {
       calls += 1;
       if (typeof(callback) !== "undefined") {
         callback();
@@ -35,11 +35,10 @@ describe('Game#loop', function() {
     scheduler = new MockScheduler();
   });
 
-
   it('executes draw', function() {
     var updater = {update: function() {}};
     var drawer = {
-      draw: function(state) { 
+      draw: function(imageList) { 
         gameLoop.drawn = true;
       }
     };
@@ -53,7 +52,7 @@ describe('Game#loop', function() {
   it('Executes update, provided time has passed since the last loop call', function() {
     var drawer = {draw: function() {}};
     var updater = {
-      update: function(state) {
+      update: function(imageList) {
         gameLoop.updated = true;
       }
     };
@@ -65,17 +64,31 @@ describe('Game#loop', function() {
     expect(gameLoop.updated).toBeTruthy();
   });
 
-
-  it('Passes the state from the update to the draw', function() {
+  it('Calls updater with an empty array as the image list', function() {
+    var drawer = {draw: function() {}};
     var updater = {
-      update: function(state) {
-        state.update_message = 'Yes I was';
+      update: function(imageList) {
+        updater.imageList = imageList;
+      }
+    };
+
+    gameLoop = new Game.FixedStepGameLoop(scheduler, updater, drawer);
+    scheduler.tick();
+    gameLoop.loop();
+
+    expect(updater.imageList).toEqual([]);
+  });
+
+  it('Passes the imageList from the update to the draw', function() {
+    var updater = {
+      update: function(imageList) {
+        imageList.update_message = 'Yes I was';
       }
     };
 
     var drawer = {
-      draw: function(state) {
-        gameLoop.update_message = state.update_message;
+      draw: function(imageList) {
+        gameLoop.update_message = imageList.update_message;
       }
     };
 
@@ -86,45 +99,67 @@ describe('Game#loop', function() {
     expect(gameLoop.update_message).toEqual('Yes I was');
   });
 
- it('executes multiple updates to catch up if the draw takes a long time', function() {
-   var draws = new CallCounter(function() {
-     scheduler.tick();
-   });
+  it('clears the list between calls to the update', function() {
+    var updater = {
+      update: function(imageList) {
+        updater.imageList = imageList;
+      }
+    };
 
-   var updates = new CallCounter();
-   var drawer = {draw: draws.call};
-   var updater = {update: updates.call};
+    var drawer = {
+      draw: function(imageList) {
+        imageList.push("and she was");
+      }
+    };
 
-   gameLoop = new Game.FixedStepGameLoop(scheduler, updater, drawer);
-   scheduler.tick();
-   gameLoop.loop();
-   scheduler.tick();
-   gameLoop.loop();
+    gameLoop = new Game.FixedStepGameLoop(scheduler, updater, drawer);
+    scheduler.tick();
+    gameLoop.loop();
+    scheduler.tick();
+    gameLoop.loop();
 
-   expect(draws.calls()).toEqual(2);
-   expect(updates.calls()).toEqual(3);
- });
+    expect(updater.imageList).toEqual(['and she was']);
+  });
 
- it('delegates stop to the scheduler', function() {
-   scheduler.stop = function() {
-     scheduler.stopped = true;
-   };
+  it('executes multiple updates to catch up if the draw takes a long time', function() {
+    var draws = new CallCounter(function() {
+      scheduler.tick();
+    });
 
-   gameLoop = new Game.FixedStepGameLoop(scheduler, {}, {});
-   gameLoop.stop();
+    var updates = new CallCounter();
+    var drawer = {draw: draws.call};
+    var updater = {update: updates.call};
 
-   expect(scheduler.stopped).toBeTruthy();
- });
+    gameLoop = new Game.FixedStepGameLoop(scheduler, updater, drawer);
+    scheduler.tick();
+    gameLoop.loop();
+    scheduler.tick();
+    gameLoop.loop();
 
- it('delegates start to the scheduler, passing it its loop method', function() {
-   scheduler.start = function(loop) {
-     scheduler.loop = loop;
-   };
+    expect(draws.calls()).toEqual(2);
+    expect(updates.calls()).toEqual(3);
+  });
 
-   gameLoop = new Game.FixedStepGameLoop(scheduler, {}, {});
-   gameLoop.start();
+  it('delegates stop to the scheduler', function() {
+    scheduler.stop = function() {
+      scheduler.stopped = true;
+    };
 
-   expect(scheduler.loop).toEqual(gameLoop.loop);
- });
+    gameLoop = new Game.FixedStepGameLoop(scheduler, {}, {});
+    gameLoop.stop();
+
+    expect(scheduler.stopped).toBeTruthy();
+  });
+
+  it('delegates start to the scheduler, passing it its loop method', function() {
+    scheduler.start = function(loop) {
+      scheduler.loop = loop;
+    };
+
+    gameLoop = new Game.FixedStepGameLoop(scheduler, {}, {});
+    gameLoop.start();
+
+    expect(scheduler.loop).toEqual(gameLoop.loop);
+  });
 
 });

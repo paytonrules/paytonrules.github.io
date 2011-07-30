@@ -1,8 +1,8 @@
 Breakout.Drawer = function(screen) {
-  this.draw = function(gameState) {
+  this.draw = function(imageList) {
     screen.clear();
-    screen.drawImage("paddle", 
-                      gameState.paddle.x, 
-                      gameState.paddle.y);
+    _(imageList).each(function(item) {
+      screen.drawImage(item.name, item.location.x, item.location.y);
+    });
   };
 };

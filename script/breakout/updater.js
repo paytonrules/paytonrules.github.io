@@ -1,7 +1,8 @@
 Breakout = {
   PADDLE_ROW: 400,
   PADDLE_VELOCITY: 10,
-  INITIAL_POSITION: 320
+  INITIAL_POSITION: 320,
+  INITIAL_BALL_ROW: 370
 };
 
 // Handling keyboard input for the paddle
@@ -16,6 +17,7 @@ Breakout.Updater = function(assets) {
       movingRight = false,
       movingLeft = false;
 
+  // Not tested directly yet
   Breakout.ImageLoader.load(assets);
 
   // Almost certainly frameworkable ('keystate')
@@ -43,11 +45,7 @@ Breakout.Updater = function(assets) {
 
   // State is an input/output param.  Probably should not be a data structure.
   // really represents the current state for drawing
-  this.update = function(state) {
-    if (typeof(state.paddle) === "undefined") {
-      state.paddle = {};
-    }
-
+  this.update = function(imageList) {
     if (movingRight) {
       location.x += Breakout.PADDLE_VELOCITY;
     }
@@ -56,7 +54,12 @@ Breakout.Updater = function(assets) {
       location.x -= Breakout.PADDLE_VELOCITY;
     }
 
-    state.paddle.x = location.x;
-    state.paddle.y = Breakout.PADDLE_ROW;
+    imageList.push({name: 'paddle',
+                   location: {x: location.x,
+                              y: Breakout.PADDLE_ROW}});
+
+    imageList.push({name: "ball",
+                    location: {x: Breakout.INITIAL_POSITION,
+                               y: Breakout.INITIAL_BALL_ROW}});
   };
 };

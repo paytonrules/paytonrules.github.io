@@ -1,6 +1,7 @@
 var glob = require('glob');
 
 // Sure would be nice not to have to include EVERYTHING here
+_ = require('underscore');
 require(__dirname + "/../script/game/array-ext.js");
 require(__dirname + "/../script/game/main.js"); // Main must go first
 require(__dirname + "/../script/game/assets.js");
