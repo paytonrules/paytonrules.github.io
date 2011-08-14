@@ -1,0 +1,16 @@
+task :default => [:specs, :minify]
+
+task :specs do
+  sh "jessie spec"
+end
+
+task :minify do
+  command_string = "java -jar compiler.jar --js=node_modules/underscore/underscore-min.js"
+
+  IO.read("build.config").split("\n").select {|file| !file.empty? }.each do |fileName|
+    command_string << " --js=#{fileName}"
+  end
+  command_string << " --js=script/breakout/config.js --js_output_file=script/breakout.min.js"
+
+  sh command_string
+end
