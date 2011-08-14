@@ -5,7 +5,6 @@ Breakout = {
   INITIAL_BALL_ROW: 370
 };
 
-// Handling keyboard input for the paddle
 // Initial image loading
 // Initializes game
 // Maps the internal state to the 'state' variable
@@ -58,7 +57,7 @@ Breakout.Updater = function(assets) {
                    location: {x: location.x,
                               y: Breakout.PADDLE_ROW}});
 
-    imageList.push({name: "ball",
+    imageList.push({name: 'ball',
                     location: {x: Breakout.INITIAL_POSITION,
                                y: Breakout.INITIAL_BALL_ROW}});
   };

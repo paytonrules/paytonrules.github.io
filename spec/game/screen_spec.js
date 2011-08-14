@@ -9,7 +9,7 @@ describe("Game Screen", function() {
     };
 
     this.hasImageNamed = function(imageName) {
-      return imageList.any(function(image) {
+      return _(imageList).any(function(image) {
         return image.name === imageName; 
       });
     };
@@ -19,7 +19,7 @@ describe("Game Screen", function() {
     };
 
     this.hasImageAt = function(x, y) {
-      return imageList.any(function(image) {
+      return _(imageList).any(function(image) {
         return (image.x === x && image.y === y);
       });
     };
