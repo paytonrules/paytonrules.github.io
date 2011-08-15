@@ -14,3 +14,15 @@ task :minify do
 
   sh command_string
 end
+
+task :start do
+  sh "jekyll --server --auto"
+end
+
+task :deploy => [:specs, :minify] do
+  sh "git push origin master"
+end
+
+task :build do
+  sh "jekyll"
+end
