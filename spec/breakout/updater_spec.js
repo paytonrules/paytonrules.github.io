@@ -116,7 +116,6 @@ describe("Updater", function() {
     updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
     updater.keydown({ which: Game.KeyCodes.LEFT_ARROW} );
 
-    updater.update([]);
     updater.update(imageList);
 
     var paddle = _(imageList).detect(function(image) {
@@ -125,5 +124,25 @@ describe("Updater", function() {
 
     expect(paddle.location.x).toEqual(Breakout.INITIAL_POSITION);
   });
+
+  it("launches the ball in launch direction on the spacebar", function() {
+    updater.keydown({ which: Game.KeyCodes.SPACEBAR } );
+
+    updater.update(imageList);
+
+    var ball = _(imageList).detect(function(image) {
+      return (image.name === 'ball');
+    });
+
+    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + Breakout.LaunchDirection.x,
+                                      y: Breakout.INITIAL_BALL_ROW + Breakout.LaunchDirection.y};
+
+    expect(ball.location.x).toEqual(locationWithRandomVelocity.x);
+    expect(ball.location.y).toEqual(locationWithRandomVelocity.y);
+  });
+
+  // it doesn't keep changing direction on launch
+  // it moves with each update
+
 
 });

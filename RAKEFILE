@@ -15,8 +15,12 @@ task :minify do
   sh command_string
 end
 
-task :start do
-  sh "jekyll --server --auto"
+task :start => [:stop, :specs, :minify] do
+  sh "jekyll --server --auto &"
+end
+
+task :stop do
+  sh "ps -ef | grep jekyll | grep -v grep | awk {'print $2;'} | xargs kill"
 end
 
 task :deploy => [:specs, :minify] do

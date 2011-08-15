@@ -5,16 +5,13 @@ Breakout = {
   INITIAL_BALL_ROW: 370
 };
 
-// Initial image loading
-// Initializes game
-// Maps the internal state to the 'state' variable
-// Paddle momement
-// Initial locations
-
 Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},
       movingRight = false,
-      movingLeft = false;
+      movingLeft = false,
+      launchBall = false,
+      ball  = {x: Breakout.INITIAL_POSITION,
+               y: Breakout.INITIAL_BALL_ROW};
 
   // Not tested directly yet
   Breakout.ImageLoader.load(assets);
@@ -24,9 +21,12 @@ Breakout.Updater = function(assets) {
     switch (event.which) {
       case Game.KeyCodes.RIGHT_ARROW:
         movingRight = true;
-         break;
+        break;
       case Game.KeyCodes.LEFT_ARROW:
         movingLeft = true;
+        break;
+      case Game.KeyCodes.SPACEBAR:
+        launchBall = true;
         break;
     }
   };
@@ -53,12 +53,17 @@ Breakout.Updater = function(assets) {
       location.x -= Breakout.PADDLE_VELOCITY;
     }
 
+    if (launchBall) {
+      ball.x += Breakout.LaunchDirection.x,
+      ball.y += Breakout.LaunchDirection.y
+    }
+
     imageList.push({name: 'paddle',
                    location: {x: location.x,
                               y: Breakout.PADDLE_ROW}});
 
     imageList.push({name: 'ball',
-                    location: {x: Breakout.INITIAL_POSITION,
-                               y: Breakout.INITIAL_BALL_ROW}});
+                    location: {x: ball.x,
+                               y: ball.y} });
   };
 };
