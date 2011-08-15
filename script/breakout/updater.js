@@ -9,9 +9,7 @@ Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},
       movingRight = false,
       movingLeft = false,
-      launchBall = false,
-      ball  = {x: Breakout.INITIAL_POSITION,
-               y: Breakout.INITIAL_BALL_ROW};
+      launchBall = false;
 
   // Not tested directly yet
   Breakout.ImageLoader.load(assets);
@@ -26,7 +24,7 @@ Breakout.Updater = function(assets) {
         movingLeft = true;
         break;
       case Game.KeyCodes.SPACEBAR:
-        launchBall = true;
+        Breakout.Ball.launch();
         break;
     }
   };
@@ -52,18 +50,12 @@ Breakout.Updater = function(assets) {
     if (movingLeft) {
       location.x -= Breakout.PADDLE_VELOCITY;
     }
-
-    if (launchBall) {
-      ball.x += Breakout.LaunchDirection.x,
-      ball.y += Breakout.LaunchDirection.y
-    }
-
+    
     imageList.push({name: 'paddle',
                    location: {x: location.x,
                               y: Breakout.PADDLE_ROW}});
 
-    imageList.push({name: 'ball',
-                    location: {x: ball.x,
-                               y: ball.y} });
+    Breakout.Ball.update(imageList);
+
   };
 };
