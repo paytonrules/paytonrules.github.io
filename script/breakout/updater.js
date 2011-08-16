@@ -1,10 +1,3 @@
-Breakout = {
-  PADDLE_ROW: 400,
-  PADDLE_VELOCITY: 10,
-  INITIAL_POSITION: 320,
-  INITIAL_BALL_ROW: 370
-};
-
 Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},
       movingRight = false,
@@ -12,6 +5,7 @@ Breakout.Updater = function(assets) {
       launchBall = false;
 
   // Not tested directly yet
+  // Two places two change things (ball updater, ball image loader)
   Breakout.ImageLoader.load(assets);
 
   // Almost certainly frameworkable ('keystate')

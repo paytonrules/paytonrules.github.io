@@ -35,15 +35,12 @@ describe("Updater", function() {
     expect(assets.loadImage).toHaveBeenCalledWith('ball', 'images/baddie.png');
   });
 
-  it("Starts the ball just above the paddle", function() {
+  it("Updates the ball", function() {
+    spyOn(Breakout.Ball, "update");
+    
     updater.update(imageList);
 
-    var ball = _(imageList).detect(function(image) {
-      return (image.name === 'ball');
-    });
-
-    expect(ball.location.x).toEqual(Breakout.INITIAL_POSITION);
-    expect(ball.location.y).toEqual(Breakout.INITIAL_BALL_ROW); 
+    expect(Breakout.Ball.update).toHaveBeenCalledWith(imageList);
   });
 
   it("moves the paddle right the velocity for a right keydown", function() {
@@ -126,23 +123,10 @@ describe("Updater", function() {
   });
 
   it("launches the ball in launch direction on the spacebar", function() {
+    spyOn(Breakout.Ball, "launch");
     updater.keydown({ which: Game.KeyCodes.SPACEBAR } );
 
-    updater.update(imageList);
-
-    var ball = _(imageList).detect(function(image) {
-      return (image.name === 'ball');
-    });
-
-    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + Breakout.LaunchDirection.x,
-                                      y: Breakout.INITIAL_BALL_ROW + Breakout.LaunchDirection.y};
-
-    expect(ball.location.x).toEqual(locationWithRandomVelocity.x);
-    expect(ball.location.y).toEqual(locationWithRandomVelocity.y);
+    expect(Breakout.Ball.launch).toHaveBeenCalled();
   });
-
-  // it doesn't keep changing direction on launch
-  // it moves with each update
-
 
 });
