@@ -29,8 +29,9 @@ describe("Ball", function() {
     ball.launch();
     ball.update([]);
 
-    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + Breakout.LaunchDirection.x,
-                                      y: Breakout.INITIAL_BALL_ROW + Breakout.LaunchDirection.y};
+    var randomLaunchVelocity = Breakout.LaunchDirection();
+    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + randomLaunchVelocity.x,
+                                      y: Breakout.INITIAL_BALL_ROW + randomLaunchVelocity.y};
 
     expect(ball.x).toEqual(locationWithRandomVelocity.x);
     expect(ball.y).toEqual(locationWithRandomVelocity.y);
@@ -41,8 +42,9 @@ describe("Ball", function() {
     ball.update([]);
     ball.update([]);
 
-    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + (Breakout.LaunchDirection.x * 2),
-                                      y: Breakout.INITIAL_BALL_ROW + (Breakout.LaunchDirection.y * 2)};
+    var launchVelocity = Breakout.LaunchDirection();
+    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + (launchVelocity.x * 2),
+                                      y: Breakout.INITIAL_BALL_ROW + (launchVelocity.y * 2)};
 
     expect(ball.x).toEqual(locationWithRandomVelocity.x);
     expect(ball.y).toEqual(locationWithRandomVelocity.y);

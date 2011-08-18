@@ -10,8 +10,9 @@ Breakout.Ball = function() {
 
   this.update = function(imageList) {
     if (launched) {
-      this.x += Breakout.LaunchDirection.x,
-      this.y += Breakout.LaunchDirection.y
+      var launchVelocity = Breakout.LaunchDirection();
+      this.x += launchVelocity.x,
+      this.y += launchVelocity.y
     }
 
     imageList.push({name: 'ball',
