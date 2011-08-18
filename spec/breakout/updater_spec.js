@@ -1,11 +1,27 @@
 describe("Updater", function() {
-  var Breakout, updater, imageList;
+  var Breakout, updater, imageList, mockBall;
 
   beforeEach( function() {
     Breakout = require("specHelper").Breakout;
     Breakout.INITIAL_POSITION = 320;
     Breakout.PADDLE_ROW = 400;
     Breakout.PADDLE_VELOCITY = 10;
+
+    mockBall = new Breakout.Ball();
+    Test = {
+      MockBall: function() {
+        return mockBall;
+      }
+    };
+
+    // Test wanders into global namespace.
+    // ick.
+    Breakout.GameObjects = {
+      ball: "Test.MockBall"
+    };
+
+    mockBall = new Breakout.Ball();
+    spyOn(Breakout.Ball, "create").andReturn(mockBall);
 
     updater = new Breakout.Updater({loadImage: function() {}});
     imageList = [];
@@ -36,11 +52,11 @@ describe("Updater", function() {
   });
 
   it("Updates the ball", function() {
-    spyOn(Breakout.Ball, "update");
+    spyOn(mockBall, "update");
     
     updater.update(imageList);
 
-    expect(Breakout.Ball.update).toHaveBeenCalledWith(imageList);
+    expect(mockBall.update).toHaveBeenCalledWith(imageList);
   });
 
   it("moves the paddle right the velocity for a right keydown", function() {
@@ -123,10 +139,10 @@ describe("Updater", function() {
   });
 
   it("launches the ball in launch direction on the spacebar", function() {
-    spyOn(Breakout.Ball, "launch");
+    spyOn(mockBall, "launch");
     updater.keydown({ which: Game.KeyCodes.SPACEBAR } );
 
-    expect(Breakout.Ball.launch).toHaveBeenCalled();
+    expect(mockBall.launch).toHaveBeenCalled();
   });
 
 });

@@ -1,8 +1,12 @@
 Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},
       movingRight = false,
-      movingLeft = false,
-      launchBall = false;
+      movingLeft = false;
+
+  //hasOwnProperty
+  for (var varName in Breakout.GameObjects) {
+    eval("var " + varName + " = new " + Breakout.GameObjects[varName] + "();");
+  };
 
   // Not tested directly yet
   // Two places two change things (ball updater, ball image loader)
@@ -18,7 +22,7 @@ Breakout.Updater = function(assets) {
         movingLeft = true;
         break;
       case Game.KeyCodes.SPACEBAR:
-        Breakout.Ball.launch();
+        ball.launch();
         break;
     }
   };
@@ -49,7 +53,7 @@ Breakout.Updater = function(assets) {
                    location: {x: location.x,
                               y: Breakout.PADDLE_ROW}});
 
-    Breakout.Ball.update(imageList);
+    ball.update(imageList);
 
   };
 };

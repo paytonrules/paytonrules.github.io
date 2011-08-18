@@ -1,20 +1,21 @@
-Breakout.Ball = {
-  x: Breakout.INITIAL_POSITION,
-  y: Breakout.INITIAL_BALL_ROW,
-  launched: false,
+Breakout.Ball = function() {
+  var launched = false;
+  this.x = Breakout.INITIAL_POSITION;
+  this.y = Breakout.INITIAL_BALL_ROW;
 
-  launch: function() {
-    this.launched = true;
-  },
+  this.launch = function() {
+    launched = true;
+  };
 
-  update: function(imageList) {
-    if (this.launched) {
+  this.update = function(imageList) {
+    if (launched) {
       this.x += Breakout.LaunchDirection.x,
       this.y += Breakout.LaunchDirection.y
     }
 
     imageList.push({name: 'ball',
-                   location: {x: Breakout.Ball.x,
-                              y: Breakout.Ball.y} });
-  }
+                   location: {x: this.x,
+                              y: this.y} });
+  };
+
 };
