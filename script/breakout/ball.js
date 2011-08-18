@@ -1,3 +1,4 @@
+// Refactor to revealing module pattern
 Breakout.Ball = function() {
   var launched = false;
   this.x = Breakout.INITIAL_POSITION;
@@ -17,5 +18,4 @@ Breakout.Ball = function() {
                    location: {x: this.x,
                               y: this.y} });
   };
-
 };
