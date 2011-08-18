@@ -1,11 +1,12 @@
 Breakout.Updater = function(assets) {
   var location = {x: Breakout.INITIAL_POSITION},
       movingRight = false,
-      movingLeft = false;
+      movingLeft = false,
+      gameObjects = {};
 
   //hasOwnProperty
-  for (var varName in Breakout.GameObjects) {
-    eval("var " + varName + " = new " + Breakout.GameObjects[varName] + "();");
+  for (var objectName in Breakout.GameRecipie) {
+    gameObjects[objectName] = new Breakout.GameRecipie[objectName];
   };
 
   // Not tested directly yet
@@ -22,7 +23,7 @@ Breakout.Updater = function(assets) {
         movingLeft = true;
         break;
       case Game.KeyCodes.SPACEBAR:
-        ball.launch();
+        gameObjects['ball'].launch();
         break;
     }
   };
@@ -53,7 +54,7 @@ Breakout.Updater = function(assets) {
                    location: {x: location.x,
                               y: Breakout.PADDLE_ROW}});
 
-    ball.update(imageList);
+    gameObjects['ball'].update(imageList);
 
   };
 };

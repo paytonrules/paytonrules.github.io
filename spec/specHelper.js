@@ -5,6 +5,9 @@ files.forEach(function(fileName, index, array) {
   require(__dirname + "/../" + fileName);
 });
 
+Breakout.GameRecipie = {
+};
+
 _ = require('underscore');
 exports.Game = global.Game;
 exports.Breakout = global.Breakout;

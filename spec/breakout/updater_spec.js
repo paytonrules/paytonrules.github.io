@@ -14,41 +14,19 @@ describe("Updater", function() {
       }
     };
 
-    // Test wanders into global namespace.
-    // ick.
-    Breakout.GameObjects = {
-      ball: "Test.MockBall"
-    };
-
-    mockBall = new Breakout.Ball();
-    spyOn(Breakout.Ball, "create").andReturn(mockBall);
+    Breakout.GameRecipie['ball'] = Test.MockBall;
 
     updater = new Breakout.Updater({loadImage: function() {}});
     imageList = [];
   });
 
-  it("loads the paddle image", function () {
-    var assets = {
-      loadImage: function() {}
-    };
-
-    spyOn(assets, "loadImage");
+  it("loads the images", function () {
+    spyOn(Breakout.ImageLoader, "load");
+    var assets = {};
 
     var anotherUpdater = new Breakout.Updater(assets);
 
-    expect(assets.loadImage).toHaveBeenCalledWith('paddle', 'images/baddie.png');
-  });
-
-  it("loads the ball image", function () {
-    var assets = {
-      loadImage: function() {}
-    };
-
-    spyOn(assets, "loadImage");
-
-    var anotherUpdater = new Breakout.Updater(assets);
-
-    expect(assets.loadImage).toHaveBeenCalledWith('ball', 'images/baddie.png');
+    expect(Breakout.ImageLoader.load).toHaveBeenCalledWith(assets);
   });
 
   it("Updates the ball", function() {
