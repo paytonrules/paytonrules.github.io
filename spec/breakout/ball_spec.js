@@ -29,7 +29,7 @@ describe("Ball", function() {
     ball.launch();
     ball.update([]);
 
-    var randomLaunchVelocity = Breakout.LaunchDirection();
+    var randomLaunchVelocity = Breakout.LaunchVelocity();
     var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + randomLaunchVelocity.x,
                                       y: Breakout.INITIAL_BALL_ROW + randomLaunchVelocity.y};
 
@@ -42,7 +42,7 @@ describe("Ball", function() {
     ball.update([]);
     ball.update([]);
 
-    var launchVelocity = Breakout.LaunchDirection();
+    var launchVelocity = Breakout.LaunchVelocity();
     var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + (launchVelocity.x * 2),
                                       y: Breakout.INITIAL_BALL_ROW + (launchVelocity.y * 2)};
 

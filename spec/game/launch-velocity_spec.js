@@ -1,4 +1,4 @@
-describe("LaunchDirection", function() {
+describe("LaunchVelocity", function() {
   var Breakout;
   
   beforeEach(function() {
@@ -8,7 +8,7 @@ describe("LaunchDirection", function() {
   it("returns a random direction in y, less than 0", function() {
     var direction;
     for(var i = 0; i < 1000; i++) { 
-      direction = Breakout.LaunchDirection();
+      direction = Breakout.LaunchVelocity();
       expect(direction.y).toBeGreaterThan(0);
     }
   });
