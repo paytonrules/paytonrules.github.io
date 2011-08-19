@@ -26,31 +26,44 @@ describe("Ball", function() {
   });
 
   it("starts the ball moving in launch direction on launch", function() {
+    spyOn(Breakout, "LaunchVelocity").andReturn({x: 1, y: 2});
     ball.launch();
     ball.update([]);
 
-    var randomLaunchVelocity = Breakout.LaunchVelocity();
-    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + randomLaunchVelocity.x,
-                                      y: Breakout.INITIAL_BALL_ROW + randomLaunchVelocity.y};
+    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + 1,
+                                      y: Breakout.INITIAL_BALL_ROW + 2};
 
     expect(ball.x).toEqual(locationWithRandomVelocity.x);
     expect(ball.y).toEqual(locationWithRandomVelocity.y);
   });
 
   it("moves with each update", function() {
+    spyOn(Breakout, "LaunchVelocity").andReturn({x: 1, y: 2});
     ball.launch();
     ball.update([]);
     ball.update([]);
 
-    var launchVelocity = Breakout.LaunchVelocity();
-    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + (launchVelocity.x * 2),
-                                      y: Breakout.INITIAL_BALL_ROW + (launchVelocity.y * 2)};
+    var locationWithRandomVelocity = {x: Breakout.INITIAL_POSITION + 2,
+                                      y: Breakout.INITIAL_BALL_ROW + 4};
 
     expect(ball.x).toEqual(locationWithRandomVelocity.x);
     expect(ball.y).toEqual(locationWithRandomVelocity.y);
   });
- 
-  // it doesn't keep changing direction on launch
-  // Global problems
 
+  it("only calls launch velocity once", function() {
+    spyOn(Breakout, "LaunchVelocity").andReturn({x: 1, y: 1});
+    ball.launch();
+    ball.update([]);
+    ball.update([]);
+
+    expect(Breakout.LaunchVelocity.callCount).toEqual(1);
+  });
+
+  it("doesn't let you launch a launched ball", function() {
+    spyOn(Breakout, "LaunchVelocity");
+    ball.launch();
+    ball.launch();
+
+    expect(Breakout.LaunchVelocity.callCount).toEqual(1);
+  });
 });

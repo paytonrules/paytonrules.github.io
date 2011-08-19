@@ -1,6 +1,9 @@
 Breakout.LaunchVelocity = function() {
-  return {
-    x: 1,
-    y: 2
-  };
-}
+  var randomDirectionInX = (Game.random() * Breakout.LaunchVelocity.RANGE) + Breakout.LaunchVelocity.LEFT;
+  var velocityVector = Game.Vector.create2DVector(randomDirectionInX, Breakout.LaunchVelocity.UP);
+  return velocityVector.scaled(Breakout.Ball.BALL_VELOCITY);
+};
+
+Breakout.LaunchVelocity.LEFT = -0.8;
+Breakout.LaunchVelocity.RANGE = 1.6;
+Breakout.LaunchVelocity.UP = -1.0;
