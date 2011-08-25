@@ -1,6 +1,6 @@
 Breakout.LaunchVelocity = function() {
-  var randomDirectionInX = (Game.random() * Breakout.LaunchVelocity.RANGE) + Breakout.LaunchVelocity.LEFT;
-  var velocityVector = Game.Vector.create2DVector(randomDirectionInX, Breakout.LaunchVelocity.UP);
+  var randomDirectionInX = (Eskimo.random() * Breakout.LaunchVelocity.RANGE) + Breakout.LaunchVelocity.LEFT;
+  var velocityVector = Eskimo.Vector.create2DVector(randomDirectionInX, Breakout.LaunchVelocity.UP);
   return velocityVector.scaled(Breakout.Ball.BALL_VELOCITY);
 };
 

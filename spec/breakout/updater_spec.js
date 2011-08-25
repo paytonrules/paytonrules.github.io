@@ -38,7 +38,7 @@ describe("Updater", function() {
   });
 
   it("moves the paddle right the velocity for a right keydown", function() {
-    updater.keydown({which: Game.KeyCodes.RIGHT_ARROW});
+    updater.keydown({which: Eskimo.KeyCodes.RIGHT_ARROW});
 
     updater.update(imageList);
 
@@ -51,7 +51,7 @@ describe("Updater", function() {
   });
 
   it("moves the paddle left for a left keydown", function() {
-    updater.keydown({which: Game.KeyCodes.LEFT_ARROW});
+    updater.keydown({which: Eskimo.KeyCodes.LEFT_ARROW});
 
     updater.update(imageList);
  
@@ -74,7 +74,7 @@ describe("Updater", function() {
   });
 
   it("moves to the right the entire time the key is pressed (not just for events)", function() {
-    updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
+    updater.keydown({ which: Eskimo.KeyCodes.RIGHT_ARROW} );
 
     updater.update([]);
     updater.update(imageList);
@@ -88,10 +88,10 @@ describe("Updater", function() {
   });
 
   it("stops moving right when the key is released", function() {
-    updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
+    updater.keydown({ which: Eskimo.KeyCodes.RIGHT_ARROW} );
 
     updater.update([]);
-    updater.keyup({which: Game.KeyCodes.RIGHT_ARROW} );
+    updater.keyup({which: Eskimo.KeyCodes.RIGHT_ARROW} );
 
     updater.update(imageList);
 
@@ -104,8 +104,8 @@ describe("Updater", function() {
   });
 
   it("doesn't move left or right if both keys are pressed", function() {
-    updater.keydown({ which: Game.KeyCodes.RIGHT_ARROW} );
-    updater.keydown({ which: Game.KeyCodes.LEFT_ARROW} );
+    updater.keydown({ which: Eskimo.KeyCodes.RIGHT_ARROW} );
+    updater.keydown({ which: Eskimo.KeyCodes.LEFT_ARROW} );
 
     updater.update(imageList);
 
@@ -118,7 +118,7 @@ describe("Updater", function() {
 
   it("launches the ball in launch direction on the spacebar", function() {
     spyOn(mockBall, "launch");
-    updater.keydown({ which: Game.KeyCodes.SPACEBAR } );
+    updater.keydown({ which: Eskimo.KeyCodes.SPACEBAR } );
 
     expect(mockBall.launch).toHaveBeenCalled();
   });

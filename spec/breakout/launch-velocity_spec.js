@@ -20,7 +20,7 @@ describe("LaunchVelocity", function() {
    Breakout.LaunchVelocity.LEFT = 2.0;
    Breakout.LaunchVelocity.UP = 0.0;
    Breakout.Ball.BALL_VELOCITY = 2.0;
-   spyOn(Game, "random").andReturn(0.0);
+   spyOn(Eskimo, "random").andReturn(0.0);
 
    direction = Breakout.LaunchVelocity();
 
@@ -33,7 +33,7 @@ describe("LaunchVelocity", function() {
    Breakout.LaunchVelocity.RANGE = 2.0;
    Breakout.LaunchVelocity.UP = 0.0;
    Breakout.Ball.BALL_VELOCITY = 3.0;
-   spyOn(Game, "random").andReturn(1.0);
+   spyOn(Eskimo, "random").andReturn(1.0);
 
    direction = Breakout.LaunchVelocity();
 

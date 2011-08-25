@@ -16,13 +16,13 @@ Breakout.Updater = function(assets) {
   // Almost certainly frameworkable ('keystate')
   this.keydown = function(event) {
     switch (event.which) {
-      case Game.KeyCodes.RIGHT_ARROW:
+      case Eskimo.KeyCodes.RIGHT_ARROW:
         movingRight = true;
         break;
-      case Game.KeyCodes.LEFT_ARROW:
+      case Eskimo.KeyCodes.LEFT_ARROW:
         movingLeft = true;
         break;
-      case Game.KeyCodes.SPACEBAR:
+      case Eskimo.KeyCodes.SPACEBAR:
         gameObjects['ball'].launch();
         break;
     }
@@ -30,10 +30,10 @@ Breakout.Updater = function(assets) {
 
   this.keyup = function(event) {
     switch (event.which) {
-      case Game.KeyCodes.RIGHT_ARROW:
+      case Eskimo.KeyCodes.RIGHT_ARROW:
         movingRight = false;
         break;
-      case Game.KeyCodes.LEFT_ARROW:
+      case Eskimo.KeyCodes.LEFT_ARROW:
         movingLeft = false;
         break;
     }

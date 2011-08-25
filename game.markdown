@@ -5,7 +5,7 @@ title: Experimental Game Page
 
 <script>
   jQuery(function() {
-    Game({updater: Breakout.Updater,
+    Eskimo({updater: Breakout.Updater,
           drawer: Breakout.Drawer}).start({jquery: $, 
                                            canvas: $("#game"), 
                                            document: document});

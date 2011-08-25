@@ -9,5 +9,5 @@ Breakout.GameRecipie = {
 };
 
 _ = require('underscore');
-exports.Game = global.Game;
+exports.Eskimo = global.Eskimo;
 exports.Breakout = global.Breakout;

@@ -1,7 +1,7 @@
 // Refactor to revealing module pattern
 Breakout.Ball = function() {
   var launched = false;
-  var currentVelocity = Game.Vector.create2DVector(0, 0);
+  var currentVelocity = Eskimo.Vector.create2DVector(0, 0);
   this.x = Breakout.INITIAL_POSITION;
   this.y = Breakout.INITIAL_BALL_ROW;
 
