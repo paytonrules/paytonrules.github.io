@@ -16,6 +16,8 @@ Breakout.Ball = function() {
     this.x += currentVelocity.x;
     this.y += currentVelocity.y;
 
+    // Duplication - and it's your framework 'seeping' into the code.  How would you pull
+    // this out?
     imageList.push({name: 'ball',
                    location: {x: this.x,
                               y: this.y} });
