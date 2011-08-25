@@ -11,8 +11,10 @@ Game.Screen = function(canvas, assets) {
   };
 
   this.clear = function() {
-    context.fillStyle = Game.config.BACKGROUND_COLOR;
+    context.fillStyle = Game.Screen.BACKGROUND_COLOR;
     context.fillRect(0, 0, canvas.width(), canvas.height());
   };
 };
+
+Game.Screen.BACKGROUND_COLOR = "#aaaabb";
 

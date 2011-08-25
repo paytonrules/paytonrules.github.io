@@ -1,4 +1,4 @@
-Game.FixedStepGameLoop = function(scheduler, updater, drawer) {
+Game.FixedGameLoop = function(scheduler, updater, drawer) {
   var nextGameTick = scheduler.getTicks();
   var imageList;
 

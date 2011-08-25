@@ -10,7 +10,7 @@ task :minify do
   IO.read("build.config").split("\n").select {|file| !file.empty? }.each do |fileName|
     command_string << " --js=#{fileName}"
   end
-  command_string << " --js=script/breakout/config.js --js_output_file=script/breakout.min.js"
+  command_string << " --js_output_file=script/breakout.min.js"
 
   sh command_string
 end

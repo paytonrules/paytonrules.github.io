@@ -88,7 +88,7 @@ describe("Game Screen", function() {
   });
 
   it("clears the screen to the configured clear color", function() {
-    Game.config.BACKGROUND_COLOR = "#aaaabb";
+    Game.Screen.BACKGROUND_COLOR = "#aaaabb";
 
     screen.clear();
 

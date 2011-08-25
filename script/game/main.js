@@ -1,33 +1,46 @@
-Game = {};
-Game.main = function(configuration) {
-  var jquery = configuration.jquery;
-  var document = configuration.document;
-  var canvas = configuration.canvas;
+Game = function(depend) {
+  console.log(Game.Scheduler);
+  console.log(Game.FixedGameLoop);
+  console.log(Game.Assets);
+  console.log(Game.Screen);
+  var dependencies = depend || {}, 
+      Scheduler = dependencies['scheduler'] || Game.Scheduler,
+      GameLoop = dependencies['gameLoop'] || Game.FixedGameLoop,
+      Assets = dependencies['assets'] || Game.Assets,
+      Drawer = dependencies["drawer"],
+      Updater = dependencies["updater"],
+      Screen = Game.Screen,
+      scheduler;
 
-  var assets = new Game.config.assets(jquery);
-  var scheduler = new Game.config.scheduler(this.config.FRAME_RATE);
-  var screen = new Game.Screen(canvas, assets);
-  var drawer = new Game.config.drawer(screen);
-  var updater = new Game.config.updater(assets);
-  var loop = new Game.config.gameLoop(scheduler, updater, drawer);
+  function bindEvents(jquery, document, updater) {
+    jquery(document.documentElement).bind({
+      keydown: function(event) {
+        if (typeof(updater.keydown) !== "undefined") {
+          updater.keydown(event);
+        }
+      },
 
-  this.bindEvents(jquery, document, updater);
-
-  loop.start();
-};
-
-Game.bindEvents  = function(jquery, document, updater) {
-  jquery(document.documentElement).bind({
-    keyup: function(event) {
-      if (typeof(updater.keyup) !== "undefined") {
-        updater.keyup(event);
+      keyup: function(event) {
+        if (typeof(updater.keyup) !== "undefined") {
+          updater.keyup(event);
+        }
       }
-    },
+    });
 
-    keydown: function(event) {
-      if (typeof(updater.keydown) !== "undefined") {
-        updater.keydown(event);
-      }
+  };
+
+  return {
+    start: function(configuration) {
+      var FRAME_RATE = configuration.FRAME_RATE || 60;
+      scheduler = new Scheduler(FRAME_RATE);
+      var assets = new Assets(configuration.jquery);
+      var drawer = new Drawer(new Screen(configuration.canvas, assets));
+      var updater = new Updater(assets);
+      var loop = new GameLoop(scheduler, updater, drawer);
+
+      bindEvents(configuration.jquery, configuration.document, updater); 
+
+      loop.start();
     }
-  });
+  };
 };
