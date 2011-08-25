@@ -1,25 +1,25 @@
-describe("Game.Vector", function() {
-  var Game;
+describe("Eskimo.Vector", function() {
+  var Eskimo;
 
   beforeEach(function() {
-    Game = require("specHelper").Game;
+    Eskimo = require("specHelper").Eskimo;
   });
 
   it("creates a 2d vector", function() {
-    var vector = Game.Vector.create2DVector(1, 4);
+    var vector = Eskimo.Vector.create2DVector(1, 4);
 
     expect(vector.x).toEqual(1);
     expect(vector.y).toEqual(4);
   });
 
   it("has a lengthSquared property", function() {
-    var vector = Game.Vector.create2DVector(3, 4);
+    var vector = Eskimo.Vector.create2DVector(3, 4);
 
     expect(vector.lengthSquared).toEqual(25);
   });
 
   it("returns a new normalized version of the vector", function() {
-    var vector = Game.Vector.create2DVector(3, 4);
+    var vector = Eskimo.Vector.create2DVector(3, 4);
     var normalizedVector = vector.normalized();
 
     expect(normalizedVector.x).toEqual(0.6);
@@ -27,7 +27,7 @@ describe("Game.Vector", function() {
   });
 
   it("Returns a scaled version of the vector", function() {
-    var vector = Game.Vector.create2DVector(3, 4);
+    var vector = Eskimo.Vector.create2DVector(3, 4);
     var scaledVector = vector.scaled(2.0);
 
     expect(scaledVector.x).toEqual(1.2);

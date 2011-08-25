@@ -1,4 +1,4 @@
-Game.Scheduler = function(framesPerSecond) {
+Eskimo.Scheduler = function(framesPerSecond) {
   var timer;
   this.start = function(method) {
     timer = setInterval(function() { method(); }, this.getTickTime());
@@ -13,6 +13,6 @@ Game.Scheduler = function(framesPerSecond) {
   };
 };
 
-Game.Scheduler.prototype.getTicks = function() {
+Eskimo.Scheduler.prototype.getTicks = function() {
   return (new Date()).getTime();
 };

@@ -1,4 +1,4 @@
-Game.Screen = function(canvas, assets) {
+Eskimo.Screen = function(canvas, assets) {
   var context = canvas[0].getContext("2d");
   this.assets = assets;  // For testing, for now
 
@@ -11,10 +11,10 @@ Game.Screen = function(canvas, assets) {
   };
 
   this.clear = function() {
-    context.fillStyle = Game.Screen.BACKGROUND_COLOR;
+    context.fillStyle = Eskimo.Screen.BACKGROUND_COLOR;
     context.fillRect(0, 0, canvas.width(), canvas.height());
   };
 };
 
-Game.Screen.BACKGROUND_COLOR = "#aaaabb";
+Eskimo.Screen.BACKGROUND_COLOR = "#aaaabb";
 

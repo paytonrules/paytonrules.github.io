@@ -1,15 +1,15 @@
-Game.Vector = {
+Eskimo.Vector = {
   create2DVector: function(x, y) {
     function normalized() {
       var length = Math.sqrt(this.lengthSquared);
 
-      return Game.Vector.create2DVector(this.x / length, this.y / length);
+      return Eskimo.Vector.create2DVector(this.x / length, this.y / length);
     };
 
     function scaled(scaleAmt) {
       var normalizedVector = this.normalized();
 
-      return Game.Vector.create2DVector(normalizedVector.x * scaleAmt,
+      return Eskimo.Vector.create2DVector(normalizedVector.x * scaleAmt,
                                         normalizedVector.y * scaleAmt);
     };
 

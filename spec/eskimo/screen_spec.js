@@ -1,5 +1,5 @@
-describe("Game Screen", function() {
-  var assets, Game, Context, context, screen;
+describe("Eskimo Screen", function() {
+  var assets, Eskimo, Context, context, screen;
 
   Context = function() {
     imageList = [];
@@ -59,9 +59,9 @@ describe("Game Screen", function() {
       };
     }());
 
-    Game = require("specHelper").Game;
+    Eskimo = require("specHelper").Eskimo;
     context = new Context();
-    screen = new Game.Screen(canvas, assets);
+    screen = new Eskimo.Screen(canvas, assets);
 
     this.addMatchers( {
       toHaveImageNamed: function(imageName) { 
@@ -88,7 +88,7 @@ describe("Game Screen", function() {
   });
 
   it("clears the screen to the configured clear color", function() {
-    Game.Screen.BACKGROUND_COLOR = "#aaaabb";
+    Eskimo.Screen.BACKGROUND_COLOR = "#aaaabb";
 
     screen.clear();
 

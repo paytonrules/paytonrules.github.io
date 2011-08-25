@@ -1,15 +1,11 @@
-Game = function(depend) {
-  console.log(Game.Scheduler);
-  console.log(Game.FixedGameLoop);
-  console.log(Game.Assets);
-  console.log(Game.Screen);
+Eskimo = function(depend) {
   var dependencies = depend || {}, 
-      Scheduler = dependencies['scheduler'] || Game.Scheduler,
-      GameLoop = dependencies['gameLoop'] || Game.FixedGameLoop,
-      Assets = dependencies['assets'] || Game.Assets,
+      Scheduler = dependencies['scheduler'] || Eskimo.Scheduler,
+      GameLoop = dependencies['gameLoop'] || Eskimo.FixedGameLoop,
+      Assets = dependencies['assets'] || Eskimo.Assets,
       Drawer = dependencies["drawer"],
       Updater = dependencies["updater"],
-      Screen = Game.Screen,
+      Screen = Eskimo.Screen,
       scheduler;
 
   function bindEvents(jquery, document, updater) {

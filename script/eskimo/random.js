@@ -1,3 +1,3 @@
-Game.random = function() {
+Eskimo.random = function() {
   return Math.random();
 }

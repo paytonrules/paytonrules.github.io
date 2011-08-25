@@ -1,5 +1,5 @@
-describe('Game#loop', function() {
-  var gameLoop, scheduler;
+describe('Eskimo#loop', function() {
+  var gameLoop, scheduler, Eskimo;
 
   var MockScheduler = function() {
     var ticks = 0;
@@ -31,7 +31,7 @@ describe('Game#loop', function() {
   };
 
   beforeEach( function() {
-    Game = require("specHelper").Game;
+    Eskimo = require("specHelper").Eskimo;
     scheduler = new MockScheduler();
   });
 
@@ -43,7 +43,7 @@ describe('Game#loop', function() {
       }
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, updater, drawer);
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, updater, drawer);
     gameLoop.loop();
 
     expect(gameLoop.drawn).toBeTruthy();
@@ -57,7 +57,7 @@ describe('Game#loop', function() {
       }
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, updater, drawer);
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, updater, drawer);
     scheduler.tick();
     gameLoop.loop();
 
@@ -72,7 +72,7 @@ describe('Game#loop', function() {
       }
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, updater, drawer);
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, updater, drawer);
     scheduler.tick();
     gameLoop.loop();
 
@@ -92,7 +92,7 @@ describe('Game#loop', function() {
       }
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, updater, drawer);
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, updater, drawer);
     scheduler.tick();
     gameLoop.loop();
 
@@ -112,7 +112,7 @@ describe('Game#loop', function() {
       }
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, updater, drawer);
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, updater, drawer);
     scheduler.tick();
     gameLoop.loop();
     scheduler.tick();
@@ -130,7 +130,7 @@ describe('Game#loop', function() {
     var drawer = {draw: draws.call};
     var updater = {update: updates.call};
 
-    gameLoop = new Game.FixedGameLoop(scheduler, updater, drawer);
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, updater, drawer);
     scheduler.tick();
     gameLoop.loop();
     scheduler.tick();
@@ -145,7 +145,7 @@ describe('Game#loop', function() {
       scheduler.stopped = true;
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, {}, {});
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, {}, {});
     gameLoop.stop();
 
     expect(scheduler.stopped).toBeTruthy();
@@ -156,7 +156,7 @@ describe('Game#loop', function() {
       scheduler.loop = loop;
     };
 
-    gameLoop = new Game.FixedGameLoop(scheduler, {}, {});
+    gameLoop = new Eskimo.FixedGameLoop(scheduler, {}, {});
     gameLoop.start();
 
     expect(scheduler.loop).toEqual(gameLoop.loop);

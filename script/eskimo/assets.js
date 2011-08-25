@@ -1,4 +1,4 @@
-Game.Assets = function(jquery) {
+Eskimo.Assets = function(jquery) {
   var assetList = {};
 
   this.get = function(key) {
@@ -10,7 +10,7 @@ Game.Assets = function(jquery) {
 
   this.loadImage = function(key, src) {
     if (assetList[key]) {
-      throw {name: "Game.AssetAlreadyExists", message: "Asset '" + src + "' already exists"};
+      throw {name: "Eskimo.AssetAlreadyExists", message: "Asset '" + src + "' already exists"};
     } else {
       assetList[key] = jquery("<img src='" + src + "'>");
       assetList[key].load(function() {

@@ -1,4 +1,4 @@
-Game.FixedGameLoop = function(scheduler, updater, drawer) {
+Eskimo.FixedGameLoop = function(scheduler, updater, drawer) {
   var nextGameTick = scheduler.getTicks();
   var imageList;
 

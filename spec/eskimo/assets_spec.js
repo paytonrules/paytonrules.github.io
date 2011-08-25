@@ -1,4 +1,4 @@
-describe("Game.Assets", function() {
+describe("Eskimo.Assets", function() {
   var assets, spiedJQuery;
 
   beforeEach(function() {
@@ -11,8 +11,8 @@ describe("Game.Assets", function() {
       };
     })();
 
-    var GameAssets = require("specHelper").Game.Assets;
-    assets = new GameAssets(spiedJQuery);
+    var Assets = require("specHelper").Eskimo.Assets;
+    assets = new Assets(spiedJQuery);
 
     this.addMatchers( {
       toHaveTagName: function(tag) {
@@ -53,7 +53,7 @@ describe("Game.Assets", function() {
     assets.loadImage('key', 'src');
     expect(function() { 
       assets.loadImage('key', 'error'); 
-    } ).toThrow({name: "Game.AssetAlreadyExists",
+    } ).toThrow({name: "Eskimo.AssetAlreadyExists",
                  message:"Asset 'error' already exists"});
   });
   
