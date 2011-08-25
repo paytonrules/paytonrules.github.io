@@ -1,5 +1,5 @@
 describe("Drawer", function() {
-  var Breakout, drawer, imageList;
+  var Eskimo, drawer, imageList;
 
   var screen = {
     drawImage: function(image, x, y) {
@@ -9,8 +9,8 @@ describe("Drawer", function() {
   };
   
   beforeEach( function() {
-    Breakout = require('specHelper').Breakout;
-    drawer = new Breakout.Drawer(screen);
+    Eskimo = require('specHelper').Eskimo;
+    drawer = new Eskimo.Drawer(screen);
     imageList = [];
   });
 

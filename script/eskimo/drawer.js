@@ -1,4 +1,4 @@
-Breakout.Drawer = function(screen) {
+Eskimo.Drawer = function(screen) {
   this.draw = function(imageList) {
     screen.clear();
     _(imageList).each(function(item) {
