@@ -11,7 +11,6 @@ describe("Eskimo", function() {
     };
 
     var dependencyConfig = {
-      drawer: emptyFunction,
       updater: emptyFunction,
       gameLoop: emptyGameLoop
     };
@@ -134,13 +133,13 @@ describe("Eskimo", function() {
         theUpdater = this;
       };
 
-      var FakeGameLoop = function(irrelevant, irrelevant, updater) {
+      var FakeGameLoop = function(irrelevant, updater, irrelevant) {
         FakeGameLoop.updater = updater;
         this.start = emptyFunction;
       };
 
       Eskimo(dependencies({gameLoop: FakeGameLoop,
-                         updater: GameUpdater})).start(configuration());
+                           updater: GameUpdater})).start(configuration());
 
       expect(FakeGameLoop.updater).toEqual(theUpdater);
     });

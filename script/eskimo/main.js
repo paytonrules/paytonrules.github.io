@@ -3,7 +3,7 @@ Eskimo = function(depend) {
       Scheduler = dependencies['scheduler'] || Eskimo.Scheduler,
       GameLoop = dependencies['gameLoop'] || Eskimo.FixedGameLoop,
       Assets = dependencies['assets'] || Eskimo.Assets,
-      Drawer = dependencies["drawer"],
+      Drawer = dependencies["drawer"] || Eskimo.Drawer,
       Updater = dependencies["updater"],
       Screen = Eskimo.Screen,
       scheduler;
