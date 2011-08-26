@@ -4,12 +4,17 @@ Breakout.Ball = function() {
   var currentVelocity = Eskimo.Vector.create2DVector(0, 0);
   this.x = Breakout.INITIAL_POSITION;
   this.y = Breakout.INITIAL_BALL_ROW;
+  this.location = Eskimo.Point(Breakout.INITIAL_POSITION, Breakout.INITIAL_BALL_ROW);
 
   this.launch = function() {
     if (!launched) {
       currentVelocity = Breakout.LaunchVelocity();
       launched = true;
     }
+  };
+
+  this.move = function(point) {
+    this.location = point;
   };
 
   this.update = function(imageList) {

@@ -4,11 +4,23 @@ describe("Ball", function() {
   beforeEach( function() {
     Breakout = require("specHelper").Breakout;
     ball = new Breakout.Ball();
+    this.addMatchers( {
+      toEqualObject: function(object) {
+        _.isEqual(this.actual, object);
+      }
+    });
   });
 
   it("starts at the INITIAL_POSITION and INITIAL_BALL_ROW", function() {
-    expect(ball.x).toEqual(Breakout.INITIAL_POSITION);
-    expect(ball.y).toEqual(Breakout.INITIAL_BALL_ROW); 
+    expect(ball.location.x).toEqual(Breakout.INITIAL_POSITION);
+    expect(ball.location.y).toEqual(Breakout.INITIAL_BALL_ROW);
+});
+
+  it("can be moved to any location", function() {
+    var location = Eskimo.Point(1, 3);
+    ball.move(location);
+
+    expect(_.isEqual(ball.location, location)).toBeTruthy();
   });
 
   it("adds the ball to its image list on update at the balls current location", function() {
