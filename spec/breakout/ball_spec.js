@@ -14,7 +14,7 @@ describe("Ball", function() {
   it("starts at the INITIAL_POSITION and INITIAL_BALL_ROW", function() {
     expect(ball.location.x).toEqual(Breakout.INITIAL_POSITION);
     expect(ball.location.y).toEqual(Breakout.INITIAL_BALL_ROW);
-});
+  });
 
   it("can be moved to any location", function() {
     var location = Eskimo.Point(1, 3);

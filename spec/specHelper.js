@@ -1,4 +1,3 @@
-var glob = require('glob');
 var fs = require('fs');
 files = fs.readFileSync(__dirname + "/../build.config", 'ascii').split('\n').filter(function(fileName) { return fileName.length > 0; });
 files.forEach(function(fileName, index, array) {
