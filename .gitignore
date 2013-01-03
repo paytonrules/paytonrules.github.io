@@ -3,5 +3,6 @@ _site
 *.swo
 session.vim
 tags
+.DS_Store
 
 script/breakout.min.js

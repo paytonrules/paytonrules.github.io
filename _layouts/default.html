@@ -1,41 +1,25 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>{{ page.title }}</title>
-  <meta name="author" content="<%= @page.author %>" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <link rel="stylesheet" type="text/css" href="/css/layout.css">
-  <script src="script/jquery-1.6.1.min.js"></script>
-  <script src="script/breakout.min.js"></script>
-</head>
-
-<body>
-  <div id="outer">
-    <div id="inner">
-      <div id="heading">
-        <h1>Paytonrules Rants</h1>
-        <h3>The Personal Page of Eric Smith, Software Craftsman</h3>
-        <div id="navigation">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="speaking.html">Speaking</a></li>
-            <li><a href="mentoring.html">Mentoring</a></li>
-          </ul>
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    <meta name="author" content="<%= @page.author %>" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span9">
+          <h1>Paytonrules Rants</h1>
         </div>
       </div>
-
-      <div id="body">
-
-        <div id="content">
+      <div class="row">
+        <div class="span6">
           {{ content }}
         </div>
-        <div id="right_side">
-          <h5>Friends of Mine</h5>
+        <div class="span3">
+          <h5>My Day Job</h5>
           <ul>
             <li><a href="http://www.8thlight.com">8th Light</a></li>
-            <li><a href="http://www.chiphonegroup.org">chiPhone</a></li>
           </ul>
           <h5>Contact me</h5>
           <ul>
@@ -43,12 +27,9 @@
             <li><a href="http://www.linkedin.com/pub/eric-smith/4/3b3/94b">Linked In</a></li>
           </ul>
         </div>
-
-        <div id="footer"/>
-
       </div>
     </div>
-  </div>
-
-</body>
+    <script src="/script/jquery-latest.js"></script>
+    <script src="/script/bootstrap.min.js"></script>
+  </body>
 </html>
