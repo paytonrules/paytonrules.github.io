@@ -247,7 +247,7 @@ feedthequinn.module(1, function(/* parent */){
   'title': {
     'background': {
       'sprite': {
-        'src': 'images/title_screen_background.jpg',
+        'src': './images/title_screen_background.jpg',
         'location': {
           'x': 0,
           'y': 0
@@ -257,12 +257,12 @@ feedthequinn.module(1, function(/* parent */){
     },
     'backgroundMusic': {
       'sound' : {
-        'src': 'songs/The_Mighty_Quinn.MP3'
+        'src': './songs/The_Mighty_Quinn.MP3'
       }
     },
     'start_button': {
       'sprite' : { 
-        'src': 'images/start.png',
+        'src': './images/start.png',
         'location': {
           'x': 450,
           'y': 450
@@ -274,7 +274,7 @@ feedthequinn.module(1, function(/* parent */){
   'levelOne' : {
     'progressBar' : {
       'sprite' : {
-        'src' : 'images/progressBar.png',
+        'src' : './images/progressBar.png',
         'location' : {
           'x' : 300,
           'y' : 20
@@ -283,7 +283,7 @@ feedthequinn.module(1, function(/* parent */){
     },
    'floor' : {
       'sprite' : {
-        'src' : 'images/floor.png',
+        'src' : './images/floor.png',
         'location': {
           'x': 0,
           'y': 0
@@ -304,7 +304,7 @@ feedthequinn.module(1, function(/* parent */){
     },
      'baby' : {
       'sprite' : {
-        'src' : 'images/baby.png',
+        'src' : './images/baby.png',
         'location': {
           'x': 630,
           'y': 425
@@ -314,7 +314,7 @@ feedthequinn.module(1, function(/* parent */){
     },
     'daddy' : {
       'daddy' : {
-        'src' : 'images/king_0.png',
+        'src' : './images/king_0.png',
         'location': {
           'x': 350,
           'y': 270
@@ -372,7 +372,7 @@ feedthequinn.module(1, function(/* parent */){
     },
     'newGameButton': {
       'sprite' : {
-        'src': 'images/restart.png',
+        'src': './images/restart.png',
         'location': {
           'x': 250,
           'y': 325
