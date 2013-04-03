@@ -247,7 +247,7 @@ feedthequinn.module(1, function(/* parent */){
   'title': {
     'background': {
       'sprite': {
-        'src': './images/title_screen_background.jpg',
+        'src': './images/title_screen_background.JPG',
         'location': {
           'x': 0,
           'y': 0
