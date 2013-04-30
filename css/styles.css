@@ -72,3 +72,7 @@ article p {
 article h1 {
   color: #222;
 }
+
+.right-col p {
+  font-weight: bold;
+}
