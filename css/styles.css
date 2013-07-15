@@ -16,11 +16,11 @@ h2 {
 }
 
 .title {
-  padding-bottom: 11px;
+  padding-bottom: 4px;
 }
 
 .title h1 {
-  padding-bottom: 0px;
+  padding-bottom: 2px;
   margin-bottom: 3px;
   font-size: 54px;
 }
@@ -43,7 +43,7 @@ article {
 
 article .date {
   margin-top: 0px;
-  padding-top: 7px;
+  padding-top: 0px;
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
@@ -71,8 +71,4 @@ article p {
 
 article h1 {
   color: #222;
-}
-
-.right-col p {
-  font-weight: bold;
 }
