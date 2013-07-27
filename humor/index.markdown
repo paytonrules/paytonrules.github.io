@@ -3,7 +3,7 @@ layout: default
 title: Humor
 ---
 
-This section of my site is off-topic, profine, and for entertainment purposes only. It does not represent my professional life or that of my employer. There is a reason it's posts do not appear on the front page.
+This section of my site is off-topic, profine, and for entertainment purposes only. It does not represent my professional life or that of my employer. There is a reason its posts do not appear on the front page.
 
 You have been warned.
 

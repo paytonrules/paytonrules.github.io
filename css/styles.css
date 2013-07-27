@@ -1,36 +1,83 @@
+//
+//24.000  1.5
+//20.000  1.25
+//19.200  1.2
+//16.000  1 1
+//15.360  0.96
+//12.800  0.8
+//12.288  0.768
+//10.240  0.64
+//9.830 0.614
+
 body {
   font-family: 'Lato', sans-serif;
-  line-height: 21px;
-  width: 970px;
-  margin-left: 90px;
 }
 
-p {
-  font-size: 16px;
+.left-border {
+  height: 1px;
 }
 
-h1 {
-}
-
-h2 { 
-}
-
-.title {
-  padding-bottom: 4px;
+.site {
+  padding-top: 5em;
 }
 
 .title h1 {
-  padding-bottom: 2px;
-  margin-bottom: 3px;
-  font-size: 54px;
+  font-size: 2.344em;
+  line-height: 0em;
 }
 
-.title p {
+.title h2 {
+  font-size: 0.8em;
   font-style: italic;
-  margin-top: 13px;
-  margin-bottom: 0px;`
+  color: #444;
 }
 
+.links {
+  padding-left: 0;
+  margin-left: 0;
+  font-size: 0.8em;
+}
+
+.links li {
+  display: inline;
+  list-style-type: none;
+}
+
+.links a {
+  text-decoration: none;
+  color: #444;
+}
+
+.blog-sections ul {
+  font-size: 1em;
+  color: #222;
+}
+
+.blog-sections a {
+  text-decoration: none;
+  color: #444;
+}
+
+.blog-sections li {
+  list-style-type: none;
+  margin-bottom: 5px;
+}
+
+.blog-sections {
+  float: left;
+  padding-right: 10px;
+}
+
+p {
+  font-size: 1em;
+}
+
+.content h1 {
+  font-size: 1.25em;
+}
+/*
+h2 { 
+}
 .content {
   width: 560px;
   padding: 0 80px 0 0;
@@ -71,4 +118,4 @@ article p {
 
 article h1 {
   color: #222;
-}
+}*/
