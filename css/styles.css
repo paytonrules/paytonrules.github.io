@@ -1,24 +1,24 @@
-//
-//24.000  1.5
-//20.000  1.25
-//19.200  1.2
-//16.000  1 1
-//15.360  0.96
-//12.800  0.8
-//12.288  0.768
-//10.240  0.64
-//9.830 0.614
+@import '/css/normalize.css';
+@import "http:\/\/fonts.googleapis.com/css?family=Open+Sans:400,700";
+@import '/css/simplegrid.css';
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family:'Open Sans', sans-serif;
+  color: #333;
+  line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
 }
 
 .left-border {
   height: 1px;
 }
 
-.site {
-  padding-top: 5em;
+.heading {
+  padding-top: 2em;
+  margin-bottom: 3em;
 }
 
 .title h1 {
@@ -29,7 +29,6 @@ body {
 .title h2 {
   font-size: 0.8em;
   font-style: italic;
-  color: #444;
 }
 
 .links {
@@ -45,17 +44,21 @@ body {
 
 .links a {
   text-decoration: none;
-  color: #444;
+  color: #333;
+}
+
+.links a {
+  text-decoration: none;
+  color: #333;
 }
 
 .blog-sections ul {
   font-size: 1em;
-  color: #222;
 }
 
 .blog-sections a {
   text-decoration: none;
-  color: #444;
+  color: #333;
 }
 
 .blog-sections li {
@@ -87,11 +90,16 @@ p {
   padding-bottom: 0;
   margin-bottom: 0;
   font-size: 1.5em;
-  color: #444;
 }
 
 .content h2 { 
-  font-size: 1.2em;
-  color: gray;
+  font-size: 1.1em;
 }
+
+.warning {
+  font-size: 0.8em;
+  font-style: italic;
+  padding-bottom: 2em;
+}
+
 
