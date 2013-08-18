@@ -12,6 +12,6 @@ title: Instant Immersion with Leilani
 
 <p>Past Articles</p>
 {% for post in site.categories['language-stars'] offset:1 %}
-<p><a href={{post.url}}>{{post.title}}</a></p>
+<p><a href="{{post.url}}">{{post.title}}</a></p>
 {% endfor %}
 
