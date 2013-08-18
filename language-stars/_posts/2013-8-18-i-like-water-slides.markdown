@@ -1,9 +1,9 @@
 ---
 layout: language-stars
-title: I Like Water Slides
+title: Does that make me craaaaazayyy
 ---
 
-It's been a crazy week, even by Smith family standards. It began last Sunday with a trip up to the Kalahari Resort in Wisconsin Dells. I was a speaker at "That Conference" in the resort and was able to take the family with me. All the kids had a great time taking advantage of the indoor and outdoor water parks, and Leilani loved sleeping in the sofa-bed. Daddy did not.
+It's been a crazy week, even by Smith family standards. It began last Sunday with a trip up to the Kalahari Resort in Wisconsin Dells. I was a speaker at [That Conference](http://www.thatconference.com) in the resort and was able to take the family with me. All the kids had a great time taking advantage of the indoor and outdoor water parks, and Leilani loved sleeping in the sofa-bed. Daddy did not.
 
 That ended Tuesday and would have been enough excitement but instead of coming home we came straight to my in-laws. We're getting hardwood floors installed and it's taking longer than we thought. It's wonderful of my wife's parents to host us but I miss my own bed. I think Leilani thinks we're camping and is loving sleeping on the floor. Much like the sofa-bed, I'm not. Crysti offered to take turns but she's got a cold and I don't think the floor would help.
 

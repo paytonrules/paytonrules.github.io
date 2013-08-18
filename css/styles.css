@@ -52,18 +52,8 @@ h1, h2, h3, h4, h5 {
   color: #333;
 }
 
-.links a {
-  text-decoration: none;
-  color: #333;
-}
-
 .blog-sections ul {
   font-size: 1em;
-}
-
-.blog-sections a {
-  text-decoration: none;
-  color: #333;
 }
 
 .blog-sections li {
@@ -100,6 +90,13 @@ p {
 .content h2 { 
   font-size: 1.1em;
 }
+
+.links a {
+  text-decoration: none;
+  color: #333;
+}
+
+
 
 .warning {
   font-size: 0.8em;
