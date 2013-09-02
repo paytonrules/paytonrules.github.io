@@ -10,8 +10,5 @@ title: Instant Immersion with Leilani
   {{post.content}}
 </article>
 
-<p>Past Articles</p>
-{% for post in site.categories['language-stars'] offset:1 %}
-<p><a href="{{post.url}}">{{post.title}}</a></p>
-{% endfor %}
+<p><a href="language-stars/archive.html">Archive</a></p>
 
