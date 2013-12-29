@@ -1,0 +1,9 @@
+Techs for the years.
+
+Observer patterns to decouple.
+
+Optimizing Cocos. 
+
+Port to cocos3 and SpriteBuilder.
+
+Apportable!
