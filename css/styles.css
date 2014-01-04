@@ -87,6 +87,11 @@ p {
   font-size: 1.5em;
 }
 
+.content h1 a {
+  text-decoration: none;
+  color: #333;
+}
+
 .content h2 { 
   font-size: 1.1em;
 }
@@ -95,8 +100,6 @@ p {
   text-decoration: none;
   color: #333;
 }
-
-
 
 .warning {
   font-size: 0.8em;
