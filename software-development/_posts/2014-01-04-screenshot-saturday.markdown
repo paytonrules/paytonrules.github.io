@@ -2,7 +2,6 @@
 layout: default
 title: Screenshot Saturday
 ---
-
 ## Game Update
 
 First things first - it's time for a screenshot:
