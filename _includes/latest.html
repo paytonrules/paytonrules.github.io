@@ -1,0 +1,13 @@
+<article>
+  <h1 class="title">
+    <a href="{{site.categories['software-development'][0].url}}">
+      {{site.categories['software-development'][0].title}}
+    </a>
+  </h1>
+  <p class="date">
+    {{ site.categories['software-development'][0].date | date: "%B %d, %Y" }}
+  </p>
+  {{site.categories['software-development'][0].content}}
+</article>
+
+
