@@ -4,5 +4,6 @@ _site
 session.vim
 tags
 .DS_Store
+.bundle/
 
 script/breakout.min.js
