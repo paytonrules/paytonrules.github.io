@@ -92,7 +92,7 @@ p {
   color: #333;
 }
 
-.content h2 { 
+.content h2 {
   font-size: 1.1em;
 }
 
@@ -105,4 +105,26 @@ p {
   font-size: 0.8em;
   font-style: italic;
   padding-bottom: 2em;
+}
+
+.quote {
+  font-style: italic;
+  padding-left: 2em;
+}
+
+.call_to_action {
+  font-size: 2em;
+}
+
+.call_to_action div {
+  background-color: #486F95;
+  display: table;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 30px 30px 30px 30px;
+}
+
+.call_to_action a {
+  text-decoration: none;
+  color: #FFF;
 }
