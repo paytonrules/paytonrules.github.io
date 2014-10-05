@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: ebomb
 title: Marketing Some More
 ---
 

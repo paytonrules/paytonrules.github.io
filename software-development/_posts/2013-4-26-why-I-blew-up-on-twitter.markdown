@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: ebomb
 title: My Twitter Explosion
 ---
 
@@ -15,7 +15,7 @@ There's probably nothing wrong with the occsasional rage tweet, and my friends g
 
 <h2><blockquote class="twitter-tweet"><p>Why is getting 3D models imported always such a pain in the ass, regardless of technology?</p>&mdash; Eric Smith (@paytonrules) <a href="https://twitter.com/paytonrules/status/325761134705659904">April 21, 2013</a></blockquote></h2>
 
-Sometime in Febuary I started using Unity3D again. I've had some troubles with Unity in the past, because it likes to corrupt the scene files, so I was reluctant. When it's working it's great, but when it crashes you're screwed. Still I made a little progress and even got a TDD loop working with the C# code. I submitted a talk about it to Chicago Code Camp, and began working on a demo. 
+Sometime in Febuary I started using Unity3D again. I've had some troubles with Unity in the past, because it likes to corrupt the scene files, so I was reluctant. When it's working it's great, but when it crashes you're screwed. Still I made a little progress and even got a TDD loop working with the C# code. I submitted a talk about it to Chicago Code Camp, and began working on a demo.
 
 March was interrupted by some project work, so it was really April when I started really making progress on my project. I had a demo done last weekend, last Saturday to be precise, with only one bug to fix. I was stumped so I fired up the MonoDevelop debugger.
 
@@ -41,7 +41,7 @@ Probably yes, with reservations. When Unity works it's _FUCKING AWESOME_. Writin
 
 ### Source Control
 
-In order to get past the frequent isssues with Unity corrupting my scenes, I need source control. Unity naturallyer recommends their asset manager, which costs money and is centralized. Yuck. I want to use git and thanks to [Scott Parker](http://spparker.com) for showing me how to use it correctly with Unity3D. You'll want to follow [these directions](http://docs.unity3d.com/Documentation/Manual/ExternalVersionControlSystemSupport.html) and probably tweak your git ignore file. That should at least give you a restore point when thigns go bad. 
+In order to get past the frequent isssues with Unity corrupting my scenes, I need source control. Unity naturallyer recommends their asset manager, which costs money and is centralized. Yuck. I want to use git and thanks to [Scott Parker](http://spparker.com) for showing me how to use it correctly with Unity3D. You'll want to follow [these directions](http://docs.unity3d.com/Documentation/Manual/ExternalVersionControlSystemSupport.html) and probably tweak your git ignore file. That should at least give you a restore point when thigns go bad.
 
 ### Automatic Backup
 
@@ -53,7 +53,7 @@ I kinda glossed over the problems with MonoGame, because this blog has gotten lo
 
 ### Model importing
 
-I'm a Mac user, but the XNA Content pipeline hasn't been ported to MonoGame so that means using Visual Studio to import the models. This is an exceptionally tedious process: 
+I'm a Mac user, but the XNA Content pipeline hasn't been ported to MonoGame so that means using Visual Studio to import the models. This is an exceptionally tedious process:
 
 * Download a free 3D model from OpenGameArt or Turbo Squid
 * Copy it to my Windows VM

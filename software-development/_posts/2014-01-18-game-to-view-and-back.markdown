@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: ebomb
 title: Scaling and Abstractions
 ---
 

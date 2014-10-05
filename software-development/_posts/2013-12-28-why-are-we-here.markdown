@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: ebomb
 title: Why of this blog
 ---
 
@@ -25,4 +25,4 @@ My blogs have tendency to turn into magazine articles. I picked a random article
 
 These will be blogs. I won't spend time editing, proofreading, or adding pictures. Taking too long to write them leads to not writing them at all.
 
-Yeah this blog is probably a New Years resolution, and it's unlikely to be interesting unless I'm very successful and people the comments useful. But it is short and quick.  Now about focus... 
+Yeah this blog is probably a New Years resolution, and it's unlikely to be interesting unless I'm very successful and people the comments useful. But it is short and quick.  Now about focus...

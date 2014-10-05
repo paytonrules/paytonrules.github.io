@@ -1,6 +1,6 @@
 ---
-layout: default
-title: On Output Arguments
+layout: ebomb
+title: Are Output Arguments Bad?
 ---
 In _Clean Code_ Bob Martin disparages output arguments, saying "In general output arguments should be avoided." But are they always bad? This was the question [posed](https://groups.google.com/forum/#!topic/clean-code-discussion/uLOAGBPRcMU) at the Clean Coders google group that prompted this post.
 

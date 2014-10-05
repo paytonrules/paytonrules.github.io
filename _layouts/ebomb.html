@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ page.title }}</title>
+    <meta name="author" content="<%= @page.author %>" />
+    <link href="/css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class='grid grid-pad heading'>
+      <div class='col-2-12 left-border'></div>
+      <div class='col-6-12'>
+        <div class="title">
+          <h1>Paytonrules Rants</h1>
+          <h2>Test Driven Development Fixes</h2>
+        </div>
+      </div>
+      <div class="col-4-12">
+        <ul class="links">
+          <li><a href="/games/index.html">Games</a> / </li>
+          <li><a href="http://www.9thlight.com">Day Job</a> / </li>
+          <li><a href="https://github.com/paytonrules">GitHub</a> / </li>
+          <li><a href="http://twitter.com/paytonrules">Twitter</a> / </li>
+          <li><a href="http://www.linkedin.com/pub/eric-smith/4/3b3/94b">LinkedIn</a> </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class='grid grid-pad'>
+
+      <div class='col-2-12'>
+        <div class='blog-sections'>
+          <ul>
+            <li><a href="/software-development/index.html">Development</a></li>
+            <li><a href="/humor/index.html">Humor</a></li>
+         </ul>
+        </div>
+      </div>
+      <div class="col-7-12 blog-sections">
+        <header>
+          <h1>{{ page.title }}</h1>
+        </header>
+         <div class="content">
+          {{ content }}
+        </div>
+        <footer style="padding:1em 0 0 0;font-style: italic">
+          <p>Have you started doing TDD but are struggling with difficult tests, long builds or just don't know how to test parts of your legacy codebase?</p>
+          <p>Sign up to my newsletter to get tips and tricks for making TDD effective in your codebase, regardless of language or platform.</p>
+          <!-- Begin MailChimp Signup Form -->
+          <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+          <style type="text/css">
+            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+          </style>
+          <div id="mc_embed_signup">
+            <form action="//rush-industries.us8.list-manage.com/subscribe/post?u=f45a2d123fa8964df7de31f7a&amp;id=28298291e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+
+                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text" name="b_f45a2d123fa8964df7de31f7a_28298291e9" tabindex="-1" value=""></div>
+                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+              </div>
+            </form>
+          </div>
+
+          <!--End mc_embed_signup-->
+        </footer>
+      </div>
+   </div>
+
+    <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body>
+</html>

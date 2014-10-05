@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: ebomb
 title: Re-Solutions
 ---
 
@@ -52,7 +52,7 @@ I've begun tracking my time doing game development. I immediately saw I got one 
 
 * Dev every day. Even if only for a few minutes. I created a Seinfeld Chain at http://dontbreakthechain.com/
 * Track time spent.  I'm using RescueTime to track this. Rather than focus on release dates focus on putting the time in. The games will come out.
-* Marketing. I am going to need to develop a marketing plan, and I'll do that Saturday, then integrate that into the system. 
+* Marketing. I am going to need to develop a marketing plan, and I'll do that Saturday, then integrate that into the system.
 
 ## Write More
 
