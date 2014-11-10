@@ -5,7 +5,7 @@ title: Paytonrules Rants
 
 {% include latest.html %}
 
-<h2>Previously..</h2>
+<h2>Greatest Hits</h2>
 
 <ul>
   {% for post in site.categories['software-development'] offset:1 %}
