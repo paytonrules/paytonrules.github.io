@@ -18,7 +18,7 @@ title: TDD Fixes
   </p>
 
   <p>
-    Each time you come upon a new pile of spaghetti you can make incremental changes to improve it. You can add one test to that thousand line method. You can isolate that legacy Access Database. You can replace a pile of crap with a codebase that's a joy to work with. Clean, structured, fast and working! Vest of all adding new features will actually get FASTER over time. Can you imagine - getting stories done faster and better than you did six months ago? The dreaded Agile Estimation meetings even begin to take less time as you have a clarity on stories you never had before. Eventually you become your group's version of the Agile Consultant, giving advice and solutions that are specific to your current situation. You can even enjoy your work if you so choose.
+    Each time you come upon a new pile of spaghetti you can make incremental changes to improve it. You can add one test to that thousand line method. You can isolate that legacy Access Database. You can replace a pile of crap with a codebase that's a joy to work with. Clean, structured, fast and working! Best of all adding new features will actually get FASTER over time. Can you imagine - getting stories done faster and better than you did six months ago? The dreaded Agile Estimation meetings even begin to take less time as you have a clarity on stories you never had before. Eventually you become your group's version of the Agile Consultant, giving advice and solutions that are specific to your current situation. You can even enjoy your work if you so choose.
   </p>
 
   <p>
@@ -29,7 +29,7 @@ title: TDD Fixes
     <li>How to get started writing clean code today</li>
     <li>Simple Refactorings you can use right now</li>
     <li>How to add tests without losing hours or days to testing tasks</li>
-    <li>You'll see how to aoid the bottlenecks that give clean code a bad name</li>
+    <li>You'll see how to avoid the bottlenecks that give clean code a bad name</li>
   </ul>
   <p>The guide uses real examples, not toys, to demonstrate clean code and ugly code so you can tell the difference. You'll have a step by step process so you can check in code that's better each and every time WITHOUT slowing down delivering features. You'll get code examples from the real world, with UIs, databases and web technologies. Finally you'll learn the steps for dealing with legacy code so that you can apply the teachings to your real life project.</p>
   <p>If you've even explained to your boss that you're all done "except for the tests" or seen a product you worked on outsourced so consultants can rewrite it, then you know just how difficult it is to write clean code that works every time. You don't need to keep trading quality or time. The Guide To Real World TDD can bridge the gap between theory and practice so you can succeed every day at your job.</p>
