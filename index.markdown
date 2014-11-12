@@ -14,7 +14,7 @@ title: TDD Fixes
   </p>
 
   <p>
-    Clean code doesn't have to take forever! Each time you commit code you can make it a little bit easier to read. Instead adding a couple more hacks on the method from hell you can clean a some of the method up, add a few more tests, and even deliver to QA with time for for them to test. You can, slowly but surely, turn that JQuery spaghetti into clean/structured code that's fun to work with. Best of all when you're delivering cleaner, bug-free code on time your boss isn't going to care how you do it! Those talks where you have to convince management to do the right thing are a thing of the past. Crunch mode? When you're delivering bug free code on time it's a thing of the past.
+    Clean code doesn't have to take forever! Each time you commit code you can make it a little bit easier to read. Instead of adding a couple more hacks on the method from hell you can clean the method up, add a few more tests, and even deliver to QA with time for for them to test. You can, slowly but surely, turn that JQuery spaghetti into clean/structured code that's fun to work with. Best of all when you're delivering cleaner, bug-free code on time your boss isn't going to care how you do it! Those talks where you have to convince management to do the right thing are a thing of the past. Crunch mode? When you're delivering bug free code on time it's a thing of the past.
   </p>
 
   <p>
