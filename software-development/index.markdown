@@ -1,5 +1,5 @@
 ---
-layout: empty-page
+layout: blog
 title: Software Development
 ---
 

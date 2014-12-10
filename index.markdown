@@ -1,10 +1,8 @@
 ---
-layout: empty-page
-title: TDD Fixes
+layout: ebomb
+title: Agile Let Us Down
 ---
 <article>
-  <h1 class="title">Agile Let Us Down</h1>
-
   <p>
     Remember when Scrum (or XP or Kanban or Rational Unified Process) was going to change the world? Your self-directed team was going to ship product every month (or week!) by writing clean tested code that actually did what the customer wanted. Your boss was behind it, and your bosses boss was behind it. Deadlines, Crunch Mode and shipping terrible crap would be a thing of the past. You could even enjoy your job!
   </p>
