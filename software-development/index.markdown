@@ -1,5 +1,5 @@
 ---
-layout: ebomb
+layout: empty-page
 title: Software Development
 ---
 
