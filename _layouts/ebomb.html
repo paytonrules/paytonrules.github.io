@@ -4,71 +4,81 @@
     <title>{{ page.title }}</title>
     <meta name="author" content="Eric Smith" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/syntax.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/leilani.png" />
   </head>
   <body>
-    <div class='grid grid-pad heading'>
-      <div class='col-2-12 left-border'></div>
-      <div class='col-6-12'>
-        <div class="title">
-          <h1>Real World Clean Code</h1>
+
+    <div class="container">
+      <div class="row header">
+        <div class="two columns">
+          <h1 class="name">Eric Smith</h1>
+        </div>
+        <div class="seven columns">
+          <h1 class='guide'>
+            <a href="/index.html">The Guide to Real World TDD</a>
+          </h1>
         </div>
       </div>
-      <div class="col-4-12">
-        <ul class="links">
-          <li><em><a href="/software-development/index.html">Blog</a></em> / </li>
-          <li><a href="http://www.8thlight.com">Day Job</a> / </li>
-          <li><a href="https://github.com/paytonrules">GitHub</a> / </li>
-          <li><a href="http://twitter.com/paytonrules">Twitter</a> / </li>
-          <li><a href="http://www.linkedin.com/pub/eric-smith/4/3b3/94b">LinkedIn</a> </li>
-        </ul>
+
+      <div class="row">
+        <div class='three columns'>
+          <h5>Eric Smith</h5>
+          <img style="border-radius: 10px;" src="http://www.gravatar.com/avatar/50a0ab317d34860d16f8e2f9da4313fc" alt="A picture of me"/>
+          <p>
+            Polyglot developer, trainer, writer and indie game developer.
+            Writer of the <a href="/index.html">The Guide to Real World TDD</a>. Director
+            of Training Services at 8th Light.
+          </p>
+          <ul class="links">
+            <li><em><a href="/software-development/index.html">Blog</a></em> / </li>
+            <li><a href="http://www.8thlight.com">Day Job</a> / </li>
+            <li><a href="https://github.com/paytonrules">GitHub</a> / </li>
+            <li><a href="http://twitter.com/paytonrules">Twitter</a> </li>
+          </ul>
+          <div class='greatest-hits'>
+            <ul>
+              <li>Greatest Hits</li>
+              <li><a href="/software-development/2014/10/10/simple-legacy-tricks.html">Simple Legacy Code Tricks</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="seven columns">
+          <h1 class="title">{{page.title}}</h1>
+          <div class="content">
+            {{ content }}
+          </div>
+          <div style="padding:1em 0 0 0;font-style: italic">
+            <p>Want to learn how to write clean, working code fast? </p>
+            <p>Sign up to my newsletter to get early access to the Guide to Real World TDD and tips and tricks for making TDD effective in your codebase, regardless of language or platform.</p>
+
+            <!-- Begin MailChimp Signup Form -->
+            <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+            <style type="text/css">
+              #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+              /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+              We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+            </style>
+            <div id="mc_embed_signup">
+              <form action="//paytonrules.us8.list-manage.com/subscribe/post?u=f45a2d123fa8964df7de31f7a&amp;id=28298291e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                  <label for="mce-EMAIL">Subscribe to our mailing list</label>
+                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div style="position: absolute; left: -5000px;"><input type="text" name="b_f45a2d123fa8964df7de31f7a_28298291e9" tabindex="-1" value=""></div>
+                  <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </div>
+              </form>
+            </div>
+
+            <!--End mc_embed_signup-->
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class='grid grid-pad'>
-
-      <div class='col-2-12'>
-        <div class='greatest-hits'>
-          <ul>
-           <li>Greatest Hits</li>
-           <li><a href="/software-development/2014/10/10/simple-legacy-tricks.html">Simple Legacy Code Tricks</a></li>
-         </ul>
-        </div>
-      </div>
-      <div class="col-7-12 blog-sections">
-        <h1 class="title">{{page.title}}</h1>
-        <div class="content">
-          {{ content }}
-        </div>
-        <footer style="padding:1em 0 0 0;font-style: italic">
-          <p>Want to learn how to write clean, working code fast? </p>
-          <p>Sign up to my newsletter to get early access to the Guide to Real World TDD and tips and tricks for making TDD effective in your codebase, regardless of language or platform.</p>
-
-          <!-- Begin MailChimp Signup Form -->
-          <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-          <style type="text/css">
-            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-          </style>
-          <div id="mc_embed_signup">
-            <form action="//paytonrules.us8.list-manage.com/subscribe/post?u=f45a2d123fa8964df7de31f7a&amp;id=28298291e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-              <div id="mc_embed_signup_scroll">
-                <label for="mce-EMAIL">Subscribe to our mailing list</label>
-                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;"><input type="text" name="b_f45a2d123fa8964df7de31f7a_28298291e9" tabindex="-1" value=""></div>
-                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-              </div>
-            </form>
-          </div>
-
-          <!--End mc_embed_signup-->
-        </footer>
-      </div>
-   </div>
-
     <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
 </html>
