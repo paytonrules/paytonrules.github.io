@@ -11,17 +11,17 @@ I saw this on programming.reddit.com the other day, in a converstation about uni
 I answered there, but I wanted to take a moment to expand my answer. The first is the simple answer, that you shouldn't verify more than on mock object. This can occasionally be sneaky. I'll use this example from a psdeudo-ruby:
 
 {% highlight ruby %}
-    user_mock = make_mock(User)
-    mailer_mock = make_mock(Mailer)
+user_mock = make_mock(User)
+mailer_mock = make_mock(Mailer)
 
-    user_mock.expect(:get_email).and_return("me@me.com")
-    mailer_mock.expect(:mail).with("me@me.com", "message")
+user_mock.expect(:get_email).and_return("me@me.com")
+mailer_mock.expect(:mail).with("me@me.com", "message")
 
-    sender = new MailCoordinator(user_mock, mailer_mock)
-    sender.mail("Message")
+sender = new MailCoordinator(user_mock, mailer_mock)
+sender.mail("Message")
 
-    user_mock.verify()
-    mailer_mock.verify()
+user_mock.verify()
+mailer_mock.verify()
 {% endhighlight %}
 
 This test will run super fast and verify I get the email from the user and send it to the mailer ..buuttt ... it doesn't teach me about the design, it forces the design. There's no real way to make this pass other than getting the email from the user and sending it to the mailer. Refactoring? Nope can't do that. Would break the test. And do I know this actually works? Heck no! I have to actually run the app to be sure my code works. Which means I'm not getting any useful feedback from this test. It's even hard to read the test.

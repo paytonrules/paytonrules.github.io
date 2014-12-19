@@ -19,6 +19,7 @@ Imagine an if statement, buried in a million lines of code.  Maybe it's this:
 if (x > 2)
   x++;
 ```
+
 You know that the correct code is:
 
 ```
@@ -37,7 +38,7 @@ Now you can write tests against NewValueForX.  It's simple.
 ## Subclass and Override
 In GUI applications it's common for objects to intermingle UI and business logic, particularly when using a framework. Take this iOS example:
 
-```
+{% highlight objective-c %}
 -(void) signInUnTestable:(id) sender
 {
   if (!authenticate(self.emailAddress.text, self.password.text)) {
@@ -50,11 +51,11 @@ In GUI applications it's common for objects to intermingle UI and business logic
   }
 
 }
-```
+{% endhighlight %}
 
 Now that UIAlertView won't work unless you start automating the GUI, and that's bad. But what if you did this?
 
-```
+{% highlight objective-c %}
 -(void) signInTestable:(id) sender
 {
 
@@ -71,11 +72,11 @@ Now that UIAlertView won't work unless you start automating the GUI, and that's 
     otherButtonTitles:NULL];
   [alert show];
 }
-```
+{% endhighlight %}
 
 Now you can make a class in your tests that overrides showAlert:
 
-```
+{% highlight objective-c %}
 @interface TestableViewController : SignInViewController
 
 @end
@@ -84,7 +85,7 @@ Now you can make a class in your tests that overrides showAlert:
 -(void) showAlert {
 }
 @end
-```
+{% endhighlight %}
 
 This isn't a recommended practice on Test Driven code, but it works great to get Legacy code under test. I use also use it when coding against third party frameworks, as those often weren't designed with testability in mind and give me fewer options. In short frameworks are often Legacy code.
 
