@@ -131,7 +131,7 @@ This process isn't particularly time consuming. This example took about 2 hours 
 
 Now pick something you're struggling with, and write your own quiz. I'd love to hear about them!
 
-###  Reference ###
+##  Reference ##
 
 A great read on JavaScript's this from [Yehuda Katz](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/).
 
