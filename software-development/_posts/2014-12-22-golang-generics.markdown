@@ -50,15 +50,15 @@ Go has a cool feature where you can attach functions to any type including primi
 So assuming I'm mapping over a slice of values frequently in Go I can more easily deal with this by adding a small snippet of code:
 
 {% highlight Go %}
-  func collect(numbers []int, f mapper) []int {
-    newSlice := make([]int, 0, len(numbers))
+func collect(numbers []int, f mapper) []int {
+  newSlice := make([]int, 0, len(numbers))
 
-    for _, num := range numbers {
-      newSlice = append(newSlice, num+2)
-    }
-
-    return newSlice
+  for _, num := range numbers {
+    newSlice = append(newSlice, num+2)
   }
+
+  return newSlice
+}
 {% endhighlight %}
 
 Now I can call it this way:
