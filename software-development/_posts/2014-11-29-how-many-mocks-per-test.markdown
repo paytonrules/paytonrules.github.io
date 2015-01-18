@@ -8,7 +8,7 @@ I saw this on programming.reddit.com the other day, in a converstation about uni
 > No more than one mock per test? If you're trying to isolate a specific thing, you should mock out everything that's not that thing, right?
 > --<cite>[horse\_continuum](http://www.reddit.com/user/horse_continuum)
 
-I answered there, but I wanted to take a moment to expand my answer. The first is the simple answer, that you shouldn't verify more than on mock object. This can occasionally be sneaky. I'll use this example from a psdeudo-ruby:
+I answered there, but I wanted to take a moment to expand my answer. The first is the simple answer, that you shouldn't verify more than one mock object. This can occasionally be sneaky. I'll use this example from a psdeudo-ruby:
 
 {% highlight ruby %}
 user_mock = make_mock(User)

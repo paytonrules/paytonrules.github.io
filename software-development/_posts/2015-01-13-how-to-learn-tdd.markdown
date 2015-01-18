@@ -3,7 +3,7 @@ layout: ebomb
 title: The Path to Learning TDD
 ---
 
-It's a common refrain. You've heard about TDD ard about it and you want to learn, but when you try to apply it to an actual project you can't see how to do it. For example see [this question](http://www.reddit.com/r/dotnet/comments/2nnlnv/what_is_the_best_way_to_learn_tdd/) on reddit or heck the premise of [my website](http://paytonrules.com).
+It's a common refrain. You've heard about TDD and about it and you want to learn, but when you try to apply it to an actual project you can't see how to do it. For example see [this question](http://www.reddit.com/r/dotnet/comments/2nnlnv/what_is_the_best_way_to_learn_tdd/) on reddit or heck the premise of [my website](http://paytonrules.com).
 
 Fortunately it's not that hard to learn TDD, to the point where you'll no longer be worried about getting "good at TDD" but will move in to "good at software" in a few weeks. If you completed this program you wouldn't be an expert, but you'd be able to apply Test Driven Development to your projects and see benefits.
 
@@ -41,7 +41,7 @@ Now that you've made Mastermind and it's working and wonderful, pick your projec
 
 You're ready to start doing TDD at your job. The challenges will be different of course, but you'll have done the research and practice necessary to be ready to tackle them. Will you be perfect? No. There's plenty more learning to do, like there always is in software, but you've got enough "test infection" to be successful.
 
-This plan, assuming you're already a developer with some experience, should really only take a few weeks. It's two books and one fairly simple application. When you're done you'll have the foundational knoweledge (from books) and practice (from katas) to practice TDD confidently.
+This plan, assuming you're already a developer with some experience, should really only take a few weeks. It's two books and one fairly simple application. When you're done you'll have the foundational knowledge (from books) and practice (from katas) to practice TDD confidently.
 
 ##### Further Reading
 
