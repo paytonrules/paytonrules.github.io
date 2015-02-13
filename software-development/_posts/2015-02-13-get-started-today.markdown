@@ -1,25 +1,27 @@
 ---
 layout: ebomb
-title: Get Started Writing Tests Now
+title: Write Tests Now
 ---
 
 Many of you have been generous enough to answer a few questions from me when you sign up for my newsletter, the responses tend to look a lot like this:
 
 >I'm a software developer and I think TDD is great, but I have tons and tons of legacy code and I don't know how to get started. The organization wants to be Agile but they won't test the millions of lines of software already written. How do I get started when all this code is already there?
 
-There's no question that trying to get a huge codebase under test is a daunting task. When you look around and see the communities that started with tests talking about fearless refactoring and continuous deployment it's easy to think "We'll never get there!" Meeting your schedule, fixing your bugs, and writing new features all while trying new techniques seems impossible. I know, I get it, I've been there. The temptation to rewrite the WHOLE thing is strong.
+There's no question that trying to get a huge codebase under test is a daunting task. When you look around and see the communities that started with tests talking about fearless refactoring and continuous deployment it's easy to think "We'll never get there!" Meeting your schedule, fixing your bugs, and writing new features all while adding TDD seems impossible. I know, I get it, I've been there. The temptation to rewrite the WHOLE thing is strong.
 
 DO NOT LISTEN!
 
-I hate to sound mean, but if you couldn't use TDD when you built your current project and you can't use TDD now, then what makes you think you'll get it right on a brand new one. You're a beginner, you're gonna screw things up, and now you'll be blaming the tests. No start using tests now on your existing code. Here's a few ways to make things simpler.
+Let me be blunt.  If you didn't use TDD when you built your current system and you can't use TDD now, then you won't get a brand new system right either. Instead you're gonna screw things up and blame the tests.
 
-### Don't Add Them Now
+Start using tests now on your existing code. Here's a few ways to make things simpler.
 
-The first thing many teams do when adopting TDD is to try and add tests to all the existing code. This does almost no good. It reinforces a bad design, encourages bad habits, takes an enormous amount of time, and prevents very few defects.
+#### Don't Add Them To the Old Code
+
+The first thing many teams do when adopting TDD is to try and add tests to all the existing code. This does almost no good. It reinforces a bad design, encourages bad habits, takes an enormous amount of time, and prevents very few defects. There's no "Drive" in the development here, just a mandate.
 
 If there is an initiative to write unit tests for everything, end it. It's not worth it.
 
-### Perfect is the Enemy of Good
+#### Perfect is the Enemy of Good
 
 Any unit testing initiative will run into problems. Maybe everybody shares the database so you can't test it. Maybe too much of the business logic is in the UI so you can't test that. Maybe everything depends on a JSON server running. Really there's any number of problems you could run into that prevent unit testing, all of which are probably solvable but not necessarily in a reasonable time frame.
 
@@ -54,13 +56,11 @@ Does this mean I've given up on writing the tests I want for HTML5 video permane
 
 This brings me to my second point...
 
-### Test What Changes
+#### Test What Changes
 
-Don't add tests to everything, but do test what changes. Some teams add Unit Testing as a task to "what is done" but I frown on that because it implies Unit Tests are a separate step. A step that can be cut to save time. You know you're doing Unit Testing right when you can no longer estimate it as a separate task, it's too integrated with your development practice.
+Don't add tests to everything, test what changes. Simple. You know what changes a lot? Stuff that's broken! You know what doesn't change a lot? Stuff that works! This limits the tests to the things that really need it.
 
-That said moving forward write unit tests for what changes. You know what changes a lot? Stuff that's broken! You know what doesn't change a lot? Stuff that works! This limits the changes to the things that really need it.
-
-### Review the Tests First
+#### Review the Tests First
 
 You won't get perfect coverage on your initial tests. You'll probably skip the data store, or the UI, or both. That's okay. You'll start extracting logic into a domain model that's not just a reflection of the database. The design will start to look weird. That's also okay - provided the team understands why the hell you're doing it.
 
@@ -76,22 +76,18 @@ In addition be up front about the tests that weren't written. Discuss problems t
 
 Finally don't let people do a code review without the tests.
 
-### Higher Level Tests
+#### Higher Level Tests
 
 Sometimes higher level tests are needed so you can break up code into testable bits. Go ahead and write them. Use what ever language is simplest for you to write them in. Use Cucumber, use Selenium, use your test framework, use a bash script I don't care. You're looking for safety so you can make changes.
 
-The point isn't to build a huge amount of integration tests. It's to allow you to make changes without breaking the existing code. Do whatever is necessary to ensure safety - FAST.
+The point isn't to build a huge amount of integration tests. It's to allow you to make changes without breaking the existing code. Do whatever is necessary to ensure safety and get feedback - FAST.
 
-### Sprout New Code
+#### Sprout New Code
 
 When you're making new changes create new code. Everybody always wants to make the greenfield project where everything is perfect. Well every time you use File->New Class you've created your own tiny greenfield project. Write new code and call into it.
 
-### Add CI
+#### Add CI
 
 Finally once you have a few tests add this to your build process. Ideally you should stop the build every time the tests fail. This won't happen at first, because people will make mistakes in the tests and they won't trust the build, but eventually you'll see that every time the CI fails it's because you just caught a bug before QA or your customer did. You'll see the number of tests going up and you'll want to make more.  It's fun, and it encourages the good behavior.
 
 Everything I wrote about, except for CI, can be done now, with your next feature. It was probably harder to write 1200 words than it will be for you to write your next test. If your environment is bad now, it will only get better if you start making it better. Bitching never gets you anywhere.
-
-Eric
-
-_If you enjoyed this mailing feel free to share it. There's more blogs and updates on my book at paytonrules.com.  Until next time!_
