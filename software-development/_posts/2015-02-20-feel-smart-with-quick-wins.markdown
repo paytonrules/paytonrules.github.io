@@ -57,8 +57,3 @@ A kata forces you to return to the same problem and resolve it better, with impr
 #### Remember What you DO Know
 
 That part about source control for your koan? That's a record of accomplishment. Picture running the marathon for a moment. Each mile feels harder than the last as you cross 18, 19, 20 miles, but those numbers also let you know what you've already completed. When learning we're often so focused on what we have to learn we forget what we've already accomplished. Go ahead and take a few moments to look back, both as a reference and as a pat on the back. You deserve it.
-
-Next week a free excerpt from The Guide To Real World TDD!
-
-Eric
-@paytonrules
