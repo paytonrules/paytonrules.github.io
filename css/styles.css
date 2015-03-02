@@ -2,16 +2,6 @@
 @import "http:\/\/fonts.googleapis.com/css?family=Open+Sans:400,700";
 @import '/css/skeleton.css';
 
-body {
-  font-family:'Open Sans', sans-serif;
-  color: #333;
-  line-height: 1.5em;
-}
-
-h1, h2, h3, h4, h5 {
-  font-weight: 700;
-}
-
 #header {
   padding-top: 1.75em;
   position: fixed;
@@ -47,25 +37,9 @@ h1, h2, h3, h4, h5 {
   margin-top: 2em;
 }
 
-h1.title {
-  font-size: 3em;
-  text-align: center;
+.headline {
+  font-weight: bold;
 }
-
-.title h2 {
-  font-size: 0.8em;
-  font-style: italic;
-}
-
-p.headline {
-  font-size: 1.5em;
-}
-
-.what_you_learn li {
-  font-size: 1.1em;
-  font-weight: 600;
-}
-
 
 .links {
   padding-left: 0;
@@ -78,35 +52,13 @@ p.headline {
   list-style-type: none;
 }
 
-.links a {
-  text-decoration: none;
-  color: #333;
-}
-
 .greatest-hits li {
   list-style-type: none;
   margin-bottom: 5px;
 }
 
-p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-}
-
 .content article {
   padding-bottom: 2em;
-}
-
-.content article .date {
-  padding: 0;
-  margin-top: 0;
-  font-size: 0.8em;
-  font-style: italic;
-}
-
-.content h1 {
-  padding-bottom: 0;
-  margin-bottom: 0;
 }
 
 .content h1 a {
@@ -114,19 +66,9 @@ p {
   color: #333;
 }
 
-.content h2 {
-  font-size: 1.1em;
-}
-
 .links a {
   text-decoration: none;
   color: #333;
-}
-
-.warning {
-  font-size: 0.8em;
-  font-style: italic;
-  padding-bottom: 2em;
 }
 
 .quote {
