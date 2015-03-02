@@ -36,7 +36,7 @@ The stuff I don't know:
 
 Always outnumbers the amount I do know, by a factor of a jillion-billion, and that's never gonna change. This is not meant to be a message of hopelessness. A lot of advice to "turn into the skid" and accept it is well-intentioned and accurate, but sure doesn't make you feel much better. The fact is there are ways to learn new skills and feel good about yourself, at least some of the time.
 
-#### Quick Wins
+## Quick Wins
 
 Remember your first Hello World? Remember how AWESOME that was? That's what got me hooked on programming years ago. I actually mistype Hello as Hellow so much I have to concentrate on the word hello. It's that rush that causes me to fiddle with more programming languages than I probably should.
 
@@ -46,7 +46,7 @@ The other quick win is if you are learning a new skill from a book, go ahead and
 
 What we want here is a positive "you're learning more" feedback loop, as opposed to the negative feedback loop of feeling stupid.
 
-#### Deliberate Practice
+## Deliberate Practice
 
 Kata's are kind of my hammer, but deliberate practice works far better than a project for positive reinforcement while learning and katas are one of the best forms of positive reinforcement I know.
 
@@ -54,6 +54,6 @@ The problem with a project is it's naturally open ended, with a lot of twists an
 
 A kata forces you to return to the same problem and resolve it better, with improving skill. The only way that happens on a side-project is a bug.
 
-#### Remember What you DO Know
+## Remember What you DO Know
 
 That part about source control for your koan? That's a record of accomplishment. Picture running the marathon for a moment. Each mile feels harder than the last as you cross 18, 19, 20 miles, but those numbers also let you know what you've already completed. When learning we're often so focused on what we have to learn we forget what we've already accomplished. Go ahead and take a few moments to look back, both as a reference and as a pat on the back. You deserve it.
