@@ -1,6 +1,6 @@
 ---
 layout: ebomb
-title: Don't be a TDD Cultist
+title: The Evidence For TDD
 ---
 
 This blog was going to be something completely different.
@@ -56,6 +56,6 @@ This is a study done entirely by Microsoft. Once again:
 
 >We observed a significant increase in quality of the code (greater than two times) for projects developed using TDD compared to similar projects developed in the same organization in a non-TDD fashion.
 
-This is what I have so far. I haven't found anything yet that says there isn't an increase in quality or that the amount of time spent isn't worthwhile. I expect to add more as time goes on.
+I haven't found anything yet that says there isn't an increase in quality or that the amount of time spent isn't worthwhile, so remember that the next time your boss tells you to stop writing those stupid tests.
 
 [^1]: http://typicalprogrammer.com/why-dont-software-development-methodologies-work/
