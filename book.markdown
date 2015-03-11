@@ -1,5 +1,5 @@
 ---
-layout: ebomb
+layout: main
 title: Agile Let Us Down
 ---
 <article>
