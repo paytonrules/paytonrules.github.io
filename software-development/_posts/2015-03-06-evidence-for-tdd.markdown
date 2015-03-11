@@ -5,7 +5,7 @@ title: The Evidence For TDD
 
 This blog was going to be something completely different.
 
-Every week I so some trawling around the internet, looking for problems people are having that I can fix. This week I found a lot of comments like this:
+Every week I do some trawling around the internet, looking for problems people are having that I can fix. This week I found a lot of comments like this:
 
 >Once a programming team has adopted a methodology it’s almost inevitable that a few members of the team, or maybe just one bully, will demand strict adherence and turn it into a religion.[^1]
 
