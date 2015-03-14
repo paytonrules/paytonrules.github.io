@@ -1,6 +1,8 @@
 ---
 layout: ebomb
 title: Where are Good Examples of TDD?
+redirect_from:
+  - /
 ---
 
 Learning has TDD at a great feedback loop when you're a beginner. You write a simple test, you make it pass, you write the next one. Your first test will probably take hours. Your second one takes an hour. Your third takes minutes and you have your aha! moment. This is why I [recommend katas](http://paytonrules.com/software-development/2015/01/13/how-to-learn-tdd.html) as an early step to get started. If you do the [prime factors kata](http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata) you'll see value really quickly.

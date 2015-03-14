@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ page.title }}</title>
+    <title>Real World TDD</title>
     <meta name="author" content="Eric Smith" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
-    <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/syntax.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/leilani.png" />
@@ -19,9 +18,9 @@
           <div class="two columns">
             <h1 class="name">Eric Smith</h1>
           </div>
-          <div class="seven columns">
-            <h1 class='guide'>
-              <a href="/index.html">The Guide to Real World TDD</a>
+          <div class="eight columns">
+            <h1>
+              <a class='button button-primary' href="/book.html">Read The Guide to Real World TDD</a>
             </h1>
           </div>
         </div>
@@ -32,45 +31,51 @@
           <div class='three columns'>
             <img style="border-radius: 10px;" src="http://www.gravatar.com/avatar/50a0ab317d34860d16f8e2f9da4313fc" alt="A picture of me"/>
             <p id="biography">
-              Polyglot developer, trainer, writer and indie game developer.
-              Writer of the <a href="/index.html">The Guide to Real World TDD</a>. Director
-              of Training Services at 8th Light.
+              Polyglot <a href="https://github.com/paytonrules">developer</a>, trainer, and writer.
+              Author of the <a href="/index.html">The Guide to Real World TDD</a>. Director
+              of Training Services at <a href="http://www.8thlight.com">8th Light</a>. Follow me on <a href="twitter.com/paytonrules">twitter</a>.
             </p>
-            <ul class="links">
-              <li><em><a href="/software-development/index.html">Blog</a></em> / </li>
-              <li><a href="http://www.8thlight.com">Day Job</a> / </li>
-              <li><a href="https://github.com/paytonrules">GitHub</a> / </li>
-              <li><a href="http://twitter.com/paytonrules">Twitter</a> </li>
-            </ul>
-            <div class='greatest-hits'>
-              <ul>
-                <li>Greatest Hits</li>
-                <li><a href="/software-development/2014/10/10/simple-legacy-tricks.html">Simple Legacy Code Tricks</a></li>
-                <li><a href="/software-development/2015/01/13/how-to-learn-tdd.html">The Path to Learning TDD</a></li>
+            <div class="dashed-border">
+              <form action="//paytonrules.us8.list-manage.com/subscribe/post?u=f45a2d123fa8964df7de31f7a&amp;id=28298291e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div>
+                  <p><em>Sign up to my newsletter so you never miss a new tip, and you'll get early access to the
+                    Guide to Real World TDD! </em></p>
+                  <input type="email" value="" name="EMAIL" class="u-full-width" id="mce-EMAIL" placeholder="email address" required>
+                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div style="position: absolute; left: -5000px;"><input type="text" name="b_f45a2d123fa8964df7de31f7a_28298291e9" tabindex="-1" value=""></div>
+                  <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button button-primary"></div>
+                </div>
+              </form>
+            </div>
 
+            <div class='greatest-hits'>
+              <p>New? Start Here!</p>
+              <ul>
+                <li><a href="/software-development/2015/01/13/how-to-learn-tdd.html">The Path to Learning TDD</a></li>
+                <li><a href="/software-development/2015/02/13/get-started-today.html">Get Started Writing Tests Today</a></li>
               </ul>
             </div>
           </div>
-          <div class="seven columns">
-            <h1 class="title">{{page.title}}</h1>
+          <div class="eight columns">
             <div class="content">
-              {{ content }}
-            </div>
-            <div id="signup">
-              <p>Want to learn how to write clean, working code fast? </p>
-              <p>Sign up to my newsletter to get early access to the Guide to Real World TDD and tips and tricks for making TDD effective in your codebase, regardless of language or platform.</p>
+              <h1><a href='{{page.url}}'>{{page.title}}</a></h1>
 
-              <div id="mc_embed_signup">
-                <form action="//paytonrules.us8.list-manage.com/subscribe/post?u=f45a2d123fa8964df7de31f7a&amp;id=28298291e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                  <div id="mc_embed_signup_scroll">
-                    <label for="mce-EMAIL">Subscribe to our mailing list</label>
-                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_f45a2d123fa8964df7de31f7a_28298291e9" tabindex="-1" value=""></div>
-                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                  </div>
-                </form>
+              {{ content }}
+
+              <div class="call-to-action">
+                <h1>Agile Let us Down!</h1>
+                <p><em>Remember when Agile was going to change the world? It hasn't worked out that way, but you
+                    can still write clean, working and tested code fast.</em></p>
+                <p><strong><a href="/book.html">Click Here</a> for early access to the Real World
+                  Guide To TDD</a></strong></p>
               </div>
+
+              <p>If you liked this...</p>
+              <ul>
+                {% for relatedPost in site.related_posts %}
+                  <li><a href="{{ relatedPost.url }}">{{ relatedPost.title }}</a></li>
+                {% endfor %}
+              </ul>
             </div>
           </div>
         </div>

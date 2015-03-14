@@ -24,15 +24,6 @@
   padding-right: 15px;
 }
 
-.guide a {
-  color: antiquewhite;
-  background-color: darkcyan;
-  text-decoration: none;
-  border-radius: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 #content {
   margin-top: 2em;
 }
@@ -57,35 +48,26 @@
   margin-bottom: 5px;
 }
 
+.greatest-hits p {
+  font-weight: bold;
+}
+
 .content article {
   padding-bottom: 2em;
 }
 
 .content h1 a {
   text-decoration: none;
-  color: #333;
-}
-
-.links a {
-  text-decoration: none;
-  color: #333;
-}
-
-.quote {
-  font-style: italic;
-  padding-left: 2em;
-}
-
-#biography {
-  font-size: 0.8em;
 }
 
 #signup {
   padding: 20px 10px 20px 10px;
   font-style: italic;
   border-radius: 10px;
-  color: antiquewhite;
-  background-color: darkcyan;
+}
+
+#biography {
+  font-size: 0.8em;
 }
 
 #mc_embed_signup {
