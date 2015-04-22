@@ -1,8 +1,6 @@
 ---
 layout: ebomb
 title: My Boss Won't Let Me Clean Code, Now What?
-redirect_from:
-  - /
 ---
 
 I hear it all the time. The lament goes something like this:
