@@ -1,8 +1,6 @@
 ---
 layout: ebomb
 title: I'm Afraid to Change This Code!
-redirect_from:
-  - /
 ---
 
 We've all been there before. You're working in your spectacularly complex codebase[^1] and you discover code that looks something like this:
