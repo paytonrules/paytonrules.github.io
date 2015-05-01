@@ -1,6 +1,8 @@
 ---
 layout: ebomb
 title: How To Test A Callback
+redirect_from:
+  - /
 ---
 
 Function Callbacks, or lambdas, or blocks, can frequently be nasty to test. Or at least they _feel_ nasty to test. Let's take a simple JavaScript example:
