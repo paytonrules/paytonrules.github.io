@@ -42,7 +42,5 @@ On one team we had a giant picture of a [Rams Head Snuff Mull](http://tour-perth
 ## Improve the Process
 
 
-
-
 [^1]: By build machine I am referring to a continuous integration environment where the entire system is built and automatically tested. A build machine might run unit tests, might run integration tests, and sadly might not run any of those things. It means more than compiling the code. See [here](http://en.wikipedia.org/wiki/Continuous_integration) for more details.
 
