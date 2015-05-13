@@ -7,11 +7,11 @@ redirect_from:
 
 Function Callbacks, or lambdas, or blocks, can frequently be nasty to test. Or at least they _feel_ nasty to test. Let's take a simple JavaScript example:
 
-```
+{% highlight javascript %}
 $("button").click(function() {
   $("p").html("Warning! A button has been clicked!");
 });
-```
+{% endhighlight %}
 
 This can seem impossible to test, or nearly impossible. In fact callbacks can be really difficult for even experienced TDD practitioners to test. Fortunately it's really not that hard.
 
@@ -19,7 +19,7 @@ This can seem impossible to test, or nearly impossible. In fact callbacks can be
 
 JQuery actually makes this pretty easy with clicks. You can just call $("button").click() in a test and it works. This is by far the preferred option. Sometimes you'll need to take some extra measures to get the callback invoked. Take an ajax call for instance:
 
-```
+{% highlight javascript %}
 // Hat tip to the JQuery documentation
 var jqxhr = $.ajax( "example.php" )
   .done(function() {
@@ -31,7 +31,7 @@ var jqxhr = $.ajax( "example.php" )
   .always(function() {
     $("p").text( "complete" );
   });
-```
+{% endhighlight %}
 
 How would you get this under test? Well you could use [sinon.js](http://sinonjs.org/) to simulate the responses you want - and you should - but what if you didn't know that existed? What if in your preferred language it doesn't exist?
 
@@ -39,28 +39,28 @@ How would you get this under test? Well you could use [sinon.js](http://sinonjs.
 
 Functional languages really like callbacks, so let's use Clojure for this example. What if you wrote a function that takes a callback, something like:
 
-```
+{% highlight clojure %}
 (defn on-progress [callback]
   (callback @my-progress))
-```
+{% endhighlight %}
 
 That code is tested. It's awesome honestly, even with that strange ref in there. But now you're writing code like this:
 
-```
+{% highlight clojure %}
 (defn my-func []
   (on-progress (fn [prog]
                 (when (> prog 0)
                   (save-state *db* :started)))))
-```
+{% endhighlight %}
 
 Assuming that *db* is some kind of global testable database, how are you gonna test this?  You've got a conditional in that callback and you're saving state so you sure better test it. Well heck just stub it:
 
-```
+{% highlight clojure %}
 (with-redefs [on-progress (fn [callback] (callback 0))]
   (my-func)
 
   (should= :not-started (:state *db*)))
-```
+{% endhighlight %}
 
 Note I didn't say mock it - this "test" redefines on-progress as another function and just makes the callback. Since it's making the callback with a progress of "0" I expect that the state of the *db* will be :not-started. As opposed to started I suppose.
 
@@ -74,7 +74,7 @@ Looking at that ajax function again, what does it have to do with the applicatio
 
 So listen to the hard test tell you and write your own object - it can look like whatever you want.  Maybe it's this:
 
-```
+{% highlight javascript %}
 function GetExample(success, failure, always) {
   $.ajax( "example.php" )
     .done(function() {
@@ -86,7 +86,7 @@ function GetExample(success, failure, always) {
     .always(function() {
       always();
     });
-```
+{% endhighlight %}
 
 Or maybe you'll use promises in your own method. The point is you'll write your _small_ wrapper around the offending third-party code, and write mock tests against that. If you can't get a good test around the small wrapper for the third party library - like $.ajax - the world won't end because you're only calling that in one place.
 
