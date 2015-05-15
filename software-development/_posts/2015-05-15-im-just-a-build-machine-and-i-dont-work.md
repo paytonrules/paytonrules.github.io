@@ -1,6 +1,8 @@
 ---
 layout: ebomb
 title: Build Broken? Stop Using Your Database!
+redirect_from:
+  - /
 ---
 
 Your build machine. It's a damn mess. It's broken all the time. It's flaky. It makes developer's sit and wait for _hours_ just to make sure that their code passes, only to find out the build failed because somebody else's code broke it. If you followed the rule of "we don't ship broken builds" you'd never ever ship. So you ship and the customer(s) finds bugs.
@@ -107,11 +109,13 @@ You'll still have slow tests that use the database on the User entity, because t
 
 A quick no no. I've seen, and I'm embarrassed to admit I've written code that looks like this:
 
-  it("should select the users from the database where the name is Eric", function() {
-    expect(User.select).toHaveBeenCalledWith({name: "Eric"});
+{% highlight javascript %}
+it("should select the users from the database where the name is Eric", function() {
+  expect(User.select).toHaveBeenCalledWith({name: "Eric"});
 
-    User.findEric();
-  });
+  User.findEric();
+});
+{% endhighlight %}
 
 What exactly is this testing? It's testing I typed what I said I would type. No more. It doesn't tell me if I wrote the right method (is it select?) or the right parameters. This is usually what happens when somebody _doesn't_ wrap a third party dependency like an ORM but wants to speed up their tests. They start mocking the third party dependency directly. Unfortunately this provides no benefit. It doesn't verify you got the code right, and it doesn't validate your design. You're letting the third party API dictate your design. It also makes it harder to refactor. This is the exact opposite of the goals of TDD.
 
