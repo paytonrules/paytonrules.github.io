@@ -2,7 +2,6 @@
 layout: ebomb
 title: Build Broken? Stop Using Your Database!
 redirect_from:
-  - /
 ---
 
 Your build machine. It's a damn mess. It's broken all the time. It's flaky. It makes developer's sit and wait for _hours_ just to make sure that their code passes, only to find out the build failed because somebody else's code broke it. If you followed the rule of "we don't ship broken builds" you'd never ever ship. So you ship and the customer(s) finds bugs.
