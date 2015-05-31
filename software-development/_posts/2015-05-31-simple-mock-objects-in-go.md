@@ -21,19 +21,19 @@ I've ranted long enough. Assuming that gomock is the only mocking framework avai
 ## Writing Your Own "Mocks"
 Let's go through one of my favorite examples - A Game Loop[^2]. Almost every video game has the same basic loop:
 
-```golang
+{% highlight golang %}
 while (true) {
   processInput();
   update();
   render();
 }
-```
+{% endhighlight %}
 
 This is a terrible game loop, because it doesn't take into account frame rates or the time for each loop for physics, but for some simple games it actually works. Let's see how we could test drive this algorithm.
 
 Let's start with a first test:
 
-```golang
+{% highlight golang %}
 package gameloop
 
 import "testing"
@@ -42,11 +42,11 @@ func TestLoopUpdatesOnStart(t *testing.T) {
   gl := &GameLoop{}
 
 }
-```
+{% endhighlight %}
 
 That doesn't compile until I create a GameLoop object which I'm going to do. I don't want this email to reach 1000 pages like my last article on this so I'm going to skip over the very simple steps from now on. So the first real test is:
 
-```golang
+{% highlight golang %}
 func TestLoopUpdatesOnStart(t *testing.T) {
   game := &PhonyGame{}
   gl := &GameLoop{Game: game}
@@ -57,19 +57,19 @@ func TestLoopUpdatesOnStart(t *testing.T) {
     t.Error("Expected game to be updated, but it wasn't")
   }
 }
-```
+{% endhighlight %}
 
 Line 46 creates a pointer to `PhonyGame` with no parameters. What's `PhonyGame`?
 
-```golang
+{% highlight golang %}
 type PhonyGame struct {
   Updated bool
 }
-```
+{% endhighlight %}
 
 Well where did that come from? Some sort of magic mocking framework? Maybe I forgot to show you go get? Um ..no.
 
-```golang
+{% highlight golang %}
 func TestLoopUpdatesOnStart(t *testing.T) {
   …
 }
@@ -77,19 +77,19 @@ func TestLoopUpdatesOnStart(t *testing.T) {
 type PhonyGame struct {
   Updated bool
 }
-```
+{% endhighlight %}
 
 Yes it's an object, well a struct. A struct with a boolean value that represents when Update is called. How do we set it?
 
-```golang
+{% highlight golang %}
 func (g *PhonyGame) Update() {
   g.Updated = true
 }
-```
+{% endhighlight %}
 
 This is of course right under the PhonyGame struct definition. All I am doing is creating a fake object that gets updated, but what about the real code? Well:
 
-```golang
+{% highlight golang %}
 type Updater interface {
   Update()
 }
@@ -101,13 +101,13 @@ type GameLoop struct {
 func (g *GameLoop) Update() {
   g.Game.Update()
 }
-```
+{% endhighlight %}
 
 Updater is a terrible name, but I haven't thought of anything better. What's it do? It updates. The GameLoop object operates on a Game object of type Updater, which is an _interface_. That interface is implemented by the PhonyGame object in my tests. This is one of the ways that Go really shines. The [Interface Segregation Principle](http://www.objectmentor.com/resources/articles/isp.pdf) strongly implies that the client drives the interface, I like to say the client "Owns" the interface. Well in Go you can define an interface anywhere and if an object conforms to that interface it just works without any "implements" directive. This approach pairs the interface with the client that uses it, which is what you should really be doing in your code regardless of language.
 
 What does that mean? Well it means I can test my game loop by using fake objects I create in my test, as long as they implement my interface(s). The example I have is pretty useless, so let's extend it a little. The game should stop updating when it's over, but should update and draw on each loop. Let's write those tests:
 
-```golang
+{% highlight golang %}
 func TestLoopUpdatesOnEachUpdate(t *testing.T) {
   game := NewPhonyGame()
   gl := &GameLoop{Game: game, Canvas: game}
@@ -216,11 +216,11 @@ func AssertEquals(t *testing.T, expected, actual int) {
     t.Errorf("Expected %d but got %d", expected, actual)
   }
 }
-```
+{% endhighlight %}
 
 This is a pretty long example so let's hit the most complicated test.
 
-```golang
+{% highlight golang %}
 func TestLoopUpdatesUntilTheGameIsOver(t *testing.T) {
   game := NewPhonyGame()
   gl := &GameLoop{Game: game, Canvas: game}
@@ -231,7 +231,7 @@ func TestLoopUpdatesUntilTheGameIsOver(t *testing.T) {
   AssertEquals(t, 2, game.DrawCount)
   AssertEquals(t, 2, game.UpdateCount)
 }
-```
+{% endhighlight %}
 
 I replaced the references in the tests to `&PhonyGame{}` to the `NewPhonyGame` factory function. This is because the `PhonyGame` now has a slice in it and I want to ensure it's initialized. The next line initializes the `GameLoop` with a game object (the `Updater`) and a `Canvas` (the object we draw). These are two different interfaces but `PhonyGame` implements them both. I actually believe a user of `GameLoop` is likely to use the same object for `Draw` and `Update` but I also believe they should be decoupled in the loop. Therefore it's two interfaces. The function `SetTurnsUntilGameIsOver` will tell the `PhonyGame` object to return `true` from the `IsOver` function after two "turns" are taken in the game. In a dynamic framework we might write `game.stub(IsOver).andReturn([false, false, true])` and I actually think this reads better. That said there is more implementation in the mock object than I'd like, mostly because there's no built in Queue type. It's extremely likely I'll write one and include it in my program.
 
@@ -239,7 +239,7 @@ Oh and I wrote a couple Assert helpers, for readability.
 
 The actual code:
 
-```golang
+{% highlight golang %}
 package gameloop
 
 type Updater interface {
@@ -266,7 +266,7 @@ func (g *GameLoop) Start() {
     g.update()
   }
 }
-```
+{% endhighlight %}
 
 The code isn't too hard, and the tests outnumber it by far, but note that `!g.Game.IsOver()` check. That's behavior, and behavior I can get wrong. A proper game loop will have limiting on frame rate, take input, and might make sure it's update loop runs in it's own thread (or goroutine) separate from draw. In short complicated behavior that has to be tested, and can be tested in isolation.
 
