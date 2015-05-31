@@ -21,7 +21,7 @@ I've ranted long enough. Assuming that gomock is the only mocking framework avai
 ## Writing Your Own "Mocks"
 Let's go through one of my favorite examples - A Game Loop[^2]. Almost every video game has the same basic loop:
 
-{% highlight golang %}
+{% highlight go %}
 while (true) {
   processInput();
   update();
@@ -33,7 +33,7 @@ This is a terrible game loop, because it doesn't take into account frame rates o
 
 Let's start with a first test:
 
-{% highlight golang %}
+{% highlight go %}
 package gameloop
 
 import "testing"
@@ -46,7 +46,7 @@ func TestLoopUpdatesOnStart(t *testing.T) {
 
 That doesn't compile until I create a GameLoop object which I'm going to do. I don't want this email to reach 1000 pages like my last article on this so I'm going to skip over the very simple steps from now on. So the first real test is:
 
-{% highlight golang %}
+{% highlight go %}
 func TestLoopUpdatesOnStart(t *testing.T) {
   game := &PhonyGame{}
   gl := &GameLoop{Game: game}
@@ -61,7 +61,7 @@ func TestLoopUpdatesOnStart(t *testing.T) {
 
 Line 46 creates a pointer to `PhonyGame` with no parameters. What's `PhonyGame`?
 
-{% highlight golang %}
+{% highlight go %}
 type PhonyGame struct {
   Updated bool
 }
@@ -69,7 +69,7 @@ type PhonyGame struct {
 
 Well where did that come from? Some sort of magic mocking framework? Maybe I forgot to show you go get? Um ..no.
 
-{% highlight golang %}
+{% highlight go %}
 func TestLoopUpdatesOnStart(t *testing.T) {
   …
 }
@@ -81,7 +81,7 @@ type PhonyGame struct {
 
 Yes it's an object, well a struct. A struct with a boolean value that represents when Update is called. How do we set it?
 
-{% highlight golang %}
+{% highlight go %}
 func (g *PhonyGame) Update() {
   g.Updated = true
 }
@@ -89,7 +89,7 @@ func (g *PhonyGame) Update() {
 
 This is of course right under the PhonyGame struct definition. All I am doing is creating a fake object that gets updated, but what about the real code? Well:
 
-{% highlight golang %}
+{% highlight go %}
 type Updater interface {
   Update()
 }
@@ -107,7 +107,7 @@ Updater is a terrible name, but I haven't thought of anything better. What's it 
 
 What does that mean? Well it means I can test my game loop by using fake objects I create in my test, as long as they implement my interface(s). The example I have is pretty useless, so let's extend it a little. The game should stop updating when it's over, but should update and draw on each loop. Let's write those tests:
 
-{% highlight golang %}
+{% highlight go %}
 func TestLoopUpdatesOnEachUpdate(t *testing.T) {
   game := NewPhonyGame()
   gl := &GameLoop{Game: game, Canvas: game}
@@ -220,7 +220,7 @@ func AssertEquals(t *testing.T, expected, actual int) {
 
 This is a pretty long example so let's hit the most complicated test.
 
-{% highlight golang %}
+{% highlight go %}
 func TestLoopUpdatesUntilTheGameIsOver(t *testing.T) {
   game := NewPhonyGame()
   gl := &GameLoop{Game: game, Canvas: game}
@@ -239,12 +239,12 @@ Oh and I wrote a couple Assert helpers, for readability.
 
 The actual code:
 
-{% highlight golang %}
+{% highlight go %}
 package gameloop
 
 type Updater interface {
   Update()
-    IsOver() bool
+  IsOver() bool
 }
 
 type Canvas interface {
