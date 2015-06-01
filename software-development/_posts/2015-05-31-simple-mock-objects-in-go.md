@@ -12,7 +12,7 @@ Let me paraphrase what I read on a golang-nuts thread:
 
 _Go doesn't have a built in mocking framework, and gomock is not mature enough for production! When will we be able to do TDD in Go?_
 
-C'mon man. Of COURSE you can do TDD without a mocking framework. People do that every day. Gomock is a mocking framework, not an HTTP server, which means "mature enough for production" is a much lower bar to clear. Finally you can do TDD in Go right now, and you can do it without using gomock at all if you don't like it.
+C'mon man. Of COURSE you can do TDD without a mocking framework. People do that every day, sometimes by choice. You can do TDD in Go right now, and you can do it without using gomock at all if you don't like it.
 
 The overall problem here is the attitude of the developer asking the question. "I do not have these things - provide them for me or I will skip TDD!" This dev likely isn't lazy or stupid, Go is an emerging language and isn't likely to attract either of those types, but they sure are acting it. My irritation aside the truth is this question was probably written not of malice, but of habit. Developers coming from different environments, particularly corporate sponsored ones like C#, are used to having the "official" tools handed to them. When they don't exist, they wait for them, and that's just not acceptable.
 
