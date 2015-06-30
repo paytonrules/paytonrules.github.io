@@ -1,8 +1,6 @@
 ---
 layout: ebomb
 title: Simple Mock Objects in Go
-redirect_from:
-  - /
 ---
 And almost any other language...
 
