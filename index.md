@@ -18,7 +18,7 @@ layout: simple
   <img class="bio" src="http://www.gravatar.com/avatar/50a0ab317d34860d16f8e2f9da4313fc?s=135" alt="A picture of me"/>
 
   <p>
-    Eric Smith (me) is a Polyglot <a href="https://github.com/paytonrules">developer</a>, trainer, and writer. I'm currently workin on the <a href="/book.html">The Guide to Real World TDD</a> featuring real word problems for full stack developers.
+    Eric Smith (me) is a Polyglot <a href="https://github.com/paytonrules">developer</a>, trainer, and writer. I'm currently working on the <a href="/book.html">The Guide to Real World TDD</a> featuring real world problems for full stack developers.
   </p>
   <p>By day I'm the Director of Training Services at <a href="http://www.8thlight.com">8th Light</a>, by night I'm the proud dad of 5 kids and happily married to a QA Engineer.</p>
   <p>Follow me on <a href="https://twitter.com/paytonrules">twitter</a>, and anyplace you find the tag paytonrules it's probably me.</p>
