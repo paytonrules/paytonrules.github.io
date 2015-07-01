@@ -2,16 +2,30 @@
 @import "http:\/\/fonts.googleapis.com/css?family=Open+Sans:400,700";
 @import '/css/skeleton.css';
 
-h1.centered {
+title {
+  padding-bottom: 0.75rem;
+}
+
+div.title h1 {
   text-align: center;
-  padding-bottom: 0.75em;
+  padding-bottom: 0.50rem;
+}
+
+p.mini_pitch {
+  font-size: 2.0rem;
 }
 
 p.emphasized {
   font-style: bold;
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 4.2rem;
   text-align: center;
+}
+
+img.bio {
+  border-radius: 10px;
+  float: left;
+  margin-right: 10px;
 }
 
 #header {
