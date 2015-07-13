@@ -1,5 +1,7 @@
-# Should You Really Ignore Your Database?
-
+---
+layout: ebomb
+title: Should You Really Ignore Your Database?
+---
 Recently I wrote about getting your unit tests [off your database](http://paytonrules.com/software-development/2015/05/15/im-just-a-build-machine-and-i-dont-work.html) for the sake of your build. In particular I wanted to address two problems that happen on build machines:
 
 * Builds fail because of "stray" data in the database.
