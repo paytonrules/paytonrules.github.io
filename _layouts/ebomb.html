@@ -62,14 +62,8 @@
 
               {{ content }}
 
-              <div class="call-to-action">
-                <h1>Agile Let us Down!</h1>
-                <p><em>Remember when Agile was going to change the world? It hasn't worked out that way, but you
-                    can still write clean, working and tested code fast.</em></p>
-                <p><strong><a href="/book.html">Click Here</a> for early access to the Real World
-                  Guide To TDD</a></strong></p>
-              </div>
-
+              {% include call_to_action.html %}
+              
               <p>If you liked this...</p>
               <ul>
                 {% for relatedPost in site.related_posts %}
