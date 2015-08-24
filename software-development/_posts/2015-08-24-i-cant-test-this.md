@@ -5,7 +5,7 @@ title: Help I Can't Test This!
 
 In real world TDD you almost never get to write tests that look like this:
 
-``` javascript
+{% highlight javascript %}
 describe("Stack", function() {
 
   it("should begin empty", function() {
@@ -14,7 +14,7 @@ describe("Stack", function() {
     expect(stack.size()).toEqual(0);
   ));
 });
-```
+{% endhighlight %}
 
 The above is the typical first test in the Stack Kata - written in JavaScript. It seems nice because it's straightforward and easy to teach, but it ends up being a problematic example because nobody ever writes this kind of code unless they are doing a Kata. The beginner ends up struggling to apply their knowledge in the real world.
 
@@ -26,7 +26,7 @@ I've been working with React for about a month or so, and while there's a lot to
 
 The terrible UI above is meant to have the user select a country, and after user clicks "OK" update the flag to be the flag of the chosen country. Told you it was terrible. Now the React component may look something like this:
 
-```javascript
+{% highlight javascript %}
 class CountryUpdater extends React.Component {
   render() {
     return (
@@ -38,7 +38,7 @@ class CountryUpdater extends React.Component {
     );
   }
 };
-```
+{% endhighlight %}`
 
 Don't worry if you don't understand the code above. I don't expect you to be an expert in React, and that's the point. Frequently you  aren't an expert in the technologies you are using. All you know at this point is that you want to respond to the OK button, and change the country for CountryImage to be the value selected in the CountrySelector. In React those are both being represented as individual components that don't talk to each other, and anyway that sounds like a Selenium test. What exactly can you do?
 
@@ -54,7 +54,7 @@ Would you buy a car from somebody who told you that they didn't test it for safe
 
 What if your first test was:
 
-```javascript
+{% highlight javascript %}
 describe("Country Selector", () => {
 
   it("Sets the state to the current country", () => {
@@ -65,11 +65,11 @@ describe("Country Selector", () => {
     expect(updater.state.currentCountry).toEqual("Peru");
   });
 });
-```
+{% endhighlight %}
 
 You can make that pass by writing:
 
-```javascript
+{% highlight javascript %}
 class CountryUpdater extends React.Component {
   ...
   okButtonPressed(country) {
@@ -77,13 +77,13 @@ class CountryUpdater extends React.Component {
   }
   ...
 };
-```
+{% endhighlight %}
 
 Well yippee skippy but where did that country come from? It's probably part of the `CountrySelector` component right? And you don't know how to test that do you?
 
 You're right, you don't. But you can see in the test above that you can set the state of a component. Can you get a child component's state? It turns out you can through a React concept called refs. Start by putting a ref on the country selector:
 
-```javascript
+{% highlight javascript %}
 class CountryUpdater extends React.Component {
   render() {
     return (
@@ -95,11 +95,11 @@ class CountryUpdater extends React.Component {
     );
   }
 };
-```
+{% endhighlight %}
 
 Next modify the test to take an object that looks like a react component:
 
-```javascript
+{% highlight javascript %}
 describe("Country Selector", () => {
 
   it("Sets the state to the current country", () => {
@@ -112,11 +112,11 @@ describe("Country Selector", () => {
     expect(updater.state.currentCountry).toEqual("Peru");
   });
 });
-```
+{% endhighlight %}
 
 Make the code pass...
 
-```javascript
+{% highlight javascript %}
 class CountryUpdater extends React.Component {
   ...
   okButtonPressed(countryProp) {
@@ -124,11 +124,11 @@ class CountryUpdater extends React.Component {
   }
   ...
 };
-```
+{% endhighlight %}
 
 We still haven't bound this function to anything. We can do that by creating a simple function that delegates to this function:
 
-```javascript
+{% highlight javascript %}
 class CountryUpdater extends React.Component {
   ...
   okButton() {
@@ -136,11 +136,11 @@ class CountryUpdater extends React.Component {
   }
   ...
 };
-```
+{% endhighlight %}
 
 ...and updating the rendered components to have an onClick handler.
 
-```javascript
+{% highlight javascript %}
 class CountryUpdater extends React.Component {
   ...
   render() {
@@ -153,7 +153,7 @@ class CountryUpdater extends React.Component {
     );
   }
 }
-```
+{% endhighlight %}
 
 ## What Did We Do?
 
