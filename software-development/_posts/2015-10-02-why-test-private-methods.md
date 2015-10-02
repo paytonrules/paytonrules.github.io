@@ -27,7 +27,7 @@ Yeah I hear you, this site is about _Real World_ TDD and in the real world it's 
 
 We're gonna use a look at a simple application that calculates your mortgage. It's a small javascript app that you can find here[^2] if you like, but a picture should suffice:
 
-![Mortgage Calculator](https://www.evernote.com/l/AAbcUnyWqsNPP4hAdwtMNdM8ye2YfZ9OfrAB/image.png)
+<img src="/images/Mortgage_Calculator.png" alt="Morgage Calculator" height="400px" />
 
 I'm using Bootstrap and JQuery but otherwise there is no magic happening to create this, so don't worry if you're not an expert on Reangulember 2.3. In a follow up post I'm going to explain my setup for fast testing and development in JavaScript, but for this example you just need to know there is one object and one set of tests.
 
