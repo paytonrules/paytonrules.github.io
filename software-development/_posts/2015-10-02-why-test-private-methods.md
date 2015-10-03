@@ -157,6 +157,7 @@ This approach allows me to reduce maintenance costs caused by the overhead of te
 Okay the boss wants us to account for a down payment. We could subtract that from the `homeCost` in the dialog, but that starts introducing calculation responsibility to the dialog and I'm trying to avoid that[^4]. So instead I'm going to add it to the class I just created:
 
 Test:
+
 ```javascript
 import {MortgageCalculator} from 'mortgage_calculator';
 
@@ -178,6 +179,7 @@ describe('MortgageCalculator', () => {
 Note how the calculator's NEW test goes in the mortgage calculator spec, rather than the old tests. Also note how this tests uses numbers, rather than strings that come out of HTML forms.
 
 And Code:
+
 ```javascript
 constructor(options) {
   var downPayment = options.downPayment || 0;
@@ -202,9 +204,9 @@ it('respects the down payment', () => {
 });
 ```
 
-Pay attention here to how _simple_ this math is. I don't have to retest the math for calculating a mortgage[^5] because that's the responsibility of the `MortgageCalculator` object. Yes if the way mortgages are calculated is changed in ways that are fundamental to the way we buy houses, this will become wrong because the test is coupled to the calculation, but it's coupled to the simplest case that is very unlikely to change. If it does change, I'll fix it.
+Pay attention here to how _simple_ this math is. I don't have to retest the math for calculating a mortgage[^5] because that's the responsibility of the `MortgageCalculator` object. Yes if the way mortgages are calculated is changed in ways that are fundamental to the way we buy houses, this will become wrong because the test is coupled to the calculation, but it's coupled to the simplest case that is very unlikely to change. Some of you might have suggested modifying the existing test that calculates a more complicated mortgage payment. I might do that too, but if I do then I need to modify it's calculations to be simple again, and if I do that I should move the complicated test to the `MortgageCalculator` tests. That approach works too, without introducing the problems associated with moving dozens of tests. It's just one test to move.
 
-I'm making a bet here. My bet is that a mock is more likely to cause problems, including bugs, than testing a real object is.
+Still I didn't introduce  a mock. I'm making a bet here. My bet is that a mock is more likely to cause problems, including bugs, than testing a real object is.
 
 ```javascript
 $mortgageForm.submit((evt) => {
@@ -220,7 +222,8 @@ $mortgageForm.submit((evt) => {
     downPayment: downPayment
   });
 ```
-Now I just move the down payment into the calculator, and the object works. This code isn't perfect. I've decoupled the dialog from the calculator in some respects. For instance I can fix a bug in the calculation of the mortgage without changing the mortgage dialog, and I can validate inputs in the dialog without changing the calculator, but I can't add variable interest rate or balloon payments without changing both places. That's fine, because we'll cross that bridge when those features are requested.
+
+Now I just move the down payment into the calculator, and the object works. This code isn't perfect. I've decoupled the dialog from the calculator in some respects, but not others. For instance I can fix a bug in the calculation of the mortgage without changing the mortgage dialog, and I can validate inputs in the dialog without changing the calculator, but I can't add variable interest rate or balloon payments without changing both places. That's fine, because we'll cross that bridge when those features are requested. Realistically the calculation will probably stay coupled to the form, I don't see how it couldn't unless the form becomes some kind of generic form for any calculation. That's unlikely.
 
 The next person who comes along the MortgageCalculator may wonder "where the hell[^6] are the tests!" It's a fair question and there will be some overhead when that person has to track down the other tests but I'm willing to trade the times I can't find the tests for a little while for the times where I move tests for no reason.
 
@@ -230,7 +233,7 @@ Finally you might wonder what happened to the thesis of the article - how do I t
 * Leave the tests as-is if the new class isn't going to be reused.
 * Add new tests to the new object.
 
-Private method tested, code improved, and there aren't even any yak sightings.
+Private method tested, code improved, and there aren't even any yak sightings. This truly works in any language.
 
 [^1]: 3,820,001 after this blog goes up.
 [^2]: https://github.com/paytonrules/testing_private_methods
