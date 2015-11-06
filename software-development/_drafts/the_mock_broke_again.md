@@ -93,7 +93,7 @@ and real versions have the same API and preferably with matching behavior.
 
 For instance if you have a database object with a method that does this:
 
-```JavaScript
+```javascript
 class Database {
   ...
   select(filter) {
@@ -111,7 +111,7 @@ know that's not the point of the example, don't be pedantic.[^3]
 
 That code probably has a test or more, that looks like this:
 
-```JavaScript
+```javascript
 describe(Database)
 
   it("should select from a database", () => {
@@ -130,17 +130,17 @@ fake may seem redundant, and it is, but instead you should identify all the the 
 that are truly black box and rerunning them against your fake. This will remove
 tests that look like this:
 
-```JavaScript
-  it("should update", () => {
-    let database = new Database();
-    database.update('THAT_TABLE', {filter: "test value"});
+```javascript
+it("should update", () => {
+  let database = new Database();
+  database.update('THAT_TABLE', {filter: "test value"});
 
-    dbConnection.open();
-    let results = dbConnection.execute("SELECT * from THAT_TABLE");
-    dbConnection.close();
+  dbConnection.open();
+  let results = dbConnection.execute("SELECT * from THAT_TABLE");
+  dbConnection.close();
 
-    expect(results).toEqual([["test value"]]);
-  });
+  expect(results).toEqual([["test value"]]);
+});
 ```
 
 But typically only the first couple tests of big classes (like those that you'd fake)
@@ -155,34 +155,22 @@ the third party dependency, then you make sure your fake passes those tests.
 
 ## Targeted Integrated Tests
 
-I ranted a bit at the beginning about end-to-end integration tests, which is a typical
-solution to this problem, and I stand by that. Integration tests on every part of
-the system are slow, hard to write, prone to failing for the wrong reason, and expensive.
+I ranted a bit at the beginning about end-to-end integration tests, which is a typical solution to this problem, and I stand by that. Integration tests on every part of the system are slow, hard to write, prone to failing for the wrong reason, and expensive.
 
-However in the event you get bugs in the same areas nothing is preventing you from
-writing targeted integration tests that validate the real object. You can often
-do this by taking a few places where you stub out a dependency, like the database, and
-replace them with the real object. You can either do this in a separate run or as
+However in the event you get bugs in the same areas nothing is preventing you from writing targeted integration tests that validate the real object. You can often do this by taking a few places where you stub out a dependency, like the database, and replace them with the real object. You can either do this in a separate run or as
 part of your normal unit tests, provided that the real object can pass reliably.
 
 ## Mock Fun
 
-Mock Objects can be essential in using TDD on a complex real system. Since we're
+Mock Objects can be essential in using TDD on a complex real system. A real system
+has dozens, hundreds maybe thousands Since we're
 not developing the Bowling Game it's vital that we are able to get feedback on our
 code quickly, and Mocks/Fakes/Doubles are vital in this regard. They are also
 dangerous, particularly in languages that don't help you with a compiler. With a few
 tricks above you should be able to take targeted approach and fix areas where Mocks
 are giving you trouble.
 
-[^1]: Just a reminder - when Michael Feathers wrote his definition of a Unit Test
-and said "If it hit's the database, it's not a Unit Test" he also added, "That doesn't
-mean that tests that [hit the database] aren't valuable or shouldn't be written,
-just that they are not Unit Tests."
-[^2]: "Clean Code that works -- now" That's the first line of the back cover of
-Kent Beck's TDD by Example book. http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1446473371&sr=8-1&keywords=test+driven+development
-[^3]: I am _drastically_ oversimplifying the situation and history here and portraying
-an adversarial relationship that doesn't exist. While I do think that many mockists
-dismiss correctness as an important feature of TDD, I don't think any don't care
-if their stuff works. I just think it's gone too far. I would provide examples, but
-I don't want to be seen as calling out developers individually. For explanations of
-the differences between both schools see: http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd
+
+[^1]: Just a reminder - when Michael Feathers wrote his definition of a Unit Test and said "If it hit's the database, it's not a Unit Test" he also added, "That doesn't mean that tests that [hit the database] aren't valuable or shouldn't be written, just that they are not Unit Tests."
+[^2]: "Clean Code that works -- now" That's the first line of the back cover of Kent Beck's [TDD by Example](http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1446473371&sr=8-1&keywords=test+driven+development). 
+[^3]: I am _drastically_ oversimplifying the situation and history here and portraying an adversarial relationship that doesn't exist. While I do think that many mockists dismiss correctness as an important feature of TDD, I don't think any don't care if their stuff works. I just think it's gone too far. I would provide examples, but I don't want to be seen as calling out developers individually. For explanations of the differences between both schools see [here](http://programmers.stackexchange.com/questions/123627/what-are-the-london-and-chicago-schools-of-tdd).
