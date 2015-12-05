@@ -13,7 +13,7 @@ We write the UI last.
 
 We all know to separate presentation from the UI layer. That's why we have patterns like MVC, MVP, MVVM, and my favorite MVVMVPM. Okay I made that last one up. The point is we have these patterns, and frameworks to encode those problems, but as long as we're thinking in view we're going to end up writing view code everywhere. Let's take a famous example, the Bowling Game:
 
-![A Bowling Scoreboard](/images/bowling_score.png)[^1]
+<img style="max-width: 100%;" alt="A Bowling Scoreboard" src="/images/bowling_score.png" />
 
 Normally when we do this kata we end up with one class that calculates the score, with no dependencies. But that's not how the real world works. In the "Real World" we have a computerized scoreboard that is overhead or at a table, and it updates as you bowl. For the sake of simplification we'll assume you have a web form that you enter the pins you knocked down into, and once you do it updates a score like the one above. We'll also assume you call some object called `BowlingGame` with `roll` and the number of pins you knocked down, then query it for the current score. This means you'll end up with something like:
 
