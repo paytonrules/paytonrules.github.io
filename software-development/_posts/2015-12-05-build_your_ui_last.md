@@ -35,7 +35,7 @@ it("rolls a ball on the model", () => {
 
 The BowlingController is what doesn't exist and it's what we're testing here. Note how we have a fake view, but a real game as the model. I could do this with multiple mocks but I know the `BowlingGame` model isn't dependent on any third party code and is fast so there's no real reason to make a mock here. Let's make that pass:
 
-```es6
+```javascript
 class FakeView {
   constructor(game, view) {
     this.updatedScore = 0;
