@@ -49,7 +49,7 @@ So some increase in development time but a drastic reduction in defects. I think
 Thirumalesh Bhat, Nachiappan Nagappan<br/>
 Center for Software Excellence, Microsoft Research
 
-This is a [study](http://research.microsoft.com/en-us/groups/ese/nagappan_tdd.pdf) done entirely by Microsoft. Once again:
+This is a [study](http://www.msr-waypoint.com/en-us/groups/ese/fp17288-bhat.pdf) done entirely by Microsoft. Once again:
 
 >We observed a significant increase in quality of the code (greater than two times) for projects developed using TDD compared to similar projects developed in the same organization in a non-TDD fashion.
 
