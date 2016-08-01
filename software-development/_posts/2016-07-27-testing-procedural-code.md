@@ -69,7 +69,7 @@ public void TestCustomerDataIsMovedFromSourceToDestination()
 
   _customerManager.CopyCustomers();
 
-  _targetRepository.Verify(repository => repository.Add(It.Is<Customer>(customer.code == "CODE")));
+  _targetRepository.Verify(repository => repository.Add(It.IsAny<Customer>(customer => customer.code == "CODE")));
 }
 ```
 
@@ -87,8 +87,8 @@ public void TestAllCustomersAreMovedFromSourceToDestination()
 
   _customerManager.CopyCustomers();
 
-  _targetRepository.Verify(repository => repository.Add(It.Is<Customer>(customer.code == "customer code 1")));
-  _targetRepository.Verify(repository => repository.Add(It.Is<Customer>(customer.code == "customer code 2")));
+  _targetRepository.Verify(repository => repository.Add(It.IsAny<Customer>(customer => customer.code == "customer code 1")));
+  _targetRepository.Verify(repository => repository.Add(It.IsAny<Customer>(customer => customer.code == "customer code 2")));
 }
 ```
 
@@ -128,7 +128,7 @@ public void TestCopyCustomersUpdatesTheTime() {
 
   _customerManager.CopyCustomers();
 
-  _targetRepository.Verify(repository => repository.Add(It.Is<Customer>(customer.LastUpdated == nowProvider.now)));
+  _targetRepository.Verify(repository => repository.Add(It.IsAny<Customer>(customer => customer.LastUpdated == nowProvider.now)));
 }
 ```
 
