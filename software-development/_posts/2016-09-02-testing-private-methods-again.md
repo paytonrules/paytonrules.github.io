@@ -23,21 +23,17 @@ So if your code is new then write the code to pass in the public method and extr
 
 ## Existing Code
 
-If you're working with existing code you need to change code in private methods and it may be unclear or impossible to reach those private methods from a unit test. Now you've got a deal with the issue. So you follow a process. Your a developer, you know processes, so here's one you can use for testing private methods.
+If you're working with existing code you need to change code in private methods and it may be unclear or impossible to reach those private methods from a unit test. Now you've got a deal with the issue. So you follow a process. Your a developer, you know processes, so here's one you can use for testing private methods. Start by commenting out the code in the private method and running them.
 
-1. Comment out the code in the private method.
-2. Run the tests.
-3. If tests fail then pick one to either edit or copy-paste into a new test.
-    1. Restore the code.
-    2. Run the tests, make sure they still pass.
-    3. Edit the test you found to make it fail (because you haven't written the new code you need).
-    4. Make it pass.
-    5. Refactor Code AND TESTS to make this process simpler next time.
-4. If no tests fail then go ahead and make the private member public.
-    1. TDD new code.
-    2. Consider extracting the newly publicized method into a new class.
+**If no tests fail**
 
-In the case where tests are present you probably need to do some heavy refactoring, so that the next time you make changes to that section to the codebase it's obvious where the tests are and what they do. In the case where there are no tests executing the private method you almost certainly need a new object.
+Belive it or not this is often easier than if there are one (or more) failing tests. If no tests fail then simply make the method public, and test it directly. If anybody gives you grief about it tell them that you couldn't be sure that tangled mess was working without testing it. If they still give you grief than refactor it to a new class. You can do that now, since its tested. And if they _still_ give you grief than use one of the many language-specific methods (such as friend classes) to test private methods. I normally don't recommend those, but sometimes you have to work within the constraints of your team.
+
+**If they fail**
+
+In this case you need to pick the simplest test that's failling. Find one that fails for a reason similar to your reasons for changing the private method and copy and paste that test. Restore the code in the private method, and then modify your copied to test to fail for the reason you need it to, and write the new code to pass the test.
+
+Now you need to extract liberally in the code and the tests. Testing a private method should be straightforward, and if it isn't then it means either your code, tests or both are hard enough to understand that some refactoring is necessary. Consider extracting the newly publicized method into a new class.
 
 In fact the most common reason we are concerned with testing private methods is that a class has grown too big, with large private methods. These responsibilities often need to be refactored into their own objects in their own right, because they are not cohesive with the object containing them.
 
