@@ -38,10 +38,3 @@ Now you need to extract liberally in the code and the tests. Testing a private m
 In fact the most common reason we are concerned with testing private methods is that a class has grown too big, with large private methods. These responsibilities often need to be refactored into their own objects in their own right, because they are not cohesive with the object containing them.
 
 So there you have it - that's how you test private methods. It's really not so hard - go forth and test through the public interface!
-
-
-### Comment Out The Code
-
-You can't always tell if code is tested our not, so comment out the code in the method and run the tests. If the tests don't fail then nothing is testing the method you want to change. Now it's time to find out what is calling that private method. I Comment out the code and run the tests. This will help you see if anything is actually testing the code you want to change.
-
-
